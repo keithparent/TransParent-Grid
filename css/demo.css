@@ -1,0 +1,512 @@
+/*
+	VIEWPORTS
+	.viewport {
+		margin-left: auto;
+		margin-right: auto;
+		 -webkit-transition: width 0.436s ease-in-out;
+		 	-moz-transition: width 0.436s ease-in-out;
+		 	 -ms-transition: width 0.436s ease-in-out;
+		 	  -o-transition: width 0.436s ease-in-out;
+		 	  	 transition: width 0.436s ease-in-out;
+	}
+	.viewport.w100 { width: 100% !important; }
+	.viewport.w320 { width: 320px !important; }
+	.viewport.w480 { width: 480px !important; }
+	.viewport.w768 { width: 768px !important; }
+	.viewport.w1024 { width: 1024px !important; }
+	.viewport.w1280 { width: 1280px !important; }
+	.viewport.w1366 { width: 1366px !important; }
+	.viewport.w1440 { width: 1440px !important; }
+	.viewport.w1680 { width: 1680px !important; }
+	.viewport.w1920 { width: 1920px !important; }
+*/
+
+/*
+	BASE STYLES
+*/
+
+body {
+	background: #f5f8fd;
+	color: #55585d;
+	-webkit-font-smoothing: subpixel-antialiased;
+			font-smoothing: subpixel-antialiased;
+	font-weight: 400;
+	padding-top: 42px;
+}
+
+a {
+	color: #759;
+	text-decoration: none;
+	}
+	a:hover,
+	a:focus,
+	a:active {
+		color: #fb6913;
+		text-decoration: underline;
+	}
+	
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #4d4a69;
+	font-weight: 100;
+	-webkit-font-smoothing: antialiased;
+			font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+h1 { font-weight: 100; }
+h2 { font-weight: 300; }
+h3 { font-weight: 600; }
+h4 { font-weight: 800; }
+
+hr {
+	margin: 1px 0;
+	border: 0;
+	border-top: 1px solid #d5d8dd;
+	border-bottom: 1px solid #fff;
+}
+
+p { max-width: 42em; }
+p.lead { font-size: 1.25em; line-height: 1.75; margin-bottom: 0; padding-bottom: 0; }
+p.lead em { font-size: 0.85em; }
+
+ul {
+	list-style: square;
+	}
+	ul,
+	ul li {
+		line-height: 2.25;
+		margin-left: 0.75em;
+		padding-left: 0;
+	}
+	ul {
+		margin-top: -0.125em;
+	}
+
+header { background: #f1f3fa; border-bottom: 1px solid #e1e3ea; height: 100px; padding: 1em 0; }
+footer { background: #e5e8ed; border-top: 1px solid #d1d3da; margin-top: 2em; padding: 0.5em 0 3.5em; }
+nav ul, nav li { margin-left: 0; }
+
+/*------------------------------------*\
+	$FORM ELEMENTS
+\*------------------------------------*/
+fieldset { margin-bottom: 2em; }
+legend { font-size: 0.85em; letter-spacing: 0.33em; padding-left: 0.33em; text-transform: uppercase; }
+
+.btn, button, input, select, textarea {
+	border: 1px solid #d5d3d7;
+	color: #74568a;
+	display: inline-block; *display: inline; *zoom: 1;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	line-height: normal;
+	margin: 0 auto;
+	padding: 0.5em 1.5em;
+	 -webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		 -ms-box-sizing: border-box;
+			 box-sizing: border-box;
+	margin: 0 auto;
+	vertical-align: middle;
+	width: auto;
+	}
+	input[type="text"], input[type="email"], input[type="url"], input[type="number"],
+	input[type="search"], input[type="tel"], input[type="password"], select, textarea {
+		background: #fbf9fd;
+		border-color: #c3c1c5;
+		border-top-color: #a19fa3;
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+				box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+		padding: 0.5em;
+		width: auto;
+	}
+	input[type="text"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="number"]:hover,
+	input[type="search"]:hover, input[type="tel"]:hover, input[type="password"]:hover, select:hover, textarea:hover {
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+				box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	}
+	.btn:hover, button:hover, input:hover, select:hover, textarea:hover {
+		background: #fcf9ff;
+		border-color: #a19fa3;
+		color: #5d4d62;
+	}
+	.btn:active, button:active, input:active, select:active, textarea:active {
+		background: #fff;
+		-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+				box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+	}
+	.btn:focus, button:focus, input:focus,
+	input[type="text"]:focus, input[type="password"]:focus,
+	input[type="email"]:focus, input[type="search"]:focus, input[type="search"]:focus:hover,
+	select:focus, textarea:focus, input:focus:hover, select:focus:hover, textarea:focus:hover {
+		background-color: #fff;
+		border-color: #7642a4;
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
+				box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
+		outline: 0;
+	}
+
+/*** Select ***/
+select, select[size], select[multiple] {
+	padding: 1px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	}
+	optgroup option, option { color: #676569; }
+	optgroup option:hover, option:hover { color: #7642a4; background-color: #ede9ef; }
+	select,
+	input[type="file"] {
+		/* In IE7, the height of the select element cannot be changed by height, only font-size */
+		*border: none !important;
+		*margin-top: 4px;	/** IE7, add top margin to align select with labels */
+	}
+
+	input:focus, select { text-shadow: none; }
+	input[type="image"] { border: none; padding: 0; }
+
+
+input[type="image"], 
+input[type="checkbox"],
+input[type="radio"] {
+	cursor: pointer;
+	display: inline-block;
+	height: auto; /*height: 14px;*/
+	line-height: normal;
+	margin: 0;
+	padding: 0;
+	width: auto; /*width: 14px;*/
+}
+
+/* Checkbooms */
+input[type="checkbox"],
+input[type="radio"] {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 13px;
+	height: 13px;
+	/*BOX-SIXING */
+	-webkit-box-sizing: border-box;
+	 -khtml-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		-ms-box-sizing: content-box\9;
+		 -o-box-sizing: border-box;
+			box-sizing: border-box;
+	background: #fff;
+	border: 1px solid #c3c1c5;
+	border-top-color: #b4b2b6;
+	border-width: 0 \9;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	position: relative;
+	}
+	input[type="radio"] {
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+		border-radius: 1em;
+		width: 15px;
+		height: 15px;
+	}
+	input[type="checkbox"]:hover,
+	input[type="radio"]:hover {
+		background: #fcf9ff;
+		border-color: #a19fa3;
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+		box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+		box-shadow: none \9;
+	}
+	input[type="checkbox"]:active,
+	input[type="radio"]:active {
+		background: #f3e9f9;
+		border-color: #9456b4;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0);
+	}
+	input[type="checkbox"]:checked,
+	input[type="radio"]:checked {
+		background: #fdfbff;
+		border-color: #97b;
+	}
+	input[type="checkbox"]:checked::after {
+		color: #657;
+		content: "\f00c";
+		display: block;
+		font-family: 'FontAwesome', sans-serif;
+		position: absolute;
+		top: -1px; left: 0;
+		text-shadow: 1px 1px 0 1px #fff;
+	}
+	input[type="checkbox"]:hover:checked::after {
+		color: #7642a4;
+	}
+	input[type="radio"]:checked::after {
+		content: '';
+		display: block;
+		position: relative;
+		top: 3px;
+		left: 3px;
+		width: 7px;
+		height: 7px;
+		background: #657;
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+		border-radius: 1em;
+		}
+		input[type="radio"]:hover:checked::after { background: #768; }
+		input[type="checkbox"]:focus,
+		input[type="radio"]:focus {
+			outline: none;
+		}
+		input[type="checkbox"][disabled],
+		input[type="radio"][disabled] {
+			border-color: #c3c1c5;
+			background-color: #ebede9;
+			cursor: not-allowed;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+		}
+	
+input:invalid, select:invalid, textarea:invalid,
+input.invalid, select.invalid, textarea.invalid {
+	-webkit-box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
+			box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
+	background: #f5f7ef;
+	border-color: #f00;
+}
+
+
+/* Text Input/Textarea Placeholders */
+input:-moz-placeholder, textarea:-moz-placeholder { 					color: #999; font-size: 1em; line-height: 1.5; text-overflow: ellipsis; }
+input::-moz-placeholder, textarea::-moz-placeholder { 					color: #999; font-size: 1em; line-height: 1.5; text-overflow: ellipsis; }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 			color: #999; font-size: 1em; line-height: 1.5; text-overflow: ellipsis; }
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #999; font-size: 1em; line-height: 1.5; text-overflow: ellipsis; }
+input.placeholder_text, textarea.placeholder_text { 					color: #999; font-size: 1em; line-height: 1.5; text-overflow: ellipsis; }
+
+/*------------------------------------*\
+	$BUTTONS
+\*------------------------------------*/
+.btn, button, input[type="submit"], input[type="reset"], input[type="button"] {
+	 -webkit-appearance: none;
+		-moz-appearance: none;
+			 appearance: none;
+	-moz-box-orient: vertical;
+	border-bottom-color: #b4b2b6;
+	color: #74568a;
+	display: -moz-inline-box;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	background: #f5f3f7;
+	 -webkit-background-clip: padding;
+		-moz-background-clip: padding;
+		  -o-background-clip: padding-box;
+			 background-clip: padding;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.2);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.2);
+	 -webkit-user-select: none;
+		-moz-user-select: none;
+		 -ms-user-select: none;
+		  -o-user-select: none;
+			 user-select: none;
+	*display: inline;
+	*vertical-align: auto;
+	*zoom: 1;
+}
+
+.btn:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+	background: #fbfcfd;
+	 -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
+			 box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
+	border-color: #c3c1c5;
+	border-bottom-color: #a4a2a6;
+	color: #f71;
+	text-decoration: none;
+}
+.btn.active, .btn:active, button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active {
+	background: #f1eff3;
+	border-color: #f93;
+	color: #d50;
+    -webkit-box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
+            box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
+}
+.btn:active, button:active, input:active,
+.btn:focus, button:focus, input:focus { outline: 0; }
+.btn:focus, button:focus, input:focus {
+	border: 1px solid #d5d3d7;
+	-webkit-box-shadow: inset 0 0 0 1px #fff;
+			box-shadow: inset 0 0 0 1px #fff;
+	text-decoration: none;
+}
+input[type="submit"] { font-weight: 800; text-shadow: 1px 1px 0 2px #fff; }
+
+input[type="reset"] {
+	background: transparent;
+	border-color: transparent;
+	-webkit-box-shadow: none; box-shadow: none;
+}
+input[type="reset"]:hover {
+	background: transparent;
+	-webkit-box-shadow: none; box-shadow: none;
+}
+
+/* Modifiers: Sizes ---------- */
+.btn.min, .btn-mini { font-size: 0.75em; }
+.btn.sml, .btn-small { font-size: 0.875em; }
+.btn.med, .btn-medium { font-size: 1.25em; }
+.btn.lrg, .btn-large { font-size: 1.5em; }
+.btn.huge, .btn-huge { font-size: 1.625em; }
+.btn.max, .btn-max { font-size: 1.75em; }
+.btn.block, .btn-block { display: block; width: 100%; }
+
+/* CSS3 Transitions (where applicable) */
+.btn, button, input, textarea {
+    -webkit-transition: all 0.218s ease-in-out;
+     -khtml-transition: all 0.218s ease-in-out;
+       -moz-transition: all 0.218s ease-in-out;
+	    -ms-transition: all 0.218s ease-in-out;
+         -o-transition: all 0.218s ease-in-out;
+            transition: all 0.218s ease-in-out;
+}
+
+
+/*
+	GRID DEMO
+*/
+section,
+.section {
+	padding: 0.5em 0 1em;
+}
+
+section [class^="row-"] {
+	background: rgba(0,0,0,0.0125);
+	border: 1px solid rgba(0,0,0,0.025);
+	margin-bottom: 0.25%;
+}
+
+section [class^="col-"],
+section [class^="row-grid-"] > * {
+	background: rgba(0,0,0,0.025);
+	border: 1px solid rgba(0,0,0,0.05);
+	color: rgba(0,0,0,0.4);
+	/*font-size: 1em;
+	min-height: 2em;*/
+	padding: 0.5em;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+	}
+	section [class^="col-"]:hover,
+	section [class^="row-grid-"] > *:hover {
+		background: rgba(0,0,0,0.05);
+		border: 1px solid rgba(0,0,0,0.075);
+		color: rgba(0,0,0,0.75);
+		cursor: default;
+	}
+
+
+/* INTRO */
+#intro { background-color: #fff; padding: 3em 0 4em; }
+#intro [class^="row-"],
+#intro [class^="col-"],
+#intro [class^="row-grid-"] > *,
+#intro [class^="col-"]:hover,
+#intro [class^="row-grid-"] > *:hover {
+	background: none;
+	border: none;
+	color: inherit;
+}
+#intro, .media-body h1 { margin-top: 0; }
+.icon-th.media-object,
+.icon-rocket.media-object {
+	color: #8476a3;
+	-webkit-font-smoothing: antialiased;
+			font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+#fullgrid { padding-top: 2em; }
+
+
+/* LAYOUT HEIGHTS */
+.col-golden-sml, .col-golden-lrg,
+.col-content, .col-aside {
+	height: 20em;
+}
+
+
+/* CUSTOM COLORS */
+.purple-dark	{	color: #363844; }
+.purple			{	color: #655c89; }
+.purple-light	{	color: #8476a3; }
+
+
+/*
+	SCROLLBAR
+*/
+::-webkit-scrollbar {
+	height: 14px;
+	overflow: visible;
+	width: 14px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.3);
+	background-clip: padding-box;
+	border: solid rgba(0, 0, 0, 0);
+	border-width: 2px 3px 2px 4px;
+	min-height: 28px;
+	padding: 100px 0 0;
+	box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+}
+::-webkit-scrollbar-thumb:hover { background-color: #766984; }
+::-webkit-scrollbar-thumb:active { background-color: #fb6913; }
+::-webkit-scrollbar-button {
+	height: 0;
+	width: 0;
+}
+::-webkit-scrollbar-track {
+	background: #dfdfdf;
+	background-clip: padding-box;
+	border: solid rgba(0, 0, 0, 0.1);
+	border-width: 0 1px 0 1px;
+}
+::-webkit-scrollbar-corner {
+	background: rgba(0, 0, 0, 0);
+}
+
+
+
+/*
+	BACKGROUNDS
+*/
+.bg-whitesand {
+	min-height: 500px;
+	background: #e5e5e5;
+	color: #3d3d3d;
+}
+.bg-dirt--darker {
+	min-height: 500px;
+	background: #2d2d2d;
+	color: #999;
+}
+.bg-dirt--dark {
+	min-height: 500px;
+	background: #3f3f3f;
+	color: #999;
+}
+.bg-dirt {
+	min-height: 500px;
+	background: #504f4f;
+	color: #999;
+}
+.bg-blue--powder {
+	min-height: 500px;
+	background: #6e87a1;
+	color: #f5f8fd;
+}
+.bg-blue--dark {
+	min-height: 500px;
+	background: #2d3d42;
+	color: #e5e5e5;
+}
+

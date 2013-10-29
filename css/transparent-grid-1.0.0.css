@@ -1,0 +1,861 @@
+@charset "UTF-8";
+/*	=========================================================================
+	TransParent Grid v.1.0.0
+	author		:	Keith Parent ( @keithparent )
+	http		:	www.keithparent.com
+	mailto		:	keithparent@me.com
+
+	Copyright (c) 2013 Keith Parent
+	========================================================================= */
+
+
+/*	=========================================================================
+	SET DEFAULTS
+	========================================================================= */
+
+/*	VIEWPORTS
+	========================================================================= */
+
+@-webkit-viewport { width: device-width; zoom: 1.0; }
+   @-moz-viewport { width: device-width; zoom: 1.0; }
+    @-ms-viewport { width: device-width; zoom: 1.0; }
+     @-o-viewport { width: device-width; zoom: 1.0; }
+        @viewport { width: device-width; zoom: 1.0; }
+
+
+/*	DEFAULTS
+	========================================================================= */
+
+/* BORDER-BOX BOX-SIZING METHOD
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ */
+*,
+*:before,
+*:after {
+			box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/* BASE */
+html {
+	font-size: 62.5%;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: rgba(17,119,170,0.6);
+	overflow-y: scroll;
+	/* CSS3 TRANSITIONS */
+	-webkit-transition: font 0.218s ease-in-out;
+     -khtml-transition: font 0.218s ease-in-out;
+       -moz-transition: font 0.218s ease-in-out;
+        -ms-transition: font 0.218s ease-in-out;
+         -o-transition: font 0.218s ease-in-out;
+            transition: font 0.218s ease-in-out;
+}
+
+body {
+	/* TYPE */
+	font-size: 100%;
+	line-height: 1.428571429;
+	/* LAYOUT */
+	margin-right: 0;
+	margin-left: 0;
+	padding-right: 0;
+	padding-left: 0;
+	-webkit-transition: font 0.218s ease-in-out;
+	 -khtml-transition: font 0.218s ease-in-out;
+	   -moz-transition: font 0.218s ease-in-out;
+		-ms-transition: font 0.218s ease-in-out;
+		 -o-transition: font 0.218s ease-in-out;
+			transition: font 0.218s ease-in-out;
+	}
+	input,
+	button,
+	select,
+	textarea {
+		font-size: inherit;
+		line-height: inherit;
+	}
+	
+@media only screen and (max-width: 767px) {
+	body {
+		-webkit-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+
+/* ==|== aParent Grid v1.0.0 ================================================
+   Declare each row with '.row-#' class where # is equiv of column count
+   ( where '#' == total # of columns in that particular row, ie. '.row-3' )
+   ========================================================================== */
+
+	/* -- CONTAINER - Sets 'max-width' to resize for various viewports -- */
+	.container {
+		margin-right: auto;
+		margin-left: auto;
+		width: 95%;
+		max-width: 1100px;
+		min-width: 320px;
+		position: relative;
+		/* CSS3 TRANSITIONS */
+		-webkit-transition: max-width 0.436s ease-in-out;
+	     -khtml-transition: max-width 0.436s ease-in-out;
+	       -moz-transition: max-width 0.436s ease-in-out;
+	        -ms-transition: max-width 0.436s ease-in-out;
+	         -o-transition: max-width 0.436s ease-in-out;
+	            transition: max-width 0.436s ease-in-out;
+		}
+		.container-left { margin-left: 0; }
+		.container-right { margin-right: 0; }
+		.container .container { min-width: 0; width: 100%; }
+	
+	
+	/* -- ROWS & COLUMNS -- */
+	[class^="row-"],
+	[class^="col-"],
+	[class^="row-grid-"] > * {
+		list-style: none;
+		position: relative;
+	}
+	
+	
+	/* -- BOX-SIZING -- */
+	[class^="row-"], 
+	[class^="row-"]:before,
+	[class^="row-"]:after,
+	[class^="col-"],
+	[class^="col-"]:before,
+	[class^="col-"]:after,
+	[class^="row-grid-"] > *,
+	[class^="row-grid-"] > *:before,
+	[class^="row-grid-"] > *:after {
+		 -webkit-box-sizing: border-box;
+		  -khtml-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			 -ms-box-sizing: content-box\9;
+			  -o-box-sizing: border-box;
+				 box-sizing: border-box;
+	}
+	
+	
+	/* -- ROWS -- */
+	[class^="row-"] {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 0;
+		text-align: left;
+		text-rendering: optimizespeed;
+		width: 100%;
+	}
+		
+	/* -- COLUMNS -- */
+	[class^="col-"],
+	[class^="row-grid-"] > * {
+		display: inline-block;
+		float: left;
+		line-height: inherit;
+		margin-right: auto;
+		margin-left: auto;
+		/*padding: 0 0.625%;*/
+		position: relative;
+		min-height: 1px;
+		text-align: left;
+		vertical-align: top;
+	}
+	
+	/*** MODIFIERS ***/
+	
+	[class^="row-"].row-center-cols {
+		display: inline-block;
+		text-align: center;
+		}
+		[class^="row-"].row-center-cols > [class^="col-"] {
+			float: none;
+		}
+	
+	/* -- ROWS: TABLE-BASED -- */
+	table tr[class^="row-"] {
+		display: table-row;
+	}
+	
+	/* -- COLUMNS: TABLE-BASED -- */
+	table th[class^="col-"],
+	table td[class^="col-"] {
+		display: table-column;
+	}
+	
+	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS) -- */
+	[class^="row-"].row-padded {
+		margin-right: -0.5%;
+		margin-left: -0.25%;
+	}
+	[class^="row-"].row-padded > [class^="col-"] {
+		padding-right: 1%;
+		padding-left: 1%;
+	}
+
+
+/* COLUMN WIDTHS
+--------------------------------------------------------*/
+
+	/* WHOLES */
+	.row-grid-1 > *,
+	.row-1 > .col-1,
+	.row-2 > .col-2,
+	.row-3 > .col-3,
+	.row-4 > .col-4,
+	.row-5 > .col-5,
+	.row-6 > .col-6,
+	.row-7 > .col-7,
+	.row-8 > .col-8,
+	.row-9 > .col-9,
+	.row-10 > .col-10,
+	.row-11 > .col-11,
+	.row-12 > .col-12,
+	.row-13 > .col-13,
+	.row-14 > .col-14,
+	.row-15 > .col-15,
+	.row-16 > .col-16 { width: 100%; }
+	
+	/* HALVES */
+	.row-grid-2 > *,
+	.row-2 > .col-1 { width: 50%; }
+	.row-2 > .col-push-1 { margin-left: 50%; }
+	
+	/* THIRDS */
+	.row-grid-3 > *,
+	.row-3 > .col-1 { width: 33.333333%; }
+	.row-3 > .col-2 { width: 66.666666%; }
+	.row-3 > .col-push-1 { margin-left: 33.333333%; }
+	.row-3 > .col-push-2 { margin-left: 66.666666%; }
+	
+	/* FOURTHS */
+	.row-grid-4 > *,
+	.row-4 > .col-1 { width: 25%; }
+	.row-4 > .col-2 { width: 50%; }
+	.row-4 > .col-3 { width: 75%; }
+	.row-4 > .col-push-1 { margin-left: 25%; }
+	.row-4 > .col-push-2 { margin-left: 50%; }
+	.row-4 > .col-push-3 { margin-left: 75%; }
+	
+	/* FIFTHS */
+	.row-grid-5 > *,
+	.row-5 > .col-1 { width: 20%; }
+	.row-5 > .col-2 { width: 40%; }
+	.row-5 > .col-3 { width: 60%; }
+	.row-5 > .col-4 { width: 80%; }
+	.row-5 > .col-push-1 { margin-left: 20%; }
+	.row-5 > .col-push-2 { margin-left: 40%; }
+	.row-5 > .col-push-3 { margin-left: 60%; }
+	.row-5 > .col-push-4 { margin-left: 80%; }
+	
+	/* SIXTHS */
+	.row-grid-6 > *,
+	.row-6 > .col-1 { width: 16.666666%; }
+	.row-6 > .col-2 { width: 33.333333%; }
+	.row-6 > .col-3 { width: 50%; }
+	.row-6 > .col-4 { width: 66.666666%; }
+	.row-6 > .col-5 { width: 83.333333%; }
+	.row-6 > .col-push-1 { margin-left: 16.666666%; }
+	.row-6 > .col-push-2 { margin-left: 33.333333%; }
+	.row-6 > .col-push-3 { margin-left: 50%; }
+	.row-6 > .col-push-4 { margin-left: 66.666666%; }
+	.row-6 > .col-push-5 { margin-left: 83.333333%; }
+	
+	/* SEVENTHS */
+	.row-grid-7 > *,
+	.row-7 > * > .col-1,
+	.row-7 > .col-1 { width: 14.285714%; }
+	.row-7 > .col-2 { width: 28.571428%; }
+	.row-7 > .col-3 { width: 42.857142%; }
+	.row-7 > .col-4 { width: 57.142856%; }
+	.row-7 > .col-5 { width: 71.42857%; }
+	.row-7 > .col-6 { width: 85.714284%; }
+	.row-7 > .col-push-1 { margin-left: 14.285714%; }
+	.row-7 > .col-push-2 { margin-left: 28.571428%; }
+	.row-7 > .col-push-3 { margin-left: 42.857142%; }
+	.row-7 > .col-push-4 { margin-left: 57.142856%; }
+	.row-7 > .col-push-5 { margin-left: 71.42857%; }
+	.row-7 > .col-push-6 { margin-left: 85.714284%; }
+	
+	/* EIGHTHS */
+	.row-grid-8 > *,
+	.row-8 > .col-1 { width: 12.5%; }
+	.row-8 > .col-2 { width: 25%; }
+	.row-8 > .col-3 { width: 37.5%; }
+	.row-8 > .col-4 { width: 50%; }
+	.row-8 > .col-5 { width: 62.5%; }
+	.row-8 > .col-6 { width: 75%; }
+	.row-8 > .col-7 { width: 87.5%; }
+	.row-8 > .col-push-1 { margin-left: 12.5%; }
+	.row-8 > .col-push-2 { margin-left: 25%; }
+	.row-8 > .col-push-3 { margin-left: 37.5%; }
+	.row-8 > .col-push-4 { margin-left: 50%; }
+	.row-8 > .col-push-5 { margin-left: 62.5%; }
+	.row-8 > .col-push-6 { margin-left: 75%; }
+	.row-8 > .col-push-7 { margin-left: 87.5%; }
+	
+	/* NINTHS */
+	.row-grid-9 > *,
+	.row-9 > .col-1 { width: 11.111111%; }
+	.row-9 > .col-2 { width: 22.222222%; }
+	.row-9 > .col-3 { width: 33.333333%; }
+	.row-9 > .col-4 { width: 44.444444%; }
+	.row-9 > .col-5 { width: 55.555555%; }
+	.row-9 > .col-6 { width: 66.666666%; }
+	.row-9 > .col-7 { width: 77.777777%; }
+	.row-9 > .col-8 { width: 88.888888%; }
+	.row-9 > .col-push-1 { margin-left: 11.111111%; }
+	.row-9 > .col-push-2 { margin-left: 22.222222%; }
+	.row-9 > .col-push-3 { margin-left: 33.333333%; }
+	.row-9 > .col-push-4 { margin-left: 44.444444%; }
+	.row-9 > .col-push-5 { margin-left: 55.555555%; }
+	.row-9 > .col-push-6 { margin-left: 66.666666%; }
+	.row-9 > .col-push-7 { margin-left: 77.777777%; }
+	.row-9 > .col-push-8 { margin-left: 88.888888%; }
+	
+	/* TENTHS */
+	.row-grid-10 > *,
+	.row-10 > .col-1 { width: 10%; }
+	.row-10 > .col-2 { width: 20%; }
+	.row-10 > .col-3 { width: 30%; }
+	.row-10 > .col-4 { width: 40%; }
+	.row-10 > .col-5 { width: 50%; }
+	.row-10 > .col-6 { width: 60%; }
+	.row-10 > .col-7 { width: 70%; }
+	.row-10 > .col-8 { width: 80%; }
+	.row-10 > .col-9 { width: 90%; }
+	.row-10 > .col-push-1 { margin-left: 10%; }
+	.row-10 > .col-push-2 { margin-left: 20%; }
+	.row-10 > .col-push-3 { margin-left: 30%; }
+	.row-10 > .col-push-4 { margin-left: 40%; }
+	.row-10 > .col-push-5 { margin-left: 50%; }
+	.row-10 > .col-push-6 { margin-left: 60%; }
+	.row-10 > .col-push-7 { margin-left: 70%; }
+	.row-10 > .col-push-8 { margin-left: 80%; }
+	.row-10 > .col-push-9 { margin-left: 90%; }
+	
+	/* ELEVENTHS */
+	.row-grid-11 > *,
+	.row-11 > .col-1 { width: 9.090909%; }
+	.row-11 > .col-2 { width: 18.181818%; }
+	.row-11 > .col-3 { width: 27.272727%; }
+	.row-11 > .col-4 { width: 36.363636%; }
+	.row-11 > .col-5 { width: 45.454545%; }
+	.row-11 > .col-6 { width: 54.545454%; }
+	.row-11 > .col-7 { width: 63.636363%; }
+	.row-11 > .col-8 { width: 72.727272%; }
+	.row-11 > .col-9 { width: 81.818181%; }
+	.row-11 > .col-10 { width: 90.909090%; }
+	.row-11 > .col-push-1 { margin-left: 9.090909%; }
+	.row-11 > .col-push-2 { margin-left: 18.181818%; }
+	.row-11 > .col-push-3 { margin-left: 27.272727%; }
+	.row-11 > .col-push-4 { margin-left: 36.363636%; }
+	.row-11 > .col-push-5 { margin-left: 45.454545%; }
+	.row-11 > .col-push-6 { margin-left: 54.545454%; }
+	.row-11 > .col-push-7 { margin-left: 63.636363%; }
+	.row-11 > .col-push-8 { margin-left: 72.727272%; }
+	.row-11 > .col-push-9 { margin-left: 81.818181%; }
+	.row-11 > .col-push-10 { margin-left: 90.909090%; }
+	
+	/* TWELVTHS */
+	.row-grid-12 > *,
+	.row-12 > .col-1 { width: 8.333333%; }
+	.row-12 > .col-2 { width: 16.666666%; }
+	.row-12 > .col-3 { width: 24.999999%; }
+	.row-12 > .col-4 { width: 33.333332%; }
+	.row-12 > .col-5 { width: 41.666665%; }
+	.row-12 > .col-6 { width: 49.999998%; }
+	.row-12 > .col-7 { width: 58.333331%; }
+	.row-12 > .col-8 { width: 66.666664%; }
+	.row-12 > .col-9 { width: 74.999997%; }
+	.row-12 > .col-10 { width: 83.33333%; }
+	.row-12 > .col-11 { width: 91.666663%; }
+	.row-12 > .col-push-1 { margin-left: 8.333333%; }
+	.row-12 > .col-push-2 { margin-left: 16.666666%; }
+	.row-12 > .col-push-3 { margin-left: 24.999999%; }
+	.row-12 > .col-push-4 { margin-left: 33.333332%; }
+	.row-12 > .col-push-5 { margin-left: 41.666665%; }
+	.row-12 > .col-push-6 { margin-left: 49.999998%; }
+	.row-12 > .col-push-7 { margin-left: 58.333331%; }
+	.row-12 > .col-push-8 { margin-left: 66.666664%; }
+	.row-12 > .col-push-9 { margin-left: 74.999997%; }
+	.row-12 > .col-push-10 { margin-left: 83.33333%; }
+	.row-12 > .col-push-11 { margin-left: 91.666663%; }
+	
+	/* THIRTEENTHS */
+	.row-grid-13 > *,
+	.row-13 > .col-1 { width: 7.6923076%; }
+	.row-13 > .col-2 { width: 15.3846152%; }
+	.row-13 > .col-3 { width: 23.0769228%; }
+	.row-13 > .col-4 { width: 30.7692304%; }
+	.row-13 > .col-5 { width: 38.461538%; }
+	.row-13 > .col-6 { width: 46.1538456%; }
+	.row-13 > .col-7 { width: 53.8461532%; }
+	.row-13 > .col-8 { width: 61.5384608%; }
+	.row-13 > .col-9 { width: 69.2307684%; }
+	.row-13 > .col-10 { width: 76.923076%; }
+	.row-13 > .col-11 { width: 84.6153836%; }
+	.row-13 > .col-12 { width: 92.3076912%; }
+	.row-13 > .col-push-1 { margin-left: 7.6923076%; }
+	.row-13 > .col-push-2 { margin-left: 15.3846152%; }
+	.row-13 > .col-push-3 { margin-left: 23.0769228%; }
+	.row-13 > .col-push-4 { margin-left: 30.7692304%; }
+	.row-13 > .col-push-5 { margin-left: 38.461538%; }
+	.row-13 > .col-push-6 { margin-left: 46.1538456%; }
+	.row-13 > .col-push-7 { margin-left: 53.8461532%; }
+	.row-13 > .col-push-8 { margin-left: 61.5384608%; }
+	.row-13 > .col-push-9 { margin-left: 69.2307684%; }
+	.row-13 > .col-push-10 { margin-left: 76.923076%; }
+	.row-13 > .col-push-11 { margin-left: 84.6153836%; }
+	.row-13 > .col-push-12 { margin-left: 92.3076912%; }
+	
+	/* FOUTEENTHS */
+	.row-grid-14 > *,
+	.row-14 > .col-1 { width: 7.1428571%; }
+	.row-14 > .col-2 { width: 14.2857142%; }
+	.row-14 > .col-3 { width: 21.4285713%; }
+	.row-14 > .col-4 { width: 28.5714284%; }
+	.row-14 > .col-5 { width: 35.7142855%; }
+	.row-14 > .col-6 { width: 42.8571426%; }
+	.row-14 > .col-7 { width: 49.9999997%; }
+	.row-14 > .col-8 { width: 57.1428568%; }
+	.row-14 > .col-9 { width: 64.2857139%; }
+	.row-14 > .col-10 { width: 71.428571%; }
+	.row-14 > .col-11 { width: 78.5714281%; }
+	.row-14 > .col-12 { width: 85.7142852%; }
+	.row-14 > .col-13 { width: 92.8571423%; }
+	.row-14 > .col-push-1 { margin-left: 7.1428571%; }
+	.row-14 > .col-push-2 { margin-left: 14.2857142%; }
+	.row-14 > .col-push-3 { margin-left: 21.4285713%; }
+	.row-14 > .col-push-4 { margin-left: 28.5714284%; }
+	.row-14 > .col-push-5 { margin-left: 35.7142855%; }
+	.row-14 > .col-push-6 { margin-left: 42.8571426%; }
+	.row-14 > .col-push-7 { margin-left: 49.9999997%; }
+	.row-14 > .col-push-8 { margin-left: 57.1428568%; }
+	.row-14 > .col-push-9 { margin-left: 64.2857139%; }
+	.row-14 > .col-push-10 { margin-left: 71.428571%; }
+	.row-14 > .col-push-11 { margin-left: 78.5714281%; }
+	.row-14 > .col-push-12 { margin-left: 85.7142852%; }
+	.row-14 > .col-push-13 { margin-left: 92.8571423%; }
+	
+	/* FIFTEENTHS */
+	.row-grid-15 > *,
+	.row-15 > .col-1 { width: 6.666666%; }
+	.row-15 > .col-2 { width: 13.333332%; }
+	.row-15 > .col-3 { width: 19.999998%; }
+	.row-15 > .col-4 { width: 26.666664%; }
+	.row-15 > .col-5 { width: 33.33333%; }
+	.row-15 > .col-6 { width: 39.999996%; }
+	.row-15 > .col-7 { width: 46.666662%; }
+	.row-15 > .col-8 { width: 53.333328%; }
+	.row-15 > .col-9 { width: 59.999994%; }
+	.row-15 > .col-10 { width: 66.66666%; }
+	.row-15 > .col-11 { width: 73.333326%; }
+	.row-15 > .col-12 { width: 79.999992%; }
+	.row-15 > .col-13 { width: 86.666658%; }
+	.row-15 > .col-14 { width: 93.333324%; }
+	.row-15 > .col-push-1 { margin-left: 6.666666%; }
+	.row-15 > .col-push-2 { margin-left: 13.333332%; }
+	.row-15 > .col-push-3 { margin-left: 19.999998%; }
+	.row-15 > .col-push-4 { margin-left: 26.666664%; }
+	.row-15 > .col-push-5 { margin-left: 33.33333%; }
+	.row-15 > .col-push-6 { margin-left: 39.999996%; }
+	.row-15 > .col-push-7 { margin-left: 46.666662%; }
+	.row-15 > .col-push-8 { margin-left: 53.333328%; }
+	.row-15 > .col-push-9 { margin-left: 59.999994%; }
+	.row-15 > .col-push-10 { margin-left: 66.66666%; }
+	.row-15 > .col-push-11 { margin-left: 73.333326%; }
+	.row-15 > .col-push-12 { margin-left: 79.999992%; }
+	.row-15 > .col-push-13 { margin-left: 86.666658%; }
+	.row-15 > .col-push-14 { margin-left: 93.333324%; }
+	
+	/* SIXTEENTHS */
+	.row-grid-16 > *,
+	.row-16 > .col-1 { width: 6.25%; }
+	.row-16 > .col-2 { width: 12.5%; }
+	.row-16 > .col-3 { width: 18.75%; }
+	.row-16 > .col-4 { width: 25%; }
+	.row-16 > .col-5 { width: 31.25%; }
+	.row-16 > .col-6 { width: 37.5%; }
+	.row-16 > .col-7 { width: 43.75%; }
+	.row-16 > .col-8 { width: 50%; }
+	.row-16 > .col-9 { width: 56.25%; }
+	.row-16 > .col-10 { width: 62.5%; }
+	.row-16 > .col-11 { width: 68.75%; }
+	.row-16 > .col-12 { width: 75%; }
+	.row-16 > .col-13 { width: 81.25%; }
+	.row-16 > .col-14 { width: 87.5%; }
+	.row-16 > .col-15 { width: 93.75%; }
+	.row-16 > .col-push-1 { margin-left: 6.25%; }
+	.row-16 > .col-push-2 { margin-left: 12.5%; }
+	.row-16 > .col-push-3 { margin-left: 18.75%; }
+	.row-16 > .col-push-4 { margin-left: 25%; }
+	.row-16 > .col-push-5 { margin-left: 31.25%; }
+	.row-16 > .col-push-6 { margin-left: 37.5%; }
+	.row-16 > .col-push-7 { margin-left: 43.75%; }
+	.row-16 > .col-push-8 { margin-left: 50%; }
+	.row-16 > .col-push-9 { margin-left: 56.25%; }
+	.row-16 > .col-push-10 { margin-left: 62.5%; }
+	.row-16 > .col-push-11 { margin-left: 68.75%; }
+	.row-16 > .col-push-12 { margin-left: 75%; }
+	.row-16 > .col-push-13 { margin-left: 81.25%; }
+	.row-16 > .col-push-14 { margin-left: 87.5%; }
+	.row-16 > .col-push-15 { margin-left: 93.75%; }
+
+
+/*	=========================================================================
+	$LAYOUT - generalized layout (no point in involving the grid in this)
+	========================================================================= */
+	
+	.row-main > .col-aside { width: 25%; }
+	.row-main > .col-content { width: 75%; }
+
+
+/*	=========================================================================
+	Golden (1:1.618)
+	========================================================================= */
+
+	.row-golden .col-golden-sml  { width: 37.196601125010524%; }
+	.row-golden .col-golden-lrg { width: 62.803398874989476%; }
+	.row-golden .col-push-golden-sml { margin-left: 37.196601125010524%; }
+	.row-golden .col-push-golden-lrg { margin-left: 62.803398874989476%; }
+	
+/*
+.row-double-octave - Double octave (1:4)
+.row-major-twelfth - Major twelfth (1:3)
+.row-minor-second - Minor second (15:16)
+.row-major-second - Major second (8:9)
+.row-minor-third - Minor third (5:6)
+.row-major-third - Major third (4:5)
+.row-perfect-fourth - Perfect fourth (3:4)
+.row-augmented-fourth - Augmented fourth(1:√2)
+.row-perfect-fifth - Perfect fifth (2:3)
+.row-minor-sixth - Minor sixth (5:8)
+.row-major-sixth - Major sixth (3:5)
+.row-minor-seventh - Minor seventh (9:16)
+.row-major-seventh - Major seventh (8:15)
+.row-octave - Octave (1:2)
+.row-major-tenth - Major tenth (2:5)
+.row-major-eleventh - Major eleventh (3:8)
+*/
+
+
+/*	=========================================================================
+	$BLOCKGRID - equal width repeating blocks
+	========================================================================= */
+	/*
+	For IE7/8 compatibility block-grid items need to be
+	the same height. You can optionally uncomment the
+	lines below to support arbitrary height, but know
+	that IE7/8 do not support :nth-child.
+	--------------------------------------------------- */
+	
+	.row-grid-2 > *:nth-child(2n+1),
+	.row-grid-3 > *:nth-child(3n+1),
+	.row-grid-4 > *:nth-child(4n+1),
+	.row-grid-5 > *:nth-child(5n+1),
+	.row-grid-6 > *:nth-child(6n+1),
+	.row-grid-7 > *:nth-child(7n+1),
+	.row-grid-8 > *:nth-child(8n+1),
+	.row-grid-9 > *:nth-child(9n+1),
+	.row-grid-10 > *:nth-child(10n+1),
+	.row-grid-11 > *:nth-child(11n+1),
+	.row-grid-12 > *:nth-child(12n+1),
+	.row-grid-13 > *:nth-child(13n+1),
+	.row-grid-14 > *:nth-child(14n+1),
+	.row-grid-15 > *:nth-child(15+1),
+	.row-grid-16 > *:nth-child(16n+1) { clear: both; }
+
+
+/*	=========================================================================
+	$ALIGNMENTS / $FLOATS / $CLEARFIX - clear floats (h5bp.com/q)
+	========================================================================= */
+
+	.clearfix:before,
+	.clearfix:after
+	.container:before,
+	.container:after,
+	[class^="row"]:before,
+	[class^="row"]:after {
+		display: table;
+		content: " ";
+	}
+	.clearfix:after,
+	.container:after,
+	[class^="row"]:after {
+		clear: both;
+	}
+
+	/* Other clear floats */
+	.clear			{	clear: both; }
+	.clear-left		{	clear: left; }
+	.clear-right	{	clear: right; }
+	
+	.text-left, .align-left		{ text-align: left; }
+	.text-center, .align-center	{ text-align: center; }
+	.text-right, .align-right	{ text-align: right; }
+
+	.float-left, .left			{ float: left; }
+	.float-right, .right		{ float: right; }
+	.float-none					{ float: none; }
+
+
+/*	=========================================================================
+	$MEDIA
+	========================================================================= */
+
+	/* MEDIA-OBJECT */
+	.media,
+	.media-body {
+		overflow: hidden;
+		*overflow: visible;
+		zoom: 1;
+		}
+		.media,
+		.media .media { margin-top: 1.5em; }
+		.media:first-child { margin-top: 0; }
+		.media-object { display: block; }
+		.media-heading { margin: 0 0 0.5em; }
+		.media .pull-left,
+		.media .left { margin-right: 1em; }
+		.media .pull-right,
+		.media .right { margin-left: 1em; }
+		.media a > img { border: 1px solid #ddd; }
+		.media a:hover > img { border-color: #fb6913; }
+		.media-list {
+			margin-left: 0;
+			list-style: none;
+		}
+
+	/* RESPONSIVE IMGs (scale to grid while maintaining their aspect ratios) */
+	
+	/* Remove the gap between <img> elements and the bottom of their containers - http://cbrac.co/Q6smqV */
+	img {
+		image-rendering: optimizeQuality;
+		-ms-interpolation-mode : bicubic;
+		vertical-align: middle;
+	}
+	img,
+	object,
+	embed,
+	video {
+		max-width: 100%;	/* Set a maximum width limited by the width of the parent */
+		width: auto\9;		/* IE7-8 need help adjusting responsive images */
+		height: auto;		/* Constrain the height by the ratio to the width */
+	}
+	
+	/*
+	 * Preserve original image dimensions and
+	 * Fix Google maps automatically via URL detection
+	 */
+	.img-preserve,
+	.img-preserve img,
+	img[src*="maps.gstatic.com"],
+	img[src*="googleapis.com"] {
+		max-width: none;
+	}
+	
+	/* FLEX VIDEO */
+	.flex-video {
+		position: relative;
+		padding-top: 1.5625em;
+		padding-bottom: 67.5%;
+		height: 0;
+		margin-bottom: 1em;
+		overflow: hidden;
+		}
+		.flex-video.widescreen { padding-bottom: 57.25%; }
+		.flex-video.vimeo { padding-top: 0; }
+		.flex-video iframe,
+		.flex-video object,
+		.flex-video embed,
+		.flex-video video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+	/* FORM ELEMENTS */
+	input,
+	textarea {
+		/* remove the nasty inner shadow in the iPad and the iPhone */
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
+		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+		/* remove blue focus */
+		outline: none !important;
+	}
+	[class^="col-"] > input[type="text"],
+	[class^="col-"] > input[type="email"],
+	[class^="col-"] > input[type="tel"],
+	[class^="col-"] > input[type="search"],
+	[class^="col-"] > input[type="url"],
+	[class^="col-"] > input[type="password"],
+	[class^="col-"] > select,
+	[class^="col-"] > textarea {
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+	}
+	[class^="col-"] > input[type="search"] { width: 95%; }
+
+	/* Restrict <textarea> elements to vertical resizing only */
+	textarea {
+		resize: vertical;
+	}
+	
+
+/*	=========================================================================
+	$MEDIA QUERIES
+	========================================================================= */
+
+/*
+@media only screen and (min-width: 320px)  { html { font-size: 54.2%; } }
+@media only screen and (min-width: 480px)  { html { font-size: 62.5%;  } }
+@media only screen and (min-width: 768px)  { html { font-size: 75%;   } }
+@media only screen and (min-width: 960px)  { html { font-size: 81.3%; } }
+@media only screen and (min-width: 1440px) { html { font-size: 87.5%;   } }
+*/
+
+@media only screen and (min-width: 480px) { body { font-size: 10px; font-size: 1rem; } }
+@media only screen and (min-width: 768px) { body { font-size: 11px; font-size: 1.1rem; } }
+@media only screen and (min-width: 860px) { body { font-size: 12px; font-size: 1.2rem; } }
+@media only screen and (min-width: 992px) { body { font-size: 13px; font-size: 1.3rem; } }
+
+ 
+/* Fix viewport for IE10 snap mode
+ * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+ ========================================================================== */
+@-ms-viewport {
+	width: device-width;
+}
+
+@media screen and (max-width: 400px) {
+	@-ms-viewport {
+		width: 320px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+
+	.container {
+		width: 288px;
+	}
+	
+}
+
+@media only screen and (max-width: 480px) {
+	
+	[class^="row-"] {
+		clear: both;
+		display: block;
+	}
+	[class^="col-"] {
+		clear: both;
+		display: block;
+		margin: 0 auto;
+		padding: 0;
+		width: 100% !important;
+		}
+		[class^="col-"]:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		
+	.container { width: 96%; }
+
+}
+/*
+@media screen and (max-width: 768px) {
+	
+	.container {
+		max-width: 728px;
+	}
+	
+	
+}
+ 
+@media screen and (min-width: 960px) {
+	
+	.container {
+		max-width: 940px;
+	}
+	
+}
+
+*/
+
+/* High resolution devices -----------
+@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+	
+	
+}
+ */
+
+ 
+@media screen and (max-width: 240px) {
+	input,
+	textarea {
+		font-size: 14px;
+		min-width: 170px;
+		padding: 5px 4px 4px;
+	}
+}
+@media screen and (min-width: 241px) and (max-width: 320px) {
+	input,
+	textarea {
+		font-size: 16px;
+		min-width: 230px;
+		padding: 5px 4px 4px;
+	}
+}
+@media screen and (min-width: 321px) and (max-width: 480px) {
+	input,
+	textarea {
+		min-width: 310px;
+	}
+}
+
+
+/* DISPLAY UTILS
+================================================== */
+.display-block { display: block !important; }
+.display-inline { display: inline !important; }
+.display-inline-block { display: inline-block !important; }
+
+/* RESPONSIVE VISIBILITY
+================================================== */
+@media screen and (min-width: 960px) {
+	.show-sml { display: none !important; }
+	.show-med { display: none !important; }
+	.hide-lrg { display: none !important; }
+	.br-small { display: inline !important; }
+}
+@media screen and (min-width: 769px) and (max-width: 959px) {
+	.show-sml { display: none !important; }
+	.show-lrg { display: none !important ; }
+	.hide-med { display: none !important; }
+	.br-small { display: inline !important; }
+}
+@media screen and (max-width: 768px) {
+	.show-med { display: none !important; }
+	.show-lrg { display: none !important; }
+	.hide-sml { display: none !important; }
+	.br-small { display: block !important; }
+}
+
+/* VISIBILITY UTILS
+================================================== */
+.hide { display: none !important; visibility: hidden !important; }
+.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
+.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
+
+
+/* EOF */
+
