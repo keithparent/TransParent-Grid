@@ -128,7 +128,7 @@ nav ul li > a {
 
 #demo-nav li .jumpto-second {
 	position: fixed;
-	top: 40px;
+	top: auto;
 	width: 100%;
 	left: 0;
 }
