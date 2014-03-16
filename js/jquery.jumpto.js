@@ -83,14 +83,16 @@
 		block.find(settings.firstLevel).each(function( index ) {
 			var b = $(this),
 				i = index,
-				inner_html = "";
-			if ( b.parent().find(settings.secondLevel).length > 0) {
-				inner_html += "<ul class='jumpto-second'>"
+				inner_html = "",
+				innerCount = b.parent().find(settings.secondLevel).length;
+			if ( innerCount > 0) {
+				inner_html += "<ul class='jumpto-second row-"+innerCount+"'>"
 				b.parent().find(settings.secondLevel).each(function( index ) {
-					var id = "jumpto_" + i + "_" + index;
+					var id = "jumpto_" + i + "_" + index,
+						humanIndex = index+1;
 					$(this).attr("id", id);
 					link_to = "<a href='#" + id + "'>" + $(this).text() + "</a>"
-					inner_html += "<li>" + link_to + "</li>"
+					inner_html += "<li class='col-"+humanIndex+"'>" + link_to + "</li>"
 					selectors += "#"+id + ", ";
 				});
 				inner_html += "</ul>"

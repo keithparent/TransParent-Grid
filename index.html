@@ -1,1975 +1,2034 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js" xmlns:og="http://opengraphprotocol.org/schema/"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="ClearType" content="true">
 	
 	<title>TransParent Grid [ Demo ]</title>
 	<meta name="description" content="">
 	<meta name="author" content="Keith Parent">
+	
 
-    <!-- HTML5 Support for IE6-8 -->
-    <!--[if lt IE 9]>
-    	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<!-- JS: Modernizr -->
+	<script src="js/vendor/modernizr-2.7.1.min.js"></script>
+	<!-- JS: User Agent Selectors - http://rog.ie/blog/html5-boilerplate-addon -->
+	<script>
+		var b = document.documentElement;
+		b.setAttribute('data-useragent',  navigator.userAgent);
+		b.setAttribute('data-platform', navigator.platform );
+		b.className += ((!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) ? ' touch':'');
+	</script>
+	
+	
+	<!-- DNS prefetch -->
+	<link rel="dns-prefetch" href="//ajax.googleapis.com">
+	<link rel="dns-prefetch" href="//www.google-analytics.com">
+
 
     <!-- CSS
 	================================================== -->
-	<link rel="stylesheet" href="css/normalize-2.1.3.css">
+	<link rel="stylesheet" href="css/normalize-3.0.0.css">
 	<link rel="stylesheet" href="css/transparent-grid-1.0.0.css">
 	<link rel="stylesheet" href="css/jumpto.css">
 	<link rel="stylesheet" href="css/demo.css">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
+
 </head>
 <body>
+
 	<nav id="demo-nav"></nav>
 
 	<header id="header" role="banner">
 		<div class="container row-2">
-		
-				<div class="col-1">
-					<a class="logo" href="http://www.keithparent.com" title="This is aParent Design">
-						<img src="images/aparentdesign-166x77.png" width="166" height="77" alt="aParent Design Logo">
-					</a>
-				</div>
-				
-				<div class="col-1">
-					<h1 class="text-right"><strong>TransParent Grid</strong> [ <small class="loose uc">Demos</small> ]</h1>
-				</div>
-				
+			<div class="col-1">
+				<a class="logo" href="http://www.keithparent.com" title="This is aParent Design">
+					<img src="images/aparentdesign-166x77.png" width="166" height="77" alt="aParent Design Logo">
+				</a>
+			</div>
+			<div class="col-1 align-right">
+				<h1><strong>TransParent Grid</strong> [ <small class="loose uc">Demos</small> ]</h1>
+			</div>
 		</div>
 	</header>
 		
 	<main id="main" role="main">
 	
-	<section id="intro">
-	
-		<div class="container">
-			
-			<div class="row-3 row-padded">
-				<div class="col-1">
+		<section id="intro">
+		
+			<div class="container">
 				
-					<div class="media">
+				<div class="row-5 row-padded">
+					<div class="col-2">
 					
-						<div class="left">
-							<i class="icon-th icon-3x media-object"></i>
+						<div class="media">
+						
+							<div class="left">
+								<i class="icon-th icon-3x media-object"></i>
+							</div>
+							
+							<div class="media-body">
+							
+								<h1>Introduction</h1>
+							
+								<p class="lead">
+									The <strong>TransParent Grid</strong> is highly flexible, extremely powerful, fluid and responsive. It was brought about by a need for a more flexible grid system that was not bound to a set amount of columns <em>(12 or 16, in the most common cases)</em>. Instead, it has a variable amount of columns per row ranging anywhere from 1 to 16. It also uses an easy-to-remember naming convention that allows for an extremely small learning-curve, has a few built-in extras, and has a surprisingly lightweight footprint. 
+								</p>
+								
+							</div>
+							
 						</div>
+					
+					</div>
+					
+					<div class="col-3">
+					
+						<div class="media">
 						
-						<div class="media-body">
+							<div class="left">
+								<i class="icon-code icon-3x media-object"></i>
+							</div>
+							
+							<div class="media-body">
+							
+								<h1>Quick-start Documentation</h1>
 						
-							<h1>Introduction</h1>
-						
-							<p class="lead">
-								The <strong>TransParent Grid</strong> is a highly flexible, extremely powerful, fluid and responsive grid system. It was brought about by a need for a more flexible grid system that was not bound to a set amount of columns <em>(12 or 16, in the most common cases)</em>. Instead, it has a variable amount of columns per row ranging anywhere from 1 to 16. It also uses an easy-to-remember naming convention that allows for an extremely small learning-curve, has a few built-in extras, and has a surprisingly lightweight footprint. 
-							</p>
+								<p class="lead">
+									The keys to best-practice in effectively utilizing the grid:
+								</p>
+								<ul>
+									<li>
+										<strong>Basic Usage</strong>
+										<ul>
+											<li><code>'.container'</code>: the outermost wrapper &mdash; it sets the overall max-width for all display sizes,</li>
+											<li><code>'.row-*'</code>: where <code>'*'</code> is equal to the number of columns this grid row will have,</li>
+											<li><code>'.col-*'</code>: where <code>'*'</code> is equal to the number of columns this column counts for of the grid row columns.</li>
+										</ul>
+									</li>
+									<li>
+										<strong>Separate the structure from the skin</strong>
+										<ul>
+											<li><strong>don't</strong> add the grid classes to existing mark-up &mdash; add new mark-up to apply the grid,</li>
+											<li><strong>don't</strong> add any other classes to the grid mark-up &mdash; unless you know exactly what you are doing, and&hellip;</li>
+											<li><strong>don't</strong> overlap grid classes &mdash; don't add a <code>'row-*'</code> class to mark-up that already has a <code>'col-*'</code> class.</li>
+										</ul>
+									</li>
+								</ul>
+								
+								<hr>
+								
+								<p><small><strong>Compatibility: </strong>the TransParent Grid uses the <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" target="_blank">border-box box-sizing method</a>, so it is not compatible with IE7 and down. Otherwise, it should work in most other modern browsers (Chrome, FF, Opera, and Safari).</small></p>
+								
+							</div>
 							
 						</div>
 						
 					</div>
-				
 				</div>
+			
+			</div>
+			
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="fullgrid">
+		
+			<h2>Full Grid</h2>
+			
+			<div id="col1" class="section">
+				<h3>1 Column</h3>
 				
-				<div class="col-2">
-				
-					<div class="media">
-					
-						<div class="left">
-							<i class="icon-rocket icon-3x media-object"></i>
-						</div>
-						
-						<div class="media-body">
-						
-							<h1>Quick-start Documentation</h1>
-					
-							<p class="lead">
-								The keys to best-practice in effectively utilizing the grid:
-							</p>
-							<ul>
-								<li>
-									<strong>Basic Usage</strong>
-									<ul>
-										<li><code>'.container'</code>: the outermost wrapper &mdash; it sets the overall width for all display sizes,</li>
-										<li><code>'.row-*'</code>: where <code>'*'</code> is equal to the number of columns this grid row will have,</li>
-										<li><code>'.col-*'</code>: where <code>'*'</code> is equal to the number of columns this column counts for of the grid row columns.</li>
-									</ul>
-								</li>
-								<li>
-									<strong>Separate the structure from the skin</strong>
-									<ul>
-										<li><strong>don't</strong> add the grid classes to existing mark-up &mdash; add new mark-up to apply the grid,</li>
-										<li><strong>don't</strong> add any other classes to the grid mark-up &mdash; unless you know exactly what you are doing, and&hellip;</li>
-										<li><strong>don't</strong> overlap grid classes &mdash; don't add a <code>'row-*'</code> class to mark-up that already has a <code>'col-*'</code> class.</li>
-									</ul>
-								</li>
-							</ul>
-							
-							<hr>
-							
-							<p><small><strong>Compatibility: </strong>the TransParent Grid uses the <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" target="_blank">border-box box-sizing method</a>, so it is not compatible with IE7 and down. Otherwise, it should work in most other modern browsers (Chrome, FF, Opera, and Safari).</small></p>
-							
-						</div>
-						
-					</div>
-					
+				<div class="row-1">
+					<div class="col-1">1 of 1</div>
 				</div>
 			</div>
+			
+			<div id="col2" class="section">
+				<h3>2 Columns</h3>
+				
+				<div class="row-2">
+					<div class="col-1">1 of 2</div>
+					<div class="col-1">1 of 2</div>
+				</div>
+				
+				<div class="row-2">
+					<div class="col-2">2 of 2</div>
+				</div>
+			</div>
+			
+			<div id="col3" class="section">
+				<h3>3 Columns</h3>
+				
+				<div class="row-3">
+					<div class="col-1">1 of 3</div>
+					<div class="col-1">1 of 3</div>
+					<div class="col-1">1 of 3</div>
+				</div>
+				
+				<div class="row-3">
+					<div class="col-2">2 of 3</div>
+					<div class="col-1">1 of 3</div>
+				</div>
+				
+				<div class="row-3">
+					<div class="col-3">3 of 3</div>
+				</div>
+			</div>
+			
+			<div id="col4" class="section">
+				<h3>4 Columns</h3>
+				
+				<div class="row-4">
+					<div class="col-1">1 of 4</div>
+					<div class="col-1">1 of 4</div>
+					<div class="col-1">1 of 4</div>
+					<div class="col-1">1 of 4</div>
+				</div>
+				
+				<div class="row-4">
+					<div class="col-2">2 of 4</div>
+					<div class="col-1">1 of 4</div>
+					<div class="col-1">1 of 4</div>
+				</div>
+				
+				<div class="row-4">
+					<div class="col-3">3 of 4</div>
+					<div class="col-1">1 of 4</div>
+				</div>
+				
+				<div class="row-4">
+					<div class="col-4">4 of 4</div>
+				</div>
+			</div>
+			
+			<div id="col5" class="section">
+				<h3>5 Columns</h3>
+				
+				<div class="row-5">
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+				</div>
+				
+				<div class="row-5">
+					<div class="col-2">2 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+				</div>
+				
+				<div class="row-5">
+					<div class="col-3">3 of 5</div>
+					<div class="col-1">1 of 5</div>
+					<div class="col-1">1 of 5</div>
+				</div>
+				
+				<div class="row-5">
+					<div class="col-4">4 of 5</div>
+					<div class="col-1">1 of 5</div>
+				</div>
+				
+				<div class="row-5">
+					<div class="col-5">5 of 5</div>
+				</div>
+			</div>
+			
+			<div id="col6" class="section">
+				<h3>6 Columns</h3>
+				
+				<div class="row-6">
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-2">2 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-3">3 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-4">4 of 6</div>
+					<div class="col-1">1 of 6</div>
+					<div class="col-1">1 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-5">5 of 6</div>
+					<div class="col-1">1 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-6">6 of 6</div>
+				</div>
+			</div>
+			
+			<div id="col7" class="section">
+				<h3>7 Columns</h3>
+				
+				<div class="row-7">
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-2">2 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-3">3 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-4">4 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-5">5 of 7</div>
+					<div class="col-1">1 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-6">6 of 7</div>
+					<div class="col-1">1 of 7</div>
+				</div>
+				
+				<div class="row-7">
+					<div class="col-7">7 of 7</div>
+				</div>
+			</div>
+			
+			<div id="col8" class="section">
+				<h3>8 Columns</h3>
+				
+				<div class="row-8">
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-2">2 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-3">3 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-4">4 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-5">5 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-6">6 of 8</div>
+					<div class="col-1">1 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-7">7 of 8</div>
+					<div class="col-1">1 of 8</div>
+				</div>
+				
+				<div class="row-8">
+					<div class="col-8">8 of 8</div>
+				</div>
+			</div>
+			
+			<div id="col9" class="section">
+				<h3>9 Columns</h3>
+				
+				<div class="row-9">
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-2">2 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-3">3 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-4">4 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-5">5 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-6">6 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-7">7 of 9</div>
+					<div class="col-1">1 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-8">8 of 9</div>
+					<div class="col-1">1 of 9</div>
+				</div>
+				
+				<div class="row-9">
+					<div class="col-9">9 of 9</div>
+				</div>
+			</div>
+			
+			<div id="col10" class="section">
+				<h3>10 Columns</h3>
+				
+				<div class="row-10">
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-2">2 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-3">3 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-4">4 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-5">5 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-6">6 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-7">7 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-8">8 of 10</div>
+					<div class="col-1">1 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-9">9 of 10</div>
+					<div class="col-1">1 of 10</div>
+				</div>
+				
+				<div class="row-10">
+					<div class="col-10">10 of 10</div>
+				</div>
+			</div>
+			
+			<div id="col11" class="section">
+				<h3>11 Columns</h3>
+				
+				<div class="row-11">
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-2">2 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-3">3 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-4">4 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-5">5 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-6">6 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-7">7 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-8">8 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-9">9 of 11</div>
+					<div class="col-1">1 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-10">10 of 11</div>
+					<div class="col-1">1 of 11</div>
+				</div>
+				
+				<div class="row-11">
+					<div class="col-11">11 of 11</div>
+				</div>
+			</div>
+			
+			<div id="col12" class="section">
+				<h3>12 Columns</h3>
+				
+				<div class="row-12">
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-2">2 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-3">3 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-4">4 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-5">5 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-6">6 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-7">7 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-8">8 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-9">9 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-10">10 of 12</div>
+					<div class="col-1">1 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-11">11 of 12</div>
+					<div class="col-1">1 of 12</div>
+				</div>
+				
+				<div class="row-12">
+					<div class="col-12">12 of 12</div>
+				</div>
+			</div>
+			
+			<div id="col13" class="section">
+				<h3>13 Columns</h3>
+				
+				<div class="row-13">
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-2">2 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-3">3 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-4">4 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-5">5 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-6">6 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-7">7 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-8">8 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-9">9 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-10">10 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-11">11 of 13</div>
+					<div class="col-1">1 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-12">12 of 13</div>
+					<div class="col-1">1 of 13</div>
+				</div>
+				
+				<div class="row-13">
+					<div class="col-13">13 of 13</div>
+				</div>
+			</div>
+			
+			<div id="col14" class="section">
+				<h3>14 Columns</h3>
+				
+				<div class="row-14">
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-2">2 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-3">3 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-4">4 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-5">5 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-6">6 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-7">7 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-8">8 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-9">9 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-10">10 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-11">11 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-12">12 of 14</div>
+					<div class="col-1">1 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-13">13 of 14</div>
+					<div class="col-1">1 of 14</div>
+				</div>
+				
+				<div class="row-14">
+					<div class="col-14">14 of 14</div>
+				</div>
+			</div>
+			
+			<div id="col15" class="section">
+				<h3>15 Columns</h3>
+				
+				<div class="row-15">
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-2">2 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-3">3 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-4">4 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-5">5 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-6">6 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-7">7 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-8">8 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-9">9 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-10">10 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-11">11 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-12">12 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-13">13 of 15</div>
+					<div class="col-1">1 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-14">14 of 15</div>
+					<div class="col-1">1 of 15</div>
+				</div>
+				
+				<div class="row-15">
+					<div class="col-15">15 of 15</div>
+				</div>
+			</div>
+			
+			<div id="col16" class="section">
+				<h3>16 Columns</h3>
+				
+				<div class="row-16">
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-2">2 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-3">3 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-4">4 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-5">5 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-6">6 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-7">7 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-8">8 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-9">9 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-10">10 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-11">11 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-12">12 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-13">13 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-14">14 of 16</div>
+					<div class="col-1">1 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-15">15 of 16</div>
+					<div class="col-1">1 of 16</div>
+				</div>
+				
+				<div class="row-16">
+					<div class="col-16">16 of 16</div>
+				</div>
+			</div>
+			
+		</section>
 		
-		</div>
-		
-	</section>
+		<hr>
 	
-	<hr>
-	
-	<section class="container section" id="fullgrid">
-	
-		<h2>Full Grid</h2>
-		
-		<div id="col1" class="section">
-			<h3>1 Column</h3>
-			
-			<div class="row-1">
-				<div class="col-1">1 of 1</div>
-			</div>
-		</div>
-		
-		<div id="col2" class="section">
-			<h3>2 Columns</h3>
-			
-			<div class="row-2">
-				<div class="col-1">1 of 2</div>
-				<div class="col-1">1 of 2</div>
-			</div>
-			
-			<div class="row-2">
-				<div class="col-2">2 of 2</div>
-			</div>
-		</div>
-		
-		<div id="col3" class="section">
-			<h3>3 Columns</h3>
-			
-			<div class="row-3">
-				<div class="col-1">1 of 3</div>
-				<div class="col-1">1 of 3</div>
-				<div class="col-1">1 of 3</div>
-			</div>
-			
-			<div class="row-3">
-				<div class="col-2">2 of 3</div>
-				<div class="col-1">1 of 3</div>
-			</div>
-			
-			<div class="row-3">
-				<div class="col-3">3 of 3</div>
-			</div>
-		</div>
-		
-		<div id="col4" class="section">
-			<h3>4 Columns</h3>
-			
-			<div class="row-4">
-				<div class="col-1">1 of 4</div>
-				<div class="col-1">1 of 4</div>
-				<div class="col-1">1 of 4</div>
-				<div class="col-1">1 of 4</div>
-			</div>
-			
-			<div class="row-4">
-				<div class="col-2">2 of 4</div>
-				<div class="col-1">1 of 4</div>
-				<div class="col-1">1 of 4</div>
-			</div>
-			
-			<div class="row-4">
-				<div class="col-3">3 of 4</div>
-				<div class="col-1">1 of 4</div>
-			</div>
-			
-			<div class="row-4">
-				<div class="col-4">4 of 4</div>
-			</div>
-		</div>
-		
-		<div id="col5" class="section">
-			<h3>5 Columns</h3>
-			
-			<div class="row-5">
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-			</div>
-			
-			<div class="row-5">
-				<div class="col-2">2 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-			</div>
-			
-			<div class="row-5">
-				<div class="col-3">3 of 5</div>
-				<div class="col-1">1 of 5</div>
-				<div class="col-1">1 of 5</div>
-			</div>
-			
-			<div class="row-5">
-				<div class="col-4">4 of 5</div>
-				<div class="col-1">1 of 5</div>
-			</div>
-			
-			<div class="row-5">
-				<div class="col-5">5 of 5</div>
-			</div>
-		</div>
-		
-		<div id="col6" class="section">
-			<h3>6 Columns</h3>
-			
-			<div class="row-6">
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-2">2 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-3">3 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-4">4 of 6</div>
-				<div class="col-1">1 of 6</div>
-				<div class="col-1">1 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-5">5 of 6</div>
-				<div class="col-1">1 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-6">6 of 6</div>
-			</div>
-		</div>
-		
-		<div id="col7" class="section">
-			<h3>7 Columns</h3>
-			
-			<div class="row-7">
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-2">2 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-3">3 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-4">4 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-5">5 of 7</div>
-				<div class="col-1">1 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-6">6 of 7</div>
-				<div class="col-1">1 of 7</div>
-			</div>
-			
-			<div class="row-7">
-				<div class="col-7">7 of 7</div>
-			</div>
-		</div>
-		
-		<div id="col8" class="section">
-			<h3>8 Columns</h3>
-			
-			<div class="row-8">
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-2">2 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-3">3 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-4">4 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-5">5 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-6">6 of 8</div>
-				<div class="col-1">1 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-7">7 of 8</div>
-				<div class="col-1">1 of 8</div>
-			</div>
-			
-			<div class="row-8">
-				<div class="col-8">8 of 8</div>
-			</div>
-		</div>
-		
-		<div id="col9" class="section">
-			<h3>9 Columns</h3>
-			
-			<div class="row-9">
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-2">2 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-3">3 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-4">4 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-5">5 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-6">6 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-7">7 of 9</div>
-				<div class="col-1">1 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-8">8 of 9</div>
-				<div class="col-1">1 of 9</div>
-			</div>
-			
-			<div class="row-9">
-				<div class="col-9">9 of 9</div>
-			</div>
-		</div>
-		
-		<div id="col10" class="section">
-			<h3>10 Columns</h3>
-			
-			<div class="row-10">
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-2">2 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-3">3 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-4">4 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-5">5 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-6">6 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-7">7 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-8">8 of 10</div>
-				<div class="col-1">1 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-9">9 of 10</div>
-				<div class="col-1">1 of 10</div>
-			</div>
-			
-			<div class="row-10">
-				<div class="col-10">10 of 10</div>
-			</div>
-		</div>
-		
-		<div id="col11" class="section">
-			<h3>11 Columns</h3>
-			
-			<div class="row-11">
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-2">2 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-3">3 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-4">4 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-5">5 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-6">6 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-7">7 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-8">8 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-9">9 of 11</div>
-				<div class="col-1">1 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-10">10 of 11</div>
-				<div class="col-1">1 of 11</div>
-			</div>
-			
-			<div class="row-11">
-				<div class="col-11">11 of 11</div>
-			</div>
-		</div>
-		
-		<div id="col12" class="section">
-			<h3>12 Columns</h3>
-			
-			<div class="row-12">
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-2">2 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-3">3 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-4">4 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-5">5 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-6">6 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-7">7 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-8">8 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-9">9 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-10">10 of 12</div>
-				<div class="col-1">1 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-11">11 of 12</div>
-				<div class="col-1">1 of 12</div>
-			</div>
-			
-			<div class="row-12">
-				<div class="col-12">12 of 12</div>
-			</div>
-		</div>
-		
-		<div id="col13" class="section">
-			<h3>13 Columns</h3>
-			
-			<div class="row-13">
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-2">2 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-3">3 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-4">4 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-5">5 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-6">6 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-7">7 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-8">8 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-9">9 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-10">10 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-11">11 of 13</div>
-				<div class="col-1">1 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-12">12 of 13</div>
-				<div class="col-1">1 of 13</div>
-			</div>
-			
-			<div class="row-13">
-				<div class="col-13">13 of 13</div>
-			</div>
-		</div>
-		
-		<div id="col14" class="section">
-			<h3>14 Columns</h3>
-			
-			<div class="row-14">
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-2">2 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-3">3 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-4">4 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-5">5 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-6">6 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-7">7 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-8">8 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-9">9 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-10">10 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-11">11 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-12">12 of 14</div>
-				<div class="col-1">1 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-13">13 of 14</div>
-				<div class="col-1">1 of 14</div>
-			</div>
-			
-			<div class="row-14">
-				<div class="col-14">14 of 14</div>
-			</div>
-		</div>
-		
-		<div id="col15" class="section">
-			<h3>15 Columns</h3>
-			
-			<div class="row-15">
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-2">2 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-3">3 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-4">4 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-5">5 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-6">6 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-7">7 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-8">8 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-9">9 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-10">10 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-11">11 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-12">12 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-13">13 of 15</div>
-				<div class="col-1">1 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-14">14 of 15</div>
-				<div class="col-1">1 of 15</div>
-			</div>
-			
-			<div class="row-15">
-				<div class="col-15">15 of 15</div>
-			</div>
-		</div>
-		
-		<div id="col16" class="section">
-			<h3>16 Columns</h3>
-			
-			<div class="row-16">
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-2">2 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-3">3 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-4">4 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-5">5 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-6">6 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-7">7 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-8">8 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-9">9 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-10">10 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-11">11 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-12">12 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-13">13 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-14">14 of 16</div>
-				<div class="col-1">1 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-15">15 of 16</div>
-				<div class="col-1">1 of 16</div>
-			</div>
-			
-			<div class="row-16">
-				<div class="col-16">16 of 16</div>
-			</div>
-		</div>
-		
-	</section>
-	
-	<hr>
-
-	<section class="container section" id="nested">
-		<h2>Nested Columns</h2>
-		
-		<section class="section js-eq" id="fibonacci">
-			<h3>Fibonacci Sequence</h3>
-			<div class="row-13">
-				<div class="col-5">
-					5 of 13
-					<div class="row-5">
-						<div class="col-3">3 of 5</div>
-						<div class="col-2">
-							2 of 5
-							<div class="row-2">
-								<div class="col-1">1 of 2</div>
-								<div class="col-1">1 of 2</div>
+		<section class="container section" id="nested">
+			<h2>Nested Columns</h2>
+			
+			<section class="section js-eq" id="fibonacci">
+				<h3>Fibonacci Sequence</h3>
+				<div class="row-13">
+					<div class="col-5">
+						5 of 13
+						<div class="row-5">
+							<div class="col-3">3 of 5</div>
+							<div class="col-2">
+								2 of 5
+								<div class="row-2">
+									<div class="col-1">1 of 2</div>
+									<div class="col-1">1 of 2</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="col-8">
+						8 of 13
+					</div>
 				</div>
-				<div class="col-8">
-					8 of 13
-				</div>
-			</div>
-		</section>
-	
+			</section>
 		
-		<section class="section" id="agtest">
-			<h3>The AG Test - Complicated Nesting</h3>
-	
-			<p>Many years ago Arnaud Gueras, an excellent developer, created this litmus test of a great grid system. It should be able to nest any combination of the units and lines, and so it should be able to create the complicated layout below. His test is reminiscent of the golden mean, so it is still used today.</p>
-	
-			<div class="row-5">
-				<div class="col-1">
-					<h3>1/5</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-				<div class="col-3">
-					<!-- line -->
-					<div class="row-2">
-						<div class="col-1">
-							<h3>1/2</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+			<section class="section" id="agtest">
+				<h3>The AG Test - Complicated Nesting</h3>
+		
+				<p>Many years ago Arnaud Gueras, an excellent developer, created this litmus test of a great grid system. It should be able to nest any combination of the units and lines, and so it should be able to create the complicated layout below. His test is reminiscent of the golden mean, so it is still used today.</p>
+		
+				<div class="row-5">
+					<div class="col-1">
+						<h3>1/5</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+					<div class="col-3">
+						<!-- line -->
+						<div class="row-2">
+							<div class="col-1">
+								<h3>1/2</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</div>
+							<div class="col-1">
+								<h3>1/2</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</div>
 						</div>
-						<div class="col-1">
-							<h3>1/2</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<!-- /line -->
+						<div class="row-3">
+							<div class="col-1">
+								<h3>1/3</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							</div>
+							<div class="col-2">
+								<!-- line -->
+								<div class="row-2">
+									<div class="col-1">
+										<h3>1/2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									</div>
+									<div class="col-1">
+										<h3>1/2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									</div>
+								</div>
+								<!-- /line -->
+								<div class="row-1">
+									<div class="col-1">
+										<h3>1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<!-- /line -->
+					<div class="col-1">
+						<h3>1/5</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="modifiers">
+			<h2>Modifiers</h2>
+			
+			<section class="section" id="centered">
+				<h3>Centered Columns</h3>
+				
+				<div class="row-2 row-center-cols">
+					<div class="col-1">1 of 2</div>
+				</div>
+				
+				<div class="row-3 row-center-cols">
+					<div class="col-2">2 of 3</div>
+				</div>
+				
+				<div class="row-4 row-center-cols">
+					<div class="col-3">3 of 4</div>
+				</div>
+				
+				<div class="row-5 row-center-cols">
+					<div class="col-4">4 of 5</div>
+				</div>
+						
+				<div class="row-6 row-center-cols">
+					<div class="col-5">5 of 6</div>
+				</div>
+				
+				<div class="row-7 row-center-cols">		
+					<div class="col-6">6 of 7</div>
+				</div>
+				
+				<div class="row-7 row-center-cols">
+					<div class="col-3">3 of 7</div>
+					<div class="col-3">3 of 7</div>
+				</div>
+			</section>
+				
+			<section class="section" id="offsetwidths">
+				
+				<h3>Offset Columns</h3>
+				
+				<div class="row-2">
+					<div class="col-1 col-push-1">1 offset by 1 of 2</div>
+				</div>
+				
+				<div class="row-3">
+					<div class="col-1 col-push-2">1 offset by 2 of 3</div>
+				</div>						
+		
+				<div class="row-4">
+					<div class="col-1 col-push-3">1 offset by 3 of 4</div>
+				</div>
+				
+				<div class="row-5">
+					<div class="col-1 col-push-4">1 offset by 4 of 5</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-1 col-push-5">1 offset by 5 of 6</div>
+				</div>
+				
+				<div class="row-6">
+					<div class="col-2 col-push-1">2 offset by 1 of 6</div>
+					<div class="col-1 col-push-2">1 offset by 1 of 6</div>
+				</div>
+				
+			</section>
+		
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="layouts">
+			
+			<h2>Layouts</h2>
+		
+			<div class="section" id="general">
+		
+				<h3>General Layout</h3>
+			
+				<div class="row-main">
+					
+					<div class="col-content">
+						Content
+					</div>
+					
+					<div class="col-aside">
+						Aside
+					</div>
+					
+				</div>
+			
+				<div class="row-main row-reversed">
+					
+					<div class="col-aside">
+						Aside
+					</div>
+					
+					<div class="col-content">
+						Content
+					</div>
+					
+				</div>
+			
+			</div>
+			
+			<div class="section" id="goldenratio">
+			
+				<h3>Golden Ratio 1:1.618</h3>
+			
+				<div class="row-golden">
+					
+					<div class="col-golden-lrg">
+						Golden Ratio Large - 62.803398874989476%
+					</div>
+					
+					<div class="col-golden-sml">
+						Golden Ratio Small - 37.196601125010524%
+					</div>
+					
+				</div>
+			
+				<div class="row-golden">
+					
+					<div class="col-golden-sml">
+						Golden Ratio Small - 37.196601125010524%
+					</div>
+					
+					<div class="col-golden-lrg">
+						Golden Ratio Large - 62.803398874989476%
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="formelements">
+			<h2>Form Elements</h2>
+			
+			<form  method="post" action="" class="container">
+				<fieldset>
+	                <legend>Basic Form Inputs</legend>
+	                
+	                <div class="row-3">
+		                <div class="col-1">
+		                	<label for="text-input-01">Text input</label>
+		                	<input type="text" id="text-input-01" name="text-input-01" value="default value that goes on and on without stopping or punctuation">
+		                </div>
+		                <div class="col-1">
+		                	<label for="email-input-01">Email input</label>
+		                	<input id="email-input-01" name="email-input-01" type="email" placeholder="your.name@email.com">
+		                </div>
+		                <div class="col-1">
+		                	<label for="tel-input-01">Tel input</label>
+		                	<input id="tel-input-01" name="tel-input-01" type="tel">
+		                </div>
+	                </div>
+	                
+	                <div class="row-3">
+		                <div class="col-1">
+		                	<label>Search input</label>
+		                	<input type="search">
+		                </div>
+		                <div class="col-1">
+		                	<label>URL input</label>
+		                	<input type="url" placeholder="http://">
+		                </div>
+		                <div class="col-1">
+		                	<label>Password input</label>
+		                	<input type="password" value="password">
+		                </div>
+		            </div>
+					
 					<div class="row-3">
 						<div class="col-1">
-							<h3>1/3</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<label for="Lorem">Select[size]</label><br>
+							<select tabindex="5" id="Lorem" name="Lorem ipsum">
+								<option selected="selected" value="1">Lorem ipsum</option>
+								<option value="2">dolor sit amet</option>
+								<option value="3"> consectetuer adipiscing</option>
+								<option value="4">vitae diam</option>
+								<option value="5">Vestibulum ornare</option>
+							</select>
 						</div>
+											
+						<div class="col-1">
+							<label for="Pellentesque">Select[multiple]</label><br>
+							<select tabindex="6" id="Pellentesque" size="1" name="select">
+								<optgroup label="Lorem ipsum1">
+									<option selected="selected" value="1">Nunc urna nulla</option>
+									<option value="2">ultrices sit amet</option>
+									<option value="3">cursus faucibus</option>
+									<option value="4">tincidunt pellentesque</option>
+									<option value="5">ante</option>
+								</optgroup>
+								<optgroup label="Lorem ipsum2">
+									<option selected="selected" value="6">Nunc ac diam</option>
+									<option value="7">Donec orci risus</option>
+									<option value="8">malesuada quis</option>
+									<option value="9">vulputate eu</option>
+									<option value="10">lacinia in</option>
+								</optgroup>
+							</select>
+						</div>
+						
+						<div class="col-1">
+							<label for="Message">Textarea</label><br>
+							<textarea tabindex="4" id="Message" name="Message" rows="4" cols="42"></textarea>
+						</div>
+					</div>
+					
+					<div class="row-3">
 						<div class="col-2">
-							<!-- line -->
-							<div class="row-2">
-								<div class="col-1">
-									<h3>1/2</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
-								<div class="col-1">
-									<h3>1/2</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
+							<label>Checkbooms</label>
+							<div class="row-3">
+								<div class="col-1"><label><input tabindex="10" type="checkbox" name="checkSet" value="one"> This One</label></div>
+								<div class="col-1"><label><input tabindex="11" type="checkbox" name="checkSet" value="two"> This One Two</label></div>
+								<div class="col-1"><label><input tabindex="12" type="checkbox" name="checkSet" value="three"> This One Three</label></div>
 							</div>
-							<!-- /line -->
-							<div class="row-1">
-								<div class="col-1">
-									<h3>1</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
+						</div>
+						
+						<div class="col-1">
+							<label>Radios</label>
+							<div class="row-3">
+								<div class="col-1"><label><input tabindex="7" type="radio" name="radioSet" value="uno"> Radio</label></div>
+								<div class="col-1"><label><input tabindex="8" type="radio" name="radioSet" value="due"> Video</label></div>
+								<div class="col-1"><label><input tabindex="9" type="radio" name="radioSet" value="tre"> Internet</label></div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-1">
-					<h3>1/5</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-			</div>
-		</section>
-	</section>
+				
+					<div class="row-6">
+						<div class="col-5">
+							<input type="reset" value="Reset">
+						</div>
 	
-	<hr>
-	
-	<section class="container section" id="modifiers">
-		<h2>Modifiers</h2>
-		
-		<section class="section" id="centered">
-			<h3>Centered Columns</h3>
-			
-			<div class="row-2 row-center-cols">
-				<div class="col-1">1 of 2</div>
-			</div>
-			
-			<div class="row-3 row-center-cols">
-				<div class="col-2">2 of 3</div>
-			</div>
-			
-			<div class="row-4 row-center-cols">
-				<div class="col-3">3 of 4</div>
-			</div>
-			
-			<div class="row-5 row-center-cols">
-				<div class="col-4">4 of 5</div>
-			</div>
-					
-			<div class="row-6 row-center-cols">
-				<div class="col-5">5 of 6</div>
-			</div>
-			
-			<div class="row-7 row-center-cols">		
-				<div class="col-6">6 of 7</div>
-			</div>
-			
-			<div class="row-7 row-center-cols">
-				<div class="col-3">3 of 7</div>
-				<div class="col-3">3 of 7</div>
-			</div>
-		</section>
-			
-		<section class="section" id="offsetwidths">
-			
-			<h3>Offset Columns</h3>
-			
-			<div class="row-2">
-				<div class="col-1 col-push-1">1 offset by 1 of 2</div>
-			</div>
-			
-			<div class="row-3">
-				<div class="col-1 col-push-2">1 offset by 2 of 3</div>
-			</div>						
-	
-			<div class="row-4">
-				<div class="col-1 col-push-3">1 offset by 3 of 4</div>
-			</div>
-			
-			<div class="row-5">
-				<div class="col-1 col-push-4">1 offset by 4 of 5</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-1 col-push-5">1 offset by 5 of 6</div>
-			</div>
-			
-			<div class="row-6">
-				<div class="col-2 col-push-1">2 offset by 1 of 6</div>
-				<div class="col-1 col-push-2">1 offset by 1 of 6</div>
-			</div>
-			
-		</section>
-	
-	</section>
-	
-	<hr>
-	
-	<section class="container section" id="layouts">
-		
-		<h2>Layouts</h2>
-	
-		<div class="section" id="general">
-	
-			<h3>General Layout</h3>
-		
-			<div class="row-main">
-				
-				<div class="col-content">
-					Content
-				</div>
-				
-				<div class="col-aside">
-					Aside
-				</div>
-				
-			</div>
-		
-			<div class="row-main row-reversed">
-				
-				<div class="col-aside">
-					Aside
-				</div>
-				
-				<div class="col-content">
-					Content
-				</div>
-				
-			</div>
-		
-		</div>
-		
-		<div class="section" id="goldenratio">
-		
-			<h3>Golden Ratio 1:1.618</h3>
-		
-			<div class="row-golden">
-				
-				<div class="col-golden-lrg">
-					Golden Ratio Large - 62.803398874989476%
-				</div>
-				
-				<div class="col-golden-sml">
-					Golden Ratio Small - 37.196601125010524%
-				</div>
-				
-			</div>
-		
-			<div class="row-golden">
-				
-				<div class="col-golden-sml">
-					Golden Ratio Small - 37.196601125010524%
-				</div>
-				
-				<div class="col-golden-lrg">
-					Golden Ratio Large - 62.803398874989476%
-				</div>
-				
-			</div>
-			
-		</div>
-		
-	</section>
-	
-	<hr>
-	
-	<section class="container section" id="formelements">
-		<h2>Form Elements</h2>
-		
-		<form  method="post" action="" class="container">
-			<fieldset>
-                <legend>Basic Form Inputs</legend>
-                
-                <div class="row-3">
-	                <div class="col-1">
-	                	<label for="text-input-01">Text input</label>
-	                	<input type="text" id="text-input-01" name="text-input-01" value="default value that goes on and on without stopping or punctuation">
-	                </div>
-	                <div class="col-1">
-	                	<label for="email-input-01">Email input</label>
-	                	<input id="email-input-01" name="email-input-01" type="email" placeholder="your.name@email.com">
-	                </div>
-	                <div class="col-1">
-	                	<label for="tel-input-01">Tel input</label>
-	                	<input id="tel-input-01" name="tel-input-01" type="tel">
-	                </div>
-                </div>
-                
-                <div class="row-3">
-	                <div class="col-1">
-	                	<label>Search input</label>
-	                	<input type="search">
-	                </div>
-	                <div class="col-1">
-	                	<label>URL input</label>
-	                	<input type="url" placeholder="http://">
-	                </div>
-	                <div class="col-1">
-	                	<label>Password input</label>
-	                	<input type="password" value="password">
-	                </div>
-	            </div>
-				
-				<div class="row-3">
-					<div class="col-1">
-						<label for="Lorem">Select[size]</label><br>
-						<select tabindex="5" id="Lorem" name="Lorem ipsum">
-							<option selected="selected" value="1">Lorem ipsum</option>
-							<option value="2">dolor sit amet</option>
-							<option value="3"> consectetuer adipiscing</option>
-							<option value="4">vitae diam</option>
-							<option value="5">Vestibulum ornare</option>
-						</select>
-					</div>
-										
-					<div class="col-1">
-						<label for="Pellentesque">Select[multiple]</label><br>
-						<select tabindex="6" id="Pellentesque" size="1" name="select">
-							<optgroup label="Lorem ipsum1">
-								<option selected="selected" value="1">Nunc urna nulla</option>
-								<option value="2">ultrices sit amet</option>
-								<option value="3">cursus faucibus</option>
-								<option value="4">tincidunt pellentesque</option>
-								<option value="5">ante</option>
-							</optgroup>
-							<optgroup label="Lorem ipsum2">
-								<option selected="selected" value="6">Nunc ac diam</option>
-								<option value="7">Donec orci risus</option>
-								<option value="8">malesuada quis</option>
-								<option value="9">vulputate eu</option>
-								<option value="10">lacinia in</option>
-							</optgroup>
-						</select>
-					</div>
-					
-					<div class="col-1">
-						<label for="Message">Textarea</label><br>
-						<textarea tabindex="4" id="Message" name="Message" rows="4" cols="42"></textarea>
-					</div>
-				</div>
-				
-				<div class="row-3">
-					<div class="col-2">
-						<label>Checkbooms</label>
-						<div class="row-3">
-							<div class="col-1"><label><input tabindex="10" type="checkbox" name="checkSet" value="one"> This One</label></div>
-							<div class="col-1"><label><input tabindex="11" type="checkbox" name="checkSet" value="two"> This One Two</label></div>
-							<div class="col-1"><label><input tabindex="12" type="checkbox" name="checkSet" value="three"> This One Three</label></div>
+						<div class="col-1">
+							<input tabindex="12" class="btn-block" type="submit" name="submit" value="Submit">
 						</div>
 					</div>
-					
-					<div class="col-1">
-						<label>Radios</label>
-						<div class="row-3">
-							<div class="col-1"><label><input tabindex="7" type="radio" name="radioSet" value="uno"> Radio</label></div>
-							<div class="col-1"><label><input tabindex="8" type="radio" name="radioSet" value="due"> Video</label></div>
-							<div class="col-1"><label><input tabindex="9" type="radio" name="radioSet" value="tre"> Internet</label></div>
-						</div>
-					</div>
-				</div>
+				
+				</fieldset>
+			</form>
 			
-				<div class="row-6">
-					<div class="col-5">
-						<input type="reset" value="Reset">
-					</div>
-
-					<div class="col-1">
-						<input tabindex="12" class="btn-block" type="submit" name="submit" value="Submit">
-					</div>
-				</div>
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="tablegrid">
+			<h2>Table Grid</h2>
 			
-			</fieldset>
-		</form>
+			<table cellpadding="0" cellspacing="0" class="container">
+				<thead>
+					<tr class="row-9">
+						<th class="col-2">Table Header 2 of 9</th>
+						<th class="col-3">Table Header 3 of 9</th>
+						<th class="col-4">Table Header 4 of 9</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr class="row-6">
+						<td class="col-1">Table Footer 1 of 6</td>
+						<td class="col-2">Table Footer 2 of 6</td>
+						<td class="col-3">Table Footer 3 of 6</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr class="row-7">
+						<td class="col-3">Table Cell 3 of 7</td>
+						<td class="col-2">Table Cell 2 of 7</td>
+						<td class="col-2">Table Cell 2 of 7</td>
+					</tr>
+					<tr class="row-5">
+						<td class="col-2">Table Cell 2 of 5</td>
+						<td class="col-2">Table Cell 2 of 5</td>
+						<td class="col-1">Table Cell 1 of 5</td>
+					</tr>
+					<tr class="row-8">
+						<td class="col-3">Table Cell 3 of 8</td>
+						<td class="col-2">Table Cell 2 of 8</td>
+						<td class="col-3">Table Cell 3 of 8</td>
+					</tr>
+				</tbody>
+			</table>
 		
-	</section>
-	
-	<hr>
-	
-	<section class="container section" id="tablegrid">
-		<h2>Table Grid</h2>
+		</section>
 		
-		<table cellpadding="0" cellspacing="0" class="container">
-			<thead>
-				<tr class="row-9">
-					<th class="col-2">Table Header 2 of 9</th>
-					<th class="col-3">Table Header 3 of 9</th>
-					<th class="col-4">Table Header 4 of 9</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr class="row-6">
-					<td class="col-1">Table Footer 1 of 6</td>
-					<td class="col-2">Table Footer 2 of 6</td>
-					<td class="col-3">Table Footer 3 of 6</td>
-				</tr>
-			</tfoot>
-			<tbody>
-				<tr class="row-7">
-					<td class="col-3">Table Cell 3 of 7</td>
-					<td class="col-2">Table Cell 2 of 7</td>
-					<td class="col-2">Table Cell 2 of 7</td>
-				</tr>
-				<tr class="row-5">
-					<td class="col-2">Table Cell 2 of 5</td>
-					<td class="col-2">Table Cell 2 of 5</td>
-					<td class="col-1">Table Cell 1 of 5</td>
-				</tr>
-				<tr class="row-8">
-					<td class="col-3">Table Cell 3 of 8</td>
-					<td class="col-2">Table Cell 2 of 8</td>
-					<td class="col-3">Table Cell 3 of 8</td>
-				</tr>
-			</tbody>
-		</table>
-	
-	</section>
-	
-	<hr>
-	
-	<section class="container section" id="blockgrid">
-		<h2>Block Grids</h2>
-	
-		<ul class="row-grid-1">
-			<li>1 of 1</li>
-			<li>1 of 1</li>
-		</ul>
-	
-		<ul class="row-grid-2">
-			<li>1 of 2</li><li>1 of 2</li>
-			<li>1 of 2</li><li>1 of 2</li>
-		</ul>
-	
-		<ul class="row-grid-3">
-			<li>1 of 3</li><li>1 of 3</li><li>1 of 3</li>
-			<li>1 of 3</li><li>1 of 3</li><li>1 of 3</li>
-		</ul>
-	
-		<ul class="row-grid-4">
-			<li>1 of 4</li><li>1 of 4</li><li>1 of 4</li><li>1 of 4</li>
-			<li>1 of 4</li><li>1 of 4</li><li>1 of 4</li><li>1 of 4</li>
-		</ul>
-	
-		<ul class="row-grid-5">
-			<li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li>
-			<li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li>
-		</ul>
-	
-		<ul class="row-grid-6">
-			<li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li>
-			<li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li>
-		</ul>
-	
-		<ul class="row-grid-7">
-			<li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li>
-			<li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li>
-		</ul>
-	
-		<ul class="row-grid-8">
-			<li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li>
-			<li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li>
-		</ul>
-	
-		<ul class="row-grid-9">
-			<li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li>
-			<li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li>
-		</ul>
-	
-		<ul class="row-grid-10">
-			<li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li>
-			<li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li>
-		</ul>
-	
-		<ul class="row-grid-11">
-			<li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li>
-			<li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li>
-		</ul>
-	
-		<ul class="row-grid-12">
-			<li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li>
-			<li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li>
-		</ul>
-	
-		<ul class="row-grid-13">
-			<li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li>
-			<li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li>
-		</ul>
-	
-		<ul class="row-grid-14">
-			<li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li>
-			<li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li>
-		</ul>
-	
-		<ul class="row-grid-15">
-			<li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li>
-			<li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li>
-		</ul>
+		<hr>
 		
-		<ul class="row-grid-16">
-			<li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li>
-			<li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li>
-		</ul>
-	
-	</section>
+		<section class="container section" id="blockgrid">
+			<h2>Block Grid</h2>
+		
+			<ul class="row-grid-1">
+				<li>1 of 1</li>
+				<li>1 of 1</li>
+			</ul>
+		
+			<ul class="row-grid-2">
+				<li>1 of 2</li><li>1 of 2</li>
+				<li>1 of 2</li><li>1 of 2</li>
+			</ul>
+		
+			<ul class="row-grid-3">
+				<li>1 of 3</li><li>1 of 3</li><li>1 of 3</li>
+				<li>1 of 3</li><li>1 of 3</li><li>1 of 3</li>
+			</ul>
+		
+			<ul class="row-grid-4">
+				<li>1 of 4</li><li>1 of 4</li><li>1 of 4</li><li>1 of 4</li>
+				<li>1 of 4</li><li>1 of 4</li><li>1 of 4</li><li>1 of 4</li>
+			</ul>
+		
+			<ul class="row-grid-5">
+				<li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li>
+				<li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li><li>1 of 5</li>
+			</ul>
+		
+			<ul class="row-grid-6">
+				<li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li>
+				<li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li><li>1 of 6</li>
+			</ul>
+		
+			<ul class="row-grid-7">
+				<li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li>
+				<li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li><li>1 of 7</li>
+			</ul>
+		
+			<ul class="row-grid-8">
+				<li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li>
+				<li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li><li>1 of 8</li>
+			</ul>
+		
+			<ul class="row-grid-9">
+				<li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li>
+				<li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li><li>1 of 9</li>
+			</ul>
+		
+			<ul class="row-grid-10">
+				<li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li>
+				<li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li><li>1 of 10</li>
+			</ul>
+		
+			<ul class="row-grid-11">
+				<li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li>
+				<li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li><li>1 of 11</li>
+			</ul>
+		
+			<ul class="row-grid-12">
+				<li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li>
+				<li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li><li>1 of 12</li>
+			</ul>
+		
+			<ul class="row-grid-13">
+				<li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li>
+				<li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li><li>1 of 13</li>
+			</ul>
+		
+			<ul class="row-grid-14">
+				<li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li>
+				<li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li><li>1 of 14</li>
+			</ul>
+		
+			<ul class="row-grid-15">
+				<li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li>
+				<li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li><li>1 of 15</li>
+			</ul>
+			
+			<ul class="row-grid-16">
+				<li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li>
+				<li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li><li>1 of 16</li>
+			</ul>
+		
+		</section>
 
-</main>
-
-<!-- Footer
-================================================== -->
-<footer role="contentinfo" id="footer" class="footer">
-	<div class="container">
-		
-		<p><small>&copy; 2013 <a href="http://www.keithparent.com/" target="_blank">This is aParent Design</a>, No rights reserved.</small></p>
-		
-	</div>
-</footer>
+	</main>
+	
+	<!-- Footer
+	================================================== -->
+	<footer id="footer" class="footer" role="contentinfo">
+		<div class="container">
+			
+			<p>
+				<small>&copy; 2014 <a href="http://www.keithparent.com/" target="_blank">This is aParent Design</a>, No rights reserved.</small>
+			</p>
+			
+		</div>
+	</footer>
 
 
-<!-- JS -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="js/jquery.jumpto.js"></script>
-
-<script>
-// Equalize Column Heights
-	$.fn.matchColumnHeights = function(){
-		var rows = $(this);
-		$(rows)
-			.each(function(){
-				var cols = $(this).children( "[class^='col-']" ),
-					tallestColumn = 0;
-				$(cols)
-					.each(function(){
-						var colH = $(this).outerHeight();
-						if( colH > tallestColumn ){
-							tallestColumn = colH;
-						}
-					})
-					.css({
-						"height" : tallestColumn,
-						"min-height" : tallestColumn,
-						"max-height" : tallestColumn
-					})
-				;
-			})
-		;
-		return;
-	}
+	<!-- JS -->
 	
-	jQuery(document).ready(function($) {
+	<!-- Google CDN's jQuery, fall back to local if offline -->
+	<!-- 2.0 for modern browsers, 1.10 for .oldie -->
+	<script>
+		var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+		if(!oldieCheck) {
+			document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"><\/script>');
+		} else {
+			document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+		}
+	</script>
+	<script>
+		if(!window.jQuery) {
+			if(!oldieCheck) {
+				document.write('<script src="js/vendor/jquery-2.0.0.min.js"><\/script>');
+			} else {
+				document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>');
+			}
+		}
+	</script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!--<script src="js/jquery.jumpto.js"></script>-->
+	
+	<script>
+		/* ===========================================
+			Force a repaint in Chrome
+		============================================== */
+		(function( window, $ ){
+			window.watchResize = function( callback ){
+				var resizing;
+				function done(){
+					clearTimeout( resizing );
+					resizing = null;
+					callback();
+				}
+				$(window).resize(function(){
+					if ( resizing ) {
+						clearTimeout( resizing );
+						resizing = null;
+					}
+					resizing = setTimeout( done, 50 );
+				});
+				callback();
+			};
+			$(window).on('load',function(){
+				window.watchResize(function(){
+					var $body = $('body');
+					$body.css( 'overflow', 'hidden' ).height();
+					$body.css( 'overflow', 'auto' );
+				});
+			});
+		})( this, jQuery );
 		
-		// Remove class w/js, if js
-		$('html').removeClass('no-js');
+		// Equalize Column Heights
+		$.fn.matchColumnHeights = function(){
+			var rows = $(this);
+			$(rows)
+				.each(function(){
+					var cols = $(this).children( "[class^='col-']" ),
+						tallestColumn = 0;
+					$(cols)
+						.each(function(){
+							var colH = $(this).outerHeight();
+							if( colH > tallestColumn ){
+								tallestColumn = colH;
+							}
+						})
+						.css({
+							"height" : tallestColumn,
+							"min-height" : tallestColumn,
+							"max-height" : tallestColumn
+						})
+					;
+				})
+			;
+			return;
+		}
 		
-		$(".js-eq").find("[class^='row-']").matchColumnHeights();
-		
-		$("#main").jumpto({
-			offset: 550,
-			innerWrapper: ".section",
-			firstLevel: "> h2",
-			secondLevel: "> .section > h3",
-			navContainer: "#demo-nav",
-			anchorTopPadding: 60,
-			showTitle: false,
-			closeButton: false
+		jQuery(document).ready(function($){
+			
+			$(".js-eq").find("[class^='row-']").matchColumnHeights();
+			/*
+			$("#main").jumpto({
+				offset: 550,
+				innerWrapper: ".section",
+				firstLevel: "> h2",
+				secondLevel: "> .section > h3",
+				navContainer: "#demo-nav",
+				anchorTopPadding: 60,
+				showTitle: false,
+				closeButton: false
+			});
+			*/
 		});
-		
-	});
-</script>
-
-<!-- Google Webfont Loader -->
-<script>
-	WebFontConfig = {
-		google: { families: [
-			'Open+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic:latin',
-			'Open+Sans+Condensed:300,300italic,700,700italic:latin'
-		] }
-	};
-	(function() {
-		var wf = document.createElement('script');
-		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		wf.type = 'text/javascript';
-		wf.async = 'true';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(wf, s);
-	})();
-</script>
+	</script>
+	
+	<!-- Google Webfont Loader -->
+	<script>
+		WebFontConfig = {
+			google: { families: [
+				'Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin'
+			] }
+		};
+		(function() {
+			var wf = document.createElement('script');
+			wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			wf.type = 'text/javascript';
+			wf.async = 'true';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(wf, s);
+		})();
+	</script>
 
 </body>
 </html>

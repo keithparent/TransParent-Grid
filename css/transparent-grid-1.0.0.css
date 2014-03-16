@@ -5,7 +5,7 @@
 	http		:	www.keithparent.com
 	mailto		:	keithparent@me.com
 
-	Copyright (c) 2013 Keith Parent
+	Copyright (c) 2014 Keith Parent
 	========================================================================= */
 
 
@@ -15,78 +15,232 @@
 
 /*	VIEWPORTS
 	========================================================================= */
-
-@-webkit-viewport { width: device-width; zoom: 1.0; }
-   @-moz-viewport { width: device-width; zoom: 1.0; }
-    @-ms-viewport { width: device-width; zoom: 1.0; }
-     @-o-viewport { width: device-width; zoom: 1.0; }
-        @viewport { width: device-width; zoom: 1.0; }
-
+	@-webkit-viewport { width: device-width; zoom: 1.0; }
+	   @-moz-viewport { width: device-width; zoom: 1.0; }
+	    @-ms-viewport { width: device-width; zoom: 1.0; }
+	     @-o-viewport { width: device-width; zoom: 1.0; }
+	        @viewport { width: device-width; zoom: 1.0; }
 
 /*	DEFAULTS
 	========================================================================= */
-
-/* BORDER-BOX BOX-SIZING METHOD
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- */
-*,
-*:before,
-*:after {
-			box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-}
-
-/* BASE */
-html {
-	font-size: 62.5%;
-	-webkit-overflow-scrolling: touch;
-	-webkit-tap-highlight-color: rgba(17,119,170,0.6);
-	overflow-y: scroll;
-	/* CSS3 TRANSITIONS */
-	-webkit-transition: font 0.218s ease-in-out;
-     -khtml-transition: font 0.218s ease-in-out;
-       -moz-transition: font 0.218s ease-in-out;
-        -ms-transition: font 0.218s ease-in-out;
-         -o-transition: font 0.218s ease-in-out;
-            transition: font 0.218s ease-in-out;
-}
-
-body {
-	/* TYPE */
-	font-size: 100%;
-	line-height: 1.428571429;
-	/* LAYOUT */
-	margin-right: 0;
-	margin-left: 0;
-	padding-right: 0;
-	padding-left: 0;
-	-webkit-transition: font 0.218s ease-in-out;
-	 -khtml-transition: font 0.218s ease-in-out;
-	   -moz-transition: font 0.218s ease-in-out;
-		-ms-transition: font 0.218s ease-in-out;
-		 -o-transition: font 0.218s ease-in-out;
-			transition: font 0.218s ease-in-out;
-	}
-	input,
-	button,
-	select,
-	textarea {
-		font-size: inherit;
-		line-height: inherit;
+	
+	/* BORDER-BOX BOX-SIZING METHOD
+	 *  http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+	 */
+	*,
+	*:before,
+	*:after {
+				box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
 	}
 	
-@media only screen and (max-width: 767px) {
+	/* BASE */
+	
+	/* Set <html> and <body> to inherit the height of the viewport */
+	html,
 	body {
-		-webkit-text-size-adjust: none;
-		-ms-text-size-adjust: none;
-		width: 100%;
-		min-width: 0;
+		min-height: 100%;
 	}
-}
+	html {
+		overflow-y: scroll;
+		_overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		-webkit-tap-highlight-color: rgba(17,119,170,0.6);
+	}
+	body {
+		margin-right: 0;
+		margin-left: 0;
+		padding-right: 0;
+		padding-left: 0;
+		min-width: 200px;
+		-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+				text-size-adjust: 100%;
+	}
 
 
-/* ==|== aParent Grid v1.0.0 ================================================
+/* ================================================================== *\
+   Typography ($typography)
+
+   Modular scale:    12px @ 1:1.333 (perfect fourth)
+   Important number: 20px (maximum <html> `font-size`)
+   http://modularscale.com/scale/?px1=12&px2=20&ra1=1.333&ra2=0
+\* ================================================================== */
+
+	/* html { font-size: 75%; } 12px */
+	/* @media only screen and (min-width: 320px)  { html { font-size: 81.25%; } } 13px */
+	/* @media only screen and (min-width: 480px)  { html { font-size: 87.5%;  } } 14px */
+	/* @media only screen and (min-width: 640px)  { html { font-size: 100%;   } } 16px */
+	/* @media only screen and (min-width: 960px)  { html { font-size: 112.5%; } } 18px */
+	/* @media only screen and (min-width: 1440px) { html { font-size: 125%;   } } 20px */
+	
+	html, body {
+		/* CSS3 TRANSITIONS */
+		-webkit-transition: font 0.218s ease-in-out;
+		 -khtml-transition: font 0.218s ease-in-out;
+		   -moz-transition: font 0.218s ease-in-out;
+			-ms-transition: font 0.218s ease-in-out;
+			 -o-transition: font 0.218s ease-in-out;
+				transition: font 0.218s ease-in-out;
+	}
+	html {
+		font-size: 75%;
+	}
+	body {
+		font-size: 13px;
+		font-size: 1.125rem;
+		line-height: 1.5;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: subpixel-antialiased;
+				font-smoothing: subpixel-antialiased;
+		}
+		input,
+		button,
+		select,
+		textarea {
+			font-size: inherit;
+			line-height: 1.5;
+		}
+		h1, .h1,
+		h2, .h2,
+		h3, .h3,
+		h4, .h4,
+		h5, .h5,
+		h6, .h6 {
+			font-family: inherit;
+			font-size: inherit;
+			font-weight: normal;
+			letter-spacing: -0.03333em;
+			line-height: 1.5;
+			margin-top: 1.5rem;
+			margin-bottom: 0;
+			text-rendering: optimizeLegibility;
+			text-transform: none;
+			white-space: normal;
+		}
+		/*
+		h1, .h1 {
+			font-size: 4.242rem;
+			line-height: 4.5rem;
+			margin-top: 3rem;
+		}
+		h2, .h2 {
+			font-size: 2.828rem;
+			line-height: 3rem;
+			margin-top: 3rem;
+		}
+		h3, .h3 {
+			font-size: 1.414rem;
+		}
+		h4, .h4 {
+			font-size: 0.707rem;
+		}
+		h5, .h5 {
+			font-size: 0.4713333333333333rem;
+		}
+		h6, .h6 {
+			font-size: 0.3535rem;
+		}*/
+		/* 12px/15px */
+		p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
+			line-height: 1.5rem;
+			margin: 0.5rem 0 1rem;
+		}
+		* + p, * + hr, * + ul, * + ol, * + dl, * + blockquote, * + pre, * + address, * + fieldset, * + figure {
+			margin-top: 0.75rem;
+		}
+		
+		h1, .h1 {
+			font-size: 2em;
+			line-height: 1.25;
+			}
+			@media (min-width: 43.75em) {
+				h1, .h1 {
+					font-size: 2.5em;
+					line-height: 1.125;
+				}
+			}
+			@media (min-width: 56.25em) {
+				h1, .h1 {
+					font-size: 3em;
+					line-height: 1.05;
+				}
+			}
+		h2, .h2 {
+			font-size: 1.625em;
+			letter-spacing: 0.02em;
+			line-height: 1.15384615;
+			}
+			@media (min-width: 43.75em) {
+				h2, .h2 {
+					font-size: 2em;
+					line-height: 1.25;
+				}
+			}
+			@media (min-width: 56.25em) {
+				h2, .h2 {
+					font-size: 2.25em; 
+					line-height: 1.25;
+				}
+			}
+		h3, .h3 {
+			font-size: 1.375em;
+			line-height: 1.13636364;
+			/*line-height: 0.75;*/
+			}
+			@media (min-width: 43.75em) {
+				h3, .h3 {
+					font-size: 1.5em;
+					line-height: 1.25;
+				}
+			}
+			@media (min-width: 56.25em) {
+				h3, .h3 {
+					font-size: 1.75em;
+					line-height: 1.25;
+				}
+			}
+		h4, .h4 {
+			font-size: 1.125em; 
+			line-height: 1.11111111;
+			}
+			@media (min-width: 43.75em) {
+				h4, .h4 {line-height: 1.22222222; }
+			}
+		blockquote {
+			font-size: 1.25em;
+			line-height: 1.25;
+			}
+			@media (min-width: 43.75em) {
+				blockquote {
+					font-size: 1.5em;
+					line-height: 1.45833333;
+				}
+			}
+		
+		body, caption, th, td,
+		input, select, option, textarea,
+		legend, fieldset,
+		ul, ol, li, dl,
+		h1, h2, h3, h4, h5, h6,
+		.h1, .h2, .h3, .h4, .h5, .h6 {
+			font-size-adjust: 0.5;
+		}
+		
+	@media only screen and (max-width: 767px) {
+		body {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust:     100%;
+			text-size-adjust:         100%;
+			width: 100%;
+			min-width: 0;
+		}
+	}
+
+
+
+/* ==|== TransParent Grid v1.0.0 ================================================
    Declare each row with '.row-#' class where # is equiv of column count
    ( where '#' == total # of columns in that particular row, ie. '.row-3' )
    ========================================================================== */
@@ -109,7 +263,8 @@ body {
 		}
 		.container-left { margin-left: 0; }
 		.container-right { margin-right: 0; }
-		.container .container { min-width: 0; width: 100%; }
+		.container .container { max-width: 100%; min-width: 0; width: 100%; }
+		
 	
 	
 	/* -- ROWS & COLUMNS -- */
@@ -119,26 +274,6 @@ body {
 		list-style: none;
 		position: relative;
 	}
-	
-	
-	/* -- BOX-SIZING -- */
-	[class^="row-"], 
-	[class^="row-"]:before,
-	[class^="row-"]:after,
-	[class^="col-"],
-	[class^="col-"]:before,
-	[class^="col-"]:after,
-	[class^="row-grid-"] > *,
-	[class^="row-grid-"] > *:before,
-	[class^="row-grid-"] > *:after {
-		 -webkit-box-sizing: border-box;
-		  -khtml-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			 -ms-box-sizing: content-box\9;
-			  -o-box-sizing: border-box;
-				 box-sizing: border-box;
-	}
-	
 	
 	/* -- ROWS -- */
 	[class^="row-"] {
@@ -159,15 +294,16 @@ body {
 		line-height: inherit;
 		margin-right: auto;
 		margin-left: auto;
-		/*padding: 0 0.625%;*/
+		padding: 0;
 		position: relative;
 		min-height: 1px;
 		text-align: left;
 		vertical-align: top;
 	}
 	
-	/*** MODIFIERS ***/
+	/* -- MODIFIERS -- */
 	
+	/* CENTERED COLUMNS */
 	[class^="row-"].row-center-cols {
 		display: inline-block;
 		text-align: center;
@@ -176,25 +312,48 @@ body {
 			float: none;
 		}
 	
-	/* -- ROWS: TABLE-BASED -- */
+	/* TABLE-BASED GRID */
 	table tr[class^="row-"] {
 		display: table-row;
-	}
+		}
+		table th[class^="col-"],
+		table td[class^="col-"] {
+			display: table-column;
+		}
 	
-	/* -- COLUMNS: TABLE-BASED -- */
-	table th[class^="col-"],
-	table td[class^="col-"] {
-		display: table-column;
-	}
-	
-	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS) -- */
+	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
 	[class^="row-"].row-padded {
 		margin-right: -0.5%;
 		margin-left: -0.25%;
+		}
+		[class^="row-"].row-padded > [class^="col-"] {
+			padding-right: 1%;
+			padding-left: 1%;
+		}
+
+	[class^="row-"].row-padded-med {
+		margin-right: -1%;
+		margin-left: -0.5%;
+		}
+		[class^="row-"].row-padded-med > [class^="col-"] {
+			padding-right: 2%;
+			padding-left: 2%;
+		}
+
+	[class^="row-"].row-padded-lrg {
+		margin-right: -1.5%;
+		margin-left: -0.75%;
+		}
+		[class^="row-"].row-padded-lrg > [class^="col-"] {
+			padding-right: 3%;
+			padding-left: 3%;
+		}
+
+	[class^="row-"][class^="row-padded"] > [class^="col-"]:first-child {
+		padding-left: 0;
 	}
-	[class^="row-"].row-padded > [class^="col-"] {
-		padding-right: 1%;
-		padding-left: 1%;
+	[class^="row-"][class^="row-padded"] > [class^="col-"]:last-child {
+		padding-right: 0;
 	}
 
 
@@ -516,7 +675,7 @@ body {
 
 
 /*	=========================================================================
-	Golden (1:1.618)
+	Golden Ratio (1:1.618)
 	========================================================================= */
 
 	.row-golden .col-golden-sml  { width: 37.196601125010524%; }
@@ -525,23 +684,24 @@ body {
 	.row-golden .col-push-golden-lrg { margin-left: 62.803398874989476%; }
 	
 /*
-.row-double-octave - Double octave (1:4)
-.row-major-twelfth - Major twelfth (1:3)
-.row-minor-second - Minor second (15:16)
-.row-major-second - Major second (8:9)
-.row-minor-third - Minor third (5:6)
-.row-major-third - Major third (4:5)
-.row-perfect-fourth - Perfect fourth (3:4)
-.row-augmented-fourth - Augmented fourth(1:√2)
-.row-perfect-fifth - Perfect fifth (2:3)
-.row-minor-sixth - Minor sixth (5:8)
-.row-major-sixth - Major sixth (3:5)
-.row-minor-seventh - Minor seventh (9:16)
-.row-major-seventh - Major seventh (8:15)
-.row-octave - Octave (1:2)
-.row-major-tenth - Major tenth (2:5)
-.row-major-eleventh - Major eleventh (3:8)
+.row-double-octave - Double Octave (1:4)
+.row-major-twelfth - Major Twelfth (1:3)
+.row-minor-second - Minor Second (15:16) 1.067
+.row-major-second - Major Second (8:9) 1.125
+.row-minor-third - Minor Third (5:6) 1.200
+.row-major-third - Major Third (4:5) 1.250
+.row-perfect-fourth - Perfect Fourth (3:4) 1.333
+.row-augmented-fourth - Augmented Fourth(1:√2) 1.414
+.row-perfect-fifth - Perfect Fifth (2:3) 1.500
+.row-minor-sixth - Minor Sixth (5:8) 1.600
+.row-major-sixth - Major Sixth (3:5) 1.667
+.row-minor-seventh - Minor Seventh (9:16) 1.778
+.row-major-seventh - Major Seventh (8:15) 1.875
+.row-octave - Octave (1:2) 2.000
+.row-major-tenth - Major Tenth (2:5) 2.500
+.row-major-eleventh - Major Eleventh (3:8)
 */
+
 
 
 /*	=========================================================================
@@ -574,34 +734,105 @@ body {
 /*	=========================================================================
 	$ALIGNMENTS / $FLOATS / $CLEARFIX - clear floats (h5bp.com/q)
 	========================================================================= */
-
-	.clearfix:before,
-	.clearfix:after
-	.container:before,
-	.container:after,
-	[class^="row"]:before,
-	[class^="row"]:after {
-		display: table;
-		content: " ";
-	}
+	
+	/*
+	 * Clearfix: contain floats
+	 *
+	 * For modern browsers
+	 * 1. The space content is one way to avoid an Opera bug when the
+	 *    `contenteditable` attribute is included anywhere else in the document.
+	 *    Otherwise it causes space to appear at the top and bottom of elements
+	 *    that receive the `clearfix` class.
+	 * 2. The use of `table` rather than `block` is only necessary if using
+	 *    `:before` to contain the top-margins of child elements.
+	 */
+	/* 
+	.cf:before, .cf:after,
+	.clearfix:before, .clearfix:after,
+	.container:before, .container:after,
+	[class^="row"]:before, [class^="row"]:after {
+	    content: " "; *//* 1 *//*
+	    display: table; *//* 2 *//*
+		}
+		.cf:after, .clearfix:after,
+		.container:after, [class^="row"]:after {
+		    clear: both;
+		}
+	*/
+	
+	.cf:after,
 	.clearfix:after,
 	.container:after,
 	[class^="row"]:after {
 		clear: both;
+		content: '';
+		display: block;
 	}
 
-	/* Other clear floats */
-	.clear			{	clear: both; }
-	.clear-left		{	clear: left; }
-	.clear-right	{	clear: right; }
+	/* NBFC - new block formatting context */
+	.nbfc { overflow: hidden; }
+	.nbfc-alt {
+		display: table-cell;
+		width: 10000px;
+	}
 	
-	.text-left, .align-left		{ text-align: left; }
-	.text-center, .align-center	{ text-align: center; }
-	.text-right, .align-right	{ text-align: right; }
+	/* CLEARS */
+	.clear,
+	.clear-both			{	clear: both; }
+	.clear-left			{	clear: left; }
+	.clear-right		{	clear: right; }
 
-	.float-left, .left			{ float: left; }
-	.float-right, .right		{ float: right; }
-	.float-none					{ float: none; }
+	/* FLOATS - block elements  */
+	.left,
+	.pull-left,
+	.float-left			{ float: left; }
+	.right,
+	.pull-right,
+	.float-right		{ float: right; }
+	.pull-none,
+	.float-none			{ float: none; }
+	
+	/* TEXT-ALIGN - inline elements */
+	.align-left,
+	.text-left	 		{ text-align: left; }
+	.align-center,
+	.text-center		{ text-align: center; }
+	.align-right,
+	.text-right			{ text-align: right; }
+	
+	/* VERTICAL-ALIGNMENT */
+	.valign {
+		display: table;
+		width: 100%;
+	}
+	.valign > div, .valign > article, .valign > section, .valign > figure {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+
+.flexbox .row {
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	-webkit-justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.flexbox .col {
+	margin: 0.5em;
+	min-height: 8em;
+	padding: 1em;
+	width: 25%;
+}
+
+.flexbox .col:nth-child(1) { background-color: #9df5ba; }
+.flexbox .col:nth-child(2) { background-color: #9df5d7; }
+.flexbox .col:nth-child(3) { background-color: #9df5f5; }
+.flexbox .col:nth-child(4) { background-color: #9dd7f5; }
 
 
 /*	=========================================================================
@@ -625,7 +856,7 @@ body {
 		.media .pull-right,
 		.media .right { margin-left: 1em; }
 		.media a > img { border: 1px solid #ddd; }
-		.media a:hover > img { border-color: #fb6913; }
+		.media a:hover > img { border-color: #bbb; }
 		.media-list {
 			margin-left: 0;
 			list-style: none;
@@ -639,7 +870,8 @@ body {
 		-ms-interpolation-mode : bicubic;
 		vertical-align: middle;
 	}
-	img,
+	.img-scale,
+	.img-scale img,
 	object,
 	embed,
 	video {
@@ -684,7 +916,7 @@ body {
 	/* FORM ELEMENTS */
 	input,
 	textarea {
-		/* remove the nasty inner shadow in the iPad and the iPhone */
+		/* remove inner shadow in the iPad and the iPhone */
 		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
 		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 		/* remove blue focus */
@@ -705,156 +937,191 @@ body {
 	[class^="col-"] > input[type="search"] { width: 95%; }
 
 	/* Restrict <textarea> elements to vertical resizing only */
-	textarea {
-		resize: vertical;
-	}
+	textarea { resize: vertical; }
 	
 
 /*	=========================================================================
 	$MEDIA QUERIES
 	========================================================================= */
 
-/*
-@media only screen and (min-width: 320px)  { html { font-size: 54.2%; } }
-@media only screen and (min-width: 480px)  { html { font-size: 62.5%;  } }
-@media only screen and (min-width: 768px)  { html { font-size: 75%;   } }
-@media only screen and (min-width: 960px)  { html { font-size: 81.3%; } }
-@media only screen and (min-width: 1440px) { html { font-size: 87.5%;   } }
-*/
-
-@media only screen and (min-width: 480px) { body { font-size: 10px; font-size: 1rem; } }
-@media only screen and (min-width: 768px) { body { font-size: 11px; font-size: 1.1rem; } }
-@media only screen and (min-width: 860px) { body { font-size: 12px; font-size: 1.2rem; } }
-@media only screen and (min-width: 992px) { body { font-size: 13px; font-size: 1.3rem; } }
-
- 
-/* Fix viewport for IE10 snap mode
- * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
- ========================================================================== */
-@-ms-viewport {
-	width: device-width;
-}
-
-@media screen and (max-width: 400px) {
+	/*
+	@media only screen and (min-width: 320px)  { html { font-size: 54.2%; } }
+	@media only screen and (min-width: 480px)  { html { font-size: 62.5%;  } }
+	@media only screen and (min-width: 768px)  { html { font-size: 75%;   } }
+	@media only screen and (min-width: 960px)  { html { font-size: 81.3%; } }
+	@media only screen and (min-width: 1440px) { html { font-size: 87.5%;   } }
+	
+	@media only screen and (min-width: 480px) { body { font-size: 10px; font-size: 1rem; } }
+	@media only screen and (min-width: 768px) { body { font-size: 11px; font-size: 1.1rem; } }
+	@media only screen and (min-width: 860px) { body { font-size: 12px; font-size: 1.2rem; } }
+	@media only screen and (min-width: 992px) { body { font-size: 13px; font-size: 1.3rem; } }
+	
+	@media screen and (min-width: 768px) { body { font-size: 1vw; } }
+	*/
+	
+	
+	/* Media Queries (mobile first device size classes) */
+	
+	/* Phone */
+	@media only screen {
+		
+	}
+	
+	/* Tablet - min-width 768px */
+	@media only screen and (min-width: 48em) {
+		
+	}
+	
+	/* Laptop - min-width 992px */
+	@media only screen and (min-width: 62em) {
+		
+	}
+	
+	/* Desktop - min-width 1200px */
+	@media only screen and (min-width: 75em) {
+		
+	}
+	
+	/* Other Media Queries used for devices with min and max used with show and hide classes */
+	/* Up to 767px */
+	@media only screen and (max-width: 47.938em) { }
+	/* 768px to 991px */
+	@media only screen and (min-width: 48em) and (max-width: 61.938em) { }
+	/*  992px to 1199px */
+	@media only screen and (min-width: 62em) and (max-width: 74.938em) { }
+	/* 1200px and up */
+	@media only screen and (min-width: 75em) { }
+	/* max-width 30em 480px (stack columns 30em and under) */
+	@media only screen and (max-width: 30em){ } 
+	
+	 
+	/* Fix viewport for IE10 snap mode
+	 * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+	 ========================================================================== */
 	@-ms-viewport {
-		width: 320px;
-	}
-}
-
-@media only screen and (max-width: 320px) {
-
-	.container {
-		width: 288px;
+		width: device-width;
 	}
 	
-}
-
-@media only screen and (max-width: 480px) {
-	
-	[class^="row-"] {
-		clear: both;
-		display: block;
-	}
-	[class^="col-"] {
-		clear: both;
-		display: block;
-		margin: 0 auto;
-		padding: 0;
-		width: 100% !important;
+	@media screen and (max-width: 400px) {
+		@-ms-viewport {
+			width: 320px;
 		}
-		[class^="col-"]:after {
-			content: "";
-			display: table;
-			clear: both;
+	}
+	
+	@media only screen and (max-width: 320px) {
+	
+		.container {
+			width: 288px;
 		}
 		
-	.container { width: 96%; }
-
-}
-/*
-@media screen and (max-width: 768px) {
+	}
 	
-	.container {
-		max-width: 728px;
+	@media only screen and (max-width: 480px) {
+		
+		[class^="row-"] {
+			clear: both;
+			display: block;
+		}
+		[class^="col-"] {
+			clear: both;
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+			width: 100% !important;
+			}
+			[class^="col-"]:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+		.container { width: 96%; }
+	
+	}
+	/*
+	@media screen and (max-width: 768px) {
+		
+		.container {
+			max-width: 728px;
+		}
+		
+		
+	}
+	 
+	@media screen and (min-width: 960px) {
+		
+		.container {
+			max-width: 940px;
+		}
+		
+	}
+	
+	*/
+	
+	/* High resolution devices -----------
+	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+		
+		
+	}
+	 */
+	
+	 
+	@media screen and (max-width: 240px) {
+		input,
+		textarea {
+			font-size: 14px;
+			min-width: 170px;
+			padding: 5px 4px 4px;
+		}
+	}
+	@media screen and (min-width: 241px) and (max-width: 320px) {
+		input,
+		textarea {
+			font-size: 16px;
+			min-width: 230px;
+			padding: 5px 4px 4px;
+		}
+	}
+	@media screen and (min-width: 321px) and (max-width: 480px) {
+		input,
+		textarea {
+			min-width: 310px;
+		}
 	}
 	
 	
-}
- 
-@media screen and (min-width: 960px) {
+	/* DISPLAY UTILS
+	================================================== */
+	.display-block { display: block !important; }
+	.display-inline { display: inline !important; }
+	.display-inline-block { display: inline-block !important; }
 	
-	.container {
-		max-width: 940px;
+	/* RESPONSIVE VISIBILITY
+	================================================== */
+	@media screen and (min-width: 960px) {
+		.show-sml { display: none !important; }
+		.show-med { display: none !important; }
+		.hide-lrg { display: none !important; }
+		.br-small { display: inline !important; }
+	}
+	@media screen and (min-width: 769px) and (max-width: 959px) {
+		.show-sml { display: none !important; }
+		.show-lrg { display: none !important ; }
+		.hide-med { display: none !important; }
+		.br-small { display: inline !important; }
+	}
+	@media screen and (max-width: 768px) {
+		.show-med { display: none !important; }
+		.show-lrg { display: none !important; }
+		.hide-sml { display: none !important; }
+		.br-small { display: block !important; }
 	}
 	
-}
-
-*/
-
-/* High resolution devices -----------
-@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-	
-	
-}
- */
-
- 
-@media screen and (max-width: 240px) {
-	input,
-	textarea {
-		font-size: 14px;
-		min-width: 170px;
-		padding: 5px 4px 4px;
-	}
-}
-@media screen and (min-width: 241px) and (max-width: 320px) {
-	input,
-	textarea {
-		font-size: 16px;
-		min-width: 230px;
-		padding: 5px 4px 4px;
-	}
-}
-@media screen and (min-width: 321px) and (max-width: 480px) {
-	input,
-	textarea {
-		min-width: 310px;
-	}
-}
-
-
-/* DISPLAY UTILS
-================================================== */
-.display-block { display: block !important; }
-.display-inline { display: inline !important; }
-.display-inline-block { display: inline-block !important; }
-
-/* RESPONSIVE VISIBILITY
-================================================== */
-@media screen and (min-width: 960px) {
-	.show-sml { display: none !important; }
-	.show-med { display: none !important; }
-	.hide-lrg { display: none !important; }
-	.br-small { display: inline !important; }
-}
-@media screen and (min-width: 769px) and (max-width: 959px) {
-	.show-sml { display: none !important; }
-	.show-lrg { display: none !important ; }
-	.hide-med { display: none !important; }
-	.br-small { display: inline !important; }
-}
-@media screen and (max-width: 768px) {
-	.show-med { display: none !important; }
-	.show-lrg { display: none !important; }
-	.hide-sml { display: none !important; }
-	.br-small { display: block !important; }
-}
-
-/* VISIBILITY UTILS
-================================================== */
-.hide { display: none !important; visibility: hidden !important; }
-.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
-.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
+	/* VISIBILITY UTILS
+	================================================== */
+	.hide { display: none !important; visibility: hidden !important; }
+	.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
+	.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
 
 
 /* EOF */
