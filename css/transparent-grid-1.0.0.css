@@ -27,13 +27,17 @@
 	/* BORDER-BOX BOX-SIZING METHOD
 	 *  http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 	 */
-	*,
-	*:before,
-	*:after {
+	* {
 				box-sizing: border-box;
 		   -moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
-	}
+		}
+		*:before,
+		*:after {
+					box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
 	
 	/* BASE */
 	
@@ -60,191 +64,12 @@
 	}
 
 
-/* ================================================================== *\
-   Typography ($typography)
-
-   Modular scale:    12px @ 1:1.333 (perfect fourth)
-   Important number: 20px (maximum <html> `font-size`)
-   http://modularscale.com/scale/?px1=12&px2=20&ra1=1.333&ra2=0
-\* ================================================================== */
-
-	/* html { font-size: 75%; } 12px */
-	/* @media only screen and (min-width: 320px)  { html { font-size: 81.25%; } } 13px */
-	/* @media only screen and (min-width: 480px)  { html { font-size: 87.5%;  } } 14px */
-	/* @media only screen and (min-width: 640px)  { html { font-size: 100%;   } } 16px */
-	/* @media only screen and (min-width: 960px)  { html { font-size: 112.5%; } } 18px */
-	/* @media only screen and (min-width: 1440px) { html { font-size: 125%;   } } 20px */
-	
-	html, body {
-		/* CSS3 TRANSITIONS */
-		-webkit-transition: font 0.218s ease-in-out;
-		 -khtml-transition: font 0.218s ease-in-out;
-		   -moz-transition: font 0.218s ease-in-out;
-			-ms-transition: font 0.218s ease-in-out;
-			 -o-transition: font 0.218s ease-in-out;
-				transition: font 0.218s ease-in-out;
-	}
-	html {
-		font-size: 75%;
-	}
-	body {
-		font-size: 13px;
-		font-size: 1.125rem;
-		line-height: 1.5;
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: subpixel-antialiased;
-				font-smoothing: subpixel-antialiased;
-		}
-		input,
-		button,
-		select,
-		textarea {
-			font-size: inherit;
-			line-height: 1.5;
-		}
-		h1, .h1,
-		h2, .h2,
-		h3, .h3,
-		h4, .h4,
-		h5, .h5,
-		h6, .h6 {
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: normal;
-			letter-spacing: -0.03333em;
-			line-height: 1.5;
-			margin-top: 1.5rem;
-			margin-bottom: 0;
-			text-rendering: optimizeLegibility;
-			text-transform: none;
-			white-space: normal;
-		}
-		/*
-		h1, .h1 {
-			font-size: 4.242rem;
-			line-height: 4.5rem;
-			margin-top: 3rem;
-		}
-		h2, .h2 {
-			font-size: 2.828rem;
-			line-height: 3rem;
-			margin-top: 3rem;
-		}
-		h3, .h3 {
-			font-size: 1.414rem;
-		}
-		h4, .h4 {
-			font-size: 0.707rem;
-		}
-		h5, .h5 {
-			font-size: 0.4713333333333333rem;
-		}
-		h6, .h6 {
-			font-size: 0.3535rem;
-		}*/
-		/* 12px/15px */
-		p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
-			line-height: 1.5rem;
-			margin: 0.5rem 0 1rem;
-		}
-		* + p, * + hr, * + ul, * + ol, * + dl, * + blockquote, * + pre, * + address, * + fieldset, * + figure {
-			margin-top: 0.75rem;
-		}
-		
-		h1, .h1 {
-			font-size: 2em;
-			line-height: 1.25;
-			}
-			@media (min-width: 43.75em) {
-				h1, .h1 {
-					font-size: 2.5em;
-					line-height: 1.125;
-				}
-			}
-			@media (min-width: 56.25em) {
-				h1, .h1 {
-					font-size: 3em;
-					line-height: 1.05;
-				}
-			}
-		h2, .h2 {
-			font-size: 1.625em;
-			letter-spacing: 0.02em;
-			line-height: 1.15384615;
-			}
-			@media (min-width: 43.75em) {
-				h2, .h2 {
-					font-size: 2em;
-					line-height: 1.25;
-				}
-			}
-			@media (min-width: 56.25em) {
-				h2, .h2 {
-					font-size: 2.25em; 
-					line-height: 1.25;
-				}
-			}
-		h3, .h3 {
-			font-size: 1.375em;
-			line-height: 1.13636364;
-			/*line-height: 0.75;*/
-			}
-			@media (min-width: 43.75em) {
-				h3, .h3 {
-					font-size: 1.5em;
-					line-height: 1.25;
-				}
-			}
-			@media (min-width: 56.25em) {
-				h3, .h3 {
-					font-size: 1.75em;
-					line-height: 1.25;
-				}
-			}
-		h4, .h4 {
-			font-size: 1.125em; 
-			line-height: 1.11111111;
-			}
-			@media (min-width: 43.75em) {
-				h4, .h4 {line-height: 1.22222222; }
-			}
-		blockquote {
-			font-size: 1.25em;
-			line-height: 1.25;
-			}
-			@media (min-width: 43.75em) {
-				blockquote {
-					font-size: 1.5em;
-					line-height: 1.45833333;
-				}
-			}
-		
-		body, caption, th, td,
-		input, select, option, textarea,
-		legend, fieldset,
-		ul, ol, li, dl,
-		h1, h2, h3, h4, h5, h6,
-		.h1, .h2, .h3, .h4, .h5, .h6 {
-			font-size-adjust: 0.5;
-		}
-		
-	@media only screen and (max-width: 767px) {
-		body {
-			-webkit-text-size-adjust: 100%;
-			-ms-text-size-adjust:     100%;
-			text-size-adjust:         100%;
-			width: 100%;
-			min-width: 0;
-		}
-	}
-
-
 
 /* ==|== TransParent Grid v1.0.0 ================================================
    Declare each row with '.row-#' class where # is equiv of column count
    ( where '#' == total # of columns in that particular row, ie. '.row-3' )
    ========================================================================== */
-
+		
 	/* -- CONTAINER - Sets 'max-width' to resize for various viewports -- */
 	.container {
 		margin-right: auto;
@@ -278,28 +103,43 @@
 	/* -- ROWS -- */
 	[class^="row-"] {
 		display: block;
+		letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+		*letter-spacing: normal; /* reset IE < 8 */
 		margin-right: auto;
 		margin-left: auto;
 		padding: 0;
 		text-align: left;
-		text-rendering: optimizespeed;
 		width: 100%;
-	}
-		
+		*word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+		text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+		}
+		/* Opera as of 12 on Windows needs word-spacing.
+		The ".opera-only" selector is used to prevent actual prefocus styling
+		and is not required in markup.
+		*/
+		.opera-only :-o-prefocus,
+		[class^="row-"] {
+			word-spacing: -0.43em;
+		}
+	
 	/* -- COLUMNS -- */
 	[class^="col-"],
 	[class^="row-grid-"] > * {
 		display: inline-block;
 		float: left;
+		letter-spacing: normal;
 		line-height: inherit;
 		margin-right: auto;
 		margin-left: auto;
-		padding: 0;
+		padding: 0 1em;
 		position: relative;
 		min-height: 1px;
 		text-align: left;
+		text-rendering: auto;
 		vertical-align: top;
+		word-spacing: normal;
 	}
+
 	
 	/* -- MODIFIERS -- */
 	
@@ -322,32 +162,24 @@
 		}
 	
 	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
-	[class^="row-"].row-padded {
-		margin-right: -0.5%;
-		margin-left: -0.25%;
-		}
-		[class^="row-"].row-padded > [class^="col-"] {
-			padding-right: 1%;
-			padding-left: 1%;
-		}
+	
+	/* BASE PADDING */
+	[class^="row-"].row-padded > [class^="col-"] {
+		padding-right: 1.5%;
+		padding-left: 1.5%;
+	}
 
-	[class^="row-"].row-padded-med {
-		margin-right: -1%;
-		margin-left: -0.5%;
-		}
-		[class^="row-"].row-padded-med > [class^="col-"] {
-			padding-right: 2%;
-			padding-left: 2%;
-		}
+	/* MEDIUM PADDING */
+	[class^="row-"].row-padded-med > [class^="col-"] {
+		padding-right: 3%;
+		padding-left: 3%;
+	}
 
-	[class^="row-"].row-padded-lrg {
-		margin-right: -1.5%;
-		margin-left: -0.75%;
-		}
-		[class^="row-"].row-padded-lrg > [class^="col-"] {
-			padding-right: 3%;
-			padding-left: 3%;
-		}
+	/* LARGE PADDING */
+	[class^="row-"].row-padded-lrg > [class^="col-"] {
+		padding-right: 5%;
+		padding-left: 5%;
+	}
 
 	[class^="row-"][class^="row-padded"] > [class^="col-"]:first-child {
 		padding-left: 0;
@@ -745,23 +577,16 @@
 	 *    that receive the `clearfix` class.
 	 * 2. The use of `table` rather than `block` is only necessary if using
 	 *    `:before` to contain the top-margins of child elements.
-	 */
-	/* 
-	.cf:before, .cf:after,
-	.clearfix:before, .clearfix:after,
-	.container:before, .container:after,
-	[class^="row"]:before, [class^="row"]:after {
-	    content: " "; *//* 1 *//*
-	    display: table; *//* 2 *//*
+	 */ 
+	.clearfix:before, .clearfix:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
 		}
-		.cf:after, .clearfix:after,
-		.container:after, [class^="row"]:after {
+		.clearfix:after {
 		    clear: both;
 		}
-	*/
 	
 	.cf:after,
-	.clearfix:after,
 	.container:after,
 	[class^="row"]:after {
 		clear: both;
@@ -811,30 +636,6 @@
 	}
 
 
-.flexbox .row {
-	display: -webkit-flex;
-	-webkit-flex-direction: row;
-	-webkit-flex-wrap: nowrap;
-	-webkit-justify-content: space-between;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-}
-
-.flexbox .col {
-	margin: 0.5em;
-	min-height: 8em;
-	padding: 1em;
-	width: 25%;
-}
-
-.flexbox .col:nth-child(1) { background-color: #9df5ba; }
-.flexbox .col:nth-child(2) { background-color: #9df5d7; }
-.flexbox .col:nth-child(3) { background-color: #9df5f5; }
-.flexbox .col:nth-child(4) { background-color: #9dd7f5; }
-
-
 /*	=========================================================================
 	$MEDIA
 	========================================================================= */
@@ -872,12 +673,25 @@
 	}
 	.img-scale,
 	.img-scale img,
+	canvas,
+	iframe,
+	video,
+	svg {
+		max-width: 100%;
+	}
+	.img-scale,
+	.img-scale img,
 	object,
 	embed,
 	video {
-		max-width: 100%;	/* Set a maximum width limited by the width of the parent */
 		width: auto\9;		/* IE7-8 need help adjusting responsive images */
 		height: auto;		/* Constrain the height by the ratio to the width */
+	}
+
+	/* Wrap tables or pre elements in a div with this */
+	.overflow-container {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 	}
 	
 	/*
@@ -889,6 +703,33 @@
 	img[src*="maps.gstatic.com"],
 	img[src*="googleapis.com"] {
 		max-width: none;
+	}
+	
+	.flex-map {
+		position: relative;
+		padding-bottom: 56.25%; /* 16:9 */
+		height: 0;
+		}
+		.flex-map iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+		}
+		
+	/* Google Gmap3 bug fix on images */
+	:not(.gm-style) img {
+		height: auto !important;
+	}
+	.lt-9 .gm-style img {
+		height: 100%;
+	}
+	.gm-style img,
+	.gmnoscreen img,
+	.gmnoprint img {
+		max-width: none !important;
 	}
 	
 	/* FLEX VIDEO */
@@ -929,12 +770,15 @@
 	[class^="col-"] > input[type="url"],
 	[class^="col-"] > input[type="password"],
 	[class^="col-"] > select,
-	[class^="col-"] > textarea {
+	[class^="col-"] > textarea,
+	[class^="col-"] > input[type="submit"] {
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
 	}
-	[class^="col-"] > input[type="search"] { width: 95%; }
+	[class^="col-"] > input[type="search"] {
+		width: 95%;
+	}
 
 	/* Restrict <textarea> elements to vertical resizing only */
 	textarea { resize: vertical; }
@@ -943,23 +787,6 @@
 /*	=========================================================================
 	$MEDIA QUERIES
 	========================================================================= */
-
-	/*
-	@media only screen and (min-width: 320px)  { html { font-size: 54.2%; } }
-	@media only screen and (min-width: 480px)  { html { font-size: 62.5%;  } }
-	@media only screen and (min-width: 768px)  { html { font-size: 75%;   } }
-	@media only screen and (min-width: 960px)  { html { font-size: 81.3%; } }
-	@media only screen and (min-width: 1440px) { html { font-size: 87.5%;   } }
-	
-	@media only screen and (min-width: 480px) { body { font-size: 10px; font-size: 1rem; } }
-	@media only screen and (min-width: 768px) { body { font-size: 11px; font-size: 1.1rem; } }
-	@media only screen and (min-width: 860px) { body { font-size: 12px; font-size: 1.2rem; } }
-	@media only screen and (min-width: 992px) { body { font-size: 13px; font-size: 1.3rem; } }
-	
-	@media screen and (min-width: 768px) { body { font-size: 1vw; } }
-	*/
-	
-	
 	/* Media Queries (mobile first device size classes) */
 	
 	/* Phone */
@@ -983,16 +810,46 @@
 	}
 	
 	/* Other Media Queries used for devices with min and max used with show and hide classes */
+	
 	/* Up to 767px */
-	@media only screen and (max-width: 47.938em) { }
+	@media only screen and (max-width: 47.938em) {
+		
+	}
+	
 	/* 768px to 991px */
-	@media only screen and (min-width: 48em) and (max-width: 61.938em) { }
+	@media only screen and (min-width: 48em) and (max-width: 61.938em) {
+		
+	}
+	
 	/*  992px to 1199px */
-	@media only screen and (min-width: 62em) and (max-width: 74.938em) { }
+	@media only screen and (min-width: 62em) and (max-width: 74.938em) {
+		
+	}
+	
 	/* 1200px and up */
-	@media only screen and (min-width: 75em) { }
+	@media only screen and (min-width: 75em) {
+		
+	}
+	
 	/* max-width 30em 480px (stack columns 30em and under) */
-	@media only screen and (max-width: 30em){ } 
+	@media only screen and (max-width: 30em){
+		[class^="row-"] {
+			clear: both;
+			display: block;
+		}
+		[class^="col-"] {
+			clear: both;
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+			width: 100% !important;
+			}
+			[class^="col-"]:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+	} 
 	
 	 
 	/* Fix viewport for IE10 snap mode
@@ -1010,83 +867,33 @@
 	
 	@media only screen and (max-width: 320px) {
 	
-		.container {
-			width: 288px;
-		}
+		
 		
 	}
 	
 	@media only screen and (max-width: 480px) {
-		
-		[class^="row-"] {
-			clear: both;
-			display: block;
-		}
-		[class^="col-"] {
-			clear: both;
-			display: block;
-			margin: 0 auto;
-			padding: 0;
-			width: 100% !important;
-			}
-			[class^="col-"]:after {
-				content: "";
-				display: table;
-				clear: both;
-			}
 			
-		.container { width: 96%; }
+		
 	
 	}
-	/*
+
 	@media screen and (max-width: 768px) {
 		
-		.container {
-			max-width: 728px;
-		}
 		
 		
 	}
 	 
 	@media screen and (min-width: 960px) {
 		
-		.container {
-			max-width: 940px;
-		}
+		
 		
 	}
 	
-	*/
-	
-	/* High resolution devices -----------
+	/* High resolution devices ----------- */
 	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
 		
 		
-	}
-	 */
-	
-	 
-	@media screen and (max-width: 240px) {
-		input,
-		textarea {
-			font-size: 14px;
-			min-width: 170px;
-			padding: 5px 4px 4px;
-		}
-	}
-	@media screen and (min-width: 241px) and (max-width: 320px) {
-		input,
-		textarea {
-			font-size: 16px;
-			min-width: 230px;
-			padding: 5px 4px 4px;
-		}
-	}
-	@media screen and (min-width: 321px) and (max-width: 480px) {
-		input,
-		textarea {
-			min-width: 310px;
-		}
+		
 	}
 	
 	
