@@ -93,22 +93,22 @@
 	
 	
 	/* -- ROWS & COLUMNS -- */
-	[class^="row-"],
-	[class^="col-"],
-	[class^="row-grid-"] > * {
+	[class*="row-"],
+	[class*="col-"],
+	[class*="row-grid-"] > * {
 		list-style: none;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 0;
 		position: relative;
 	}
 	
 	/* -- ROWS -- */
-	[class^="row-"] {
+	[class*="row-"] {
 		display: block;
 		letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
 		*letter-spacing: normal; /* reset IE < 8 */
-		margin-right: auto;
-		margin-left: auto;
-		padding: 0;
-		text-align: left;
+		text-align: center;
 		width: 100%;
 		*word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
 		text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
@@ -118,25 +118,28 @@
 		and is not required in markup.
 		*/
 		.opera-only :-o-prefocus,
-		[class^="row-"] {
+		[class*="row-"] {
 			word-spacing: -0.43em;
 		}
 	
 	/* -- COLUMNS -- */
-	[class^="col-"],
-	[class^="row-grid-"] > * {
+	[class*="col-"],
+	[class*="row-grid-"] > * {
 		display: inline-block;
 		float: left;
-		letter-spacing: normal;
 		line-height: inherit;
-		margin-right: auto;
-		margin-left: auto;
-		padding: 0 1em;
 		position: relative;
 		min-height: 1px;
 		text-align: left;
 		text-rendering: auto;
 		vertical-align: top;
+	}
+	
+	/* Reset letter-spacing and word-spacing */
+	[class*="row-"] > *,
+	[class*="col-"],
+	[class*="row-grid-"] > * {
+		letter-spacing: normal;
 		word-spacing: normal;
 	}
 
@@ -144,49 +147,61 @@
 	/* -- MODIFIERS -- */
 	
 	/* CENTERED COLUMNS */
-	[class^="row-"].row-center-cols {
+	[class*="row-"].row-center-cols {
 		display: inline-block;
 		text-align: center;
 		}
-		[class^="row-"].row-center-cols > [class^="col-"] {
+		[class*="row-"].row-center-cols > [class*="col-"] {
 			float: none;
 		}
 	
 	/* TABLE-BASED GRID */
-	table tr[class^="row-"] {
+	table tr[class*="row-"] {
 		display: table-row;
 		}
-		table th[class^="col-"],
-		table td[class^="col-"] {
+		table th[class*="col-"],
+		table td[class*="col-"] {
 			display: table-column;
 		}
 	
 	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
 	
-	/* BASE PADDING */
-	[class^="row-"].row-padded > [class^="col-"] {
-		padding-right: 1.5%;
-		padding-left: 1.5%;
-	}
+	/* NORMAL PADDING */
+	[class*="row-"].row-padded {
+		margin-right: -1%;
+		margin-left: -1%;
+		padding-right: 1%;
+		padding-left: 1%;
+		}
+		[class*="row-"].row-padded > [class*="col-"] {
+			padding-right: 1%;
+			padding-left: 1%;
+		}
 
 	/* MEDIUM PADDING */
-	[class^="row-"].row-padded-med > [class^="col-"] {
-		padding-right: 3%;
-		padding-left: 3%;
-	}
+	[class*="row-"].row-padded-med {
+		margin-right: -2%;
+		margin-left: -2%;
+		padding-right: 2%;
+		padding-left: 2%;
+		}
+		[class*="row-"].row-padded-med > [class*="col-"] {
+			padding-right: 2%;
+			padding-left: 2%;
+		}
 
 	/* LARGE PADDING */
-	[class^="row-"].row-padded-lrg > [class^="col-"] {
-		padding-right: 5%;
-		padding-left: 5%;
-	}
+	[class*="row-"].row-padded-lrg {
+		margin-right: -4%;
+		margin-left: -4%;
+		padding-right: 4%;
+		padding-left: 4%;
+		}
+		[class*="row-"].row-padded-lrg > [class*="col-"] {
+			padding-right: 4%;
+			padding-left: 4%;
+		}
 
-	[class^="row-"][class^="row-padded"] > [class^="col-"]:first-child {
-		padding-left: 0;
-	}
-	[class^="row-"][class^="row-padded"] > [class^="col-"]:last-child {
-		padding-right: 0;
-	}
 
 
 /* COLUMN WIDTHS
@@ -588,7 +603,7 @@
 	
 	.cf:after,
 	.container:after,
-	[class^="row"]:after {
+	[class*="row"]:after {
 		clear: both;
 		content: '';
 		display: block;
@@ -763,20 +778,20 @@
 		/* remove blue focus */
 		outline: none !important;
 	}
-	[class^="col-"] > input[type="text"],
-	[class^="col-"] > input[type="email"],
-	[class^="col-"] > input[type="tel"],
-	[class^="col-"] > input[type="search"],
-	[class^="col-"] > input[type="url"],
-	[class^="col-"] > input[type="password"],
-	[class^="col-"] > select,
-	[class^="col-"] > textarea,
-	[class^="col-"] > input[type="submit"] {
+	[class*="col-"] > input[type="text"],
+	[class*="col-"] > input[type="email"],
+	[class*="col-"] > input[type="tel"],
+	[class*="col-"] > input[type="search"],
+	[class*="col-"] > input[type="url"],
+	[class*="col-"] > input[type="password"],
+	[class*="col-"] > select,
+	[class*="col-"] > textarea,
+	[class*="col-"] > input[type="submit"] {
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
 	}
-	[class^="col-"] > input[type="search"] {
+	[class*="col-"] > input[type="search"] {
 		width: 95%;
 	}
 
@@ -833,18 +848,18 @@
 	
 	/* max-width 30em 480px (stack columns 30em and under) */
 	@media only screen and (max-width: 30em){
-		[class^="row-"] {
+		[class*="row-"] {
 			clear: both;
 			display: block;
 		}
-		[class^="col-"] {
+		[class*="col-"] {
 			clear: both;
 			display: block;
 			margin: 0 auto;
 			padding: 0;
 			width: 100% !important;
 			}
-			[class^="col-"]:after {
+			[class*="col-"]:after {
 				content: "";
 				display: table;
 				clear: both;
