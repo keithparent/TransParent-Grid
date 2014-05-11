@@ -171,237 +171,428 @@
 /*------------------------------------*\
 	$FORM ELEMENTS
 \*------------------------------------*/
+
+/*
+ * Add range styles for IE8 and IE9
+ */
+input[type="range"] {
+    padding: .25em 0;
+    padding: .25em \9;
+    background-color: #fff \9;
+    border: 1px solid transparent;
+    border: 1px solid #c0c0c0 \9;
+}
+
+/*
+ * 1. Remove borders and padding on range controls in IE10+
+ */
+x::-ms-reveal,
+input[type="range"] { /* 1 */
+    border: 1px solid transparent;
+    padding: .25em 0;
+}
+
+/*
+ * Fix field styling on iPhone and iPad.
+ * 1. Strip OS styling on IOS
+ */
+select,
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="week"],
+input[type="month"],
+input[type="time"],
+input[type="number"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+input[type="url"],
+input[type="color"] {
+    -webkit-appearance: none; /* 1 */
+}
+
+@media (-webkit-min-device-pixel-ratio:0) {
+
+    /*
+     * Fix field styling on iPhone and iPad.
+     * 1. Add a select indicator
+     */
+    select {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMC4wMzEiIGhlaWdodD0iMTAuNSI+PHBvbHlnb24gZmlsbD0iIzIyMiIgcG9pbnRzPSIxMSwwIDUuNSw5IDAsMCIvPjwvc3ZnPg==); /* 1 */
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 1.67em;
+    }
+
+    /*
+     * Fix changing height issues on iOS7.
+     */
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="week"],
+    input[type="month"],
+    input[type="time"],
+    input[type="number"] {
+        min-height: 2em;
+    }
+
+    /*
+     * Remove excess padding in Webkit
+     */
+    input[type="color"] {
+        min-height: 1.8em;
+        padding: 0;
+    }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+}
+
+/*
+ * Declared separately to reduce selector duplication
+ * for padding
+ */
+input[type="radio"],
+input[type="checkbox"] {
+    padding: 0;
+    display: block;
+    margin: .1875em .1875em .1875em 0;
+    width: auto;
+    min-height: 1em;
+    min-width: 1em;
+    line-height: inherit;
+}
+
+input[type="radio"] {
+    border-color: transparent \9;
+    border-radius: 1em;
+}
+
+/*
+ * Textareas : Multiple resizable options.
+ * 1: Horizontal
+ * 2: Vertical
+ * 3: None
+ */
+textarea {
+    height: auto;
+    resize: both;
+    min-height: 5.25em;
+}
+
+    textarea.horizontal {
+        resize: horizontal; /* 1 */
+    }
+
+    textarea.vertical {
+        resize: vertical; /* 2 */
+    }
+
+    textarea.no-resize {
+        resize: none; /* 3 */
+    }
+
+select option {
+    height: 100%;
+}
+
+/* 
+ * Focus 
+ */
+textarea:focus,
+input:focus,
+select:focus,
+.no-edit:focus {
+    border: 1px solid #00a9ec;
+    outline: 0;
+}
+
+input[type="range"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:checked {
+    border-color: transparent;
+    outline: 1px solid #00a9ec;
+    outline-offset: -1px;
+}
+
+input[type="checkbox"]:focus,
+input[type="checkbox"]:checked {
+    border-color: #c0c0c0;
+}
+
+/*
+ * Read only
+ */
+.no-edit,
+[readonly] {
+    cursor: not-allowed;
+    border-color: #ebebeb;
+}
+
+/* 
+ * Disabled 
+ * 1. Override the value set in normalize.css
+ * 2. Fix IOS 6/7 opacity issue
+ */
+input[disabled],
+select[disabled],
+textarea[disabled] {
+    cursor: not-allowed !important; /* 1 */
+    background-color: #ebebeb;
+    border-color: #c0c0c0;
+    color: #c0c0c0;
+    outline: 0 !important;
+    opacity: 1;
+}
+
+label > input,
+label > input[type="checkbox"],
+label > input[type="radio"],
+label > select {
+    display: inline-block;
+    margin: 0 1em 0 0;
+    vertical-align: text-top;
+}
+
+
 	fieldset { margin-bottom: 2em; }
 	legend { font-size: 0.85em; letter-spacing: 0.33em; padding-left: 0.33em; text-transform: uppercase; }
 
 
 /*** ALL BUTTONS, INPUTS, SELECTS, & TEXTAREAS ***/
-button, input, select, textarea,
-.btn, .input {
-	border: 1px solid #d5d3d7;
-	color: #74568a;
-	display: inline-block;
-	*display: inline; *zoom: 1;
-	font-size: inherit;
-	line-height: normal;
-	margin: auto;
-	padding: 0.5em;
-	vertical-align: middle;
-	width: auto;
-	-webkit-transition: border 0.109s ease, -webkit-box-shadow 0.436s ease-in-out;
-			transition: border 0.109s ease, box-shadow 0.436s ease-in-out;
-	}
-	button:hover, input:hover, select:hover, textarea:hover,
-	.btn:hover, .input:hover {
-		background: #fcf9ff;
-		border-color: #a19fa3;
-		color: #5d4d62;
-	}
-	button:active, input:active, select:active, textarea:active,
-	.btn:active, .input:active {
-		background: #fff;
-		-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-				box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-	}
-	button:focus, button:active, input:focus, input:active,
-	select:focus, select:actve, textarea:focus, textarea:active,
-	.btn:focus, .btn:active, .input:focus .input:active {
-		outline: 0;
-	}
+	button, input, select, textarea,
+	.btn, .input {
+		border: 1px solid #c3c1c5;
+		color: #74568a;
+		display: inline-block;
+		*display: inline; *zoom: 1;
+		font-size: inherit;
+		line-height: normal;
+		margin: auto;
+		padding: 0.5em;
+		vertical-align: middle;
+		width: auto;
+		-webkit-transition: border 0.109s ease, -webkit-box-shadow 0.436s ease-in-out;
+				transition: border 0.109s ease, box-shadow 0.436s ease-in-out;
+		}
+		button:hover, input:hover, select:hover, textarea:hover,
+		.btn:hover, .input:hover {
+			background: #fcf9ff;
+			border-color: #a19fa3;
+			color: #5d4d62;
+		}
+		button:active, input:active, select:active, textarea:active,
+		.btn:active, .input:active {
+			background: #fff;
+			-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+					box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+		}
 	
-/*** INPUT, SELECT, TEXTAREA ***/
-input,
-input[type="password"],
-input[type="search"],
-isindex {
-	-webkit-appearance: textfield;
-	border-image-source: initial;
-	border-image-slice: initial;
-	border-image-width: initial;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	-webkit-rtl-ordering: logical;
-	-webkit-user-select: text;
-	cursor: auto;
-}
-input[type="text"], input[type="email"], input[type="url"], input[type="number"],
-input[type="search"], input[type="tel"], input[type="password"],
-.input, select, textarea {
-	background: #fbf9fd;
-	border-color: #c3c1c5;
-	border-top-color: #a19fa3;
-	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-			box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-	}
-	input[type="text"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="number"]:hover,
-	input[type="search"]:hover, input[type="tel"]:hover, input[type="password"]:hover,
-	.input:hover, select:hover, textarea:hover {
-		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
-				box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
-	}
-	input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="number"]:focus,
-	input[type="search"]:focus, input[type="tel"]:focus, input[type="password"]:focus, .input:focus,
-	select:focus, textarea:focus,
-	label:active + input,
-	label:active + textarea {
-		background-color: #fff;
-		border-color: #7642a4;
-		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
-				box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
-	}
-	input[type="password"] { -webkit-text-security: square; }
-	input[type="image"] { border: none; padding: 0; }
-	input[type="image"], 
+/* INPUT, SELECT, TEXTAREA */
+	input[type="text"], input[type="email"], input[type="url"], input[type="number"],
+	input[type="search"], input[type="tel"], input[type="password"], input[type="checkbox"], input[type="radio"],
+	.input, select, textarea {
+		background: #fbf9fd;
+		border-top-color: #a19fa3;
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+				box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+		}
+		input[type="text"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="number"]:hover,
+		input[type="search"]:hover, input[type="tel"]:hover, input[type="password"]:hover,
+		.input:hover, select:hover, textarea:hover {
+			-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+					box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+		}
+		input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="number"]:focus,
+		input[type="search"]:focus, input[type="tel"]:focus, input[type="password"]:focus, .input:focus,
+		select:focus, select:active, textarea:focus,
+		label:active + input,
+		label:active + textarea {
+			background-color: #fff;
+			border-color: #7642a4;
+			-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
+					box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 2px rgba(169,142,176,0.7);
+		}
+		
+		input,
+		input[type="password"],
+		input[type="search"],
+		isindex {
+			-webkit-appearance: textfield;
+			border-image-source: initial;
+			border-image-slice: initial;
+			border-image-width: initial;
+			border-image-outset: initial;
+			border-image-repeat: initial;
+			-webkit-rtl-ordering: logical;
+			-webkit-user-select: text;
+			cursor: auto;
+		}
+		
+		input[type="password"] { -webkit-text-security: square; }
+		input[type="image"] { border: none; padding: 0; }
+		input[type="image"], 
+		input[type="checkbox"],
+		input[type="radio"] {
+			cursor: pointer;
+			display: inline-block;
+			height: auto;
+			line-height: normal;
+			margin: 0;
+			padding: 0;
+			width: auto;
+		}
+
+/* Checkbooms & Radios */
 	input[type="checkbox"],
 	input[type="radio"] {
-		cursor: pointer;
-		display: inline-block;
-		height: auto;
-		line-height: normal;
-		margin: 0;
-		padding: 0;
-		width: auto;
-	}
-
-/*** Checkbooms & Radios ***/
-input[type="checkbox"],
-input[type="radio"] {
-	 -webkit-appearance: none;
-		-moz-appearance: none;
-			 appearance: none;
-	-moz-box-orient: vertical;
-	width: 14px;
-	height: 14px;
-	background: #fff;
-	border: 1px solid #c3c1c5;
-	border-top-color: #b4b2b6;
-	border-width: 0\9;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-	position: relative;
-	}
-	input[type="radio"] {
-		-webkit-border-radius: 1em;
-		-moz-border-radius: 1em;
-		border-radius: 1em;
-		width: 15px;
-		height: 15px;
-	}
-	input[type="checkbox"]:hover,
-	input[type="radio"]:hover {
-		background: #fcf9ff;
-		border-color: #a19fa3;
-		border-top-color: #817f83;
-		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
-		box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
-		box-shadow: none\9;
-	}
-	input[type="checkbox"]:active,
-	input[type="radio"]:active {
-		background: #f3e9f9;
-		border-color: #9456b4;
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0);
-	}
-	input[type="checkbox"]:checked,
-	input[type="radio"]:checked {
-		background: #fdfbff;
-		border-color: #97b;
-	}
-	input[type="checkbox"]:checked::after {
-		color: #657;
-		content: "\f00c";
-		display: block;
-		font-family: 'FontAwesome', sans-serif;
-		position: absolute;
-		top: -2px; left: 0;
-	}
-	input[type="checkbox"]:hover:checked::after {
-		color: #7642a4;
-	}
-	input[type="radio"]:checked::after {
-		content: '';
-		display: block;
+		 -webkit-appearance: none;
+			-moz-appearance: none;
+				 appearance: none;
+		-moz-box-orient: vertical;
+		width: 14px;
+		height: 14px;
+		background: #fff;
+		border-width: 0\9;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+				box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
 		position: relative;
-		top: 3px;
-		left: 3px;
-		width: 7px;
-		height: 7px;
-		background: #657;
-		-webkit-border-radius: 1em;
-		-moz-border-radius: 1em;
-		border-radius: 1em;
 		}
-		input[type="radio"]:hover:checked::after { background: #7642a4/*#678*/; }
-		input[type="checkbox"]:focus,
-		input[type="radio"]:focus {
-			outline: none;
+		input[type="radio"] {
+			width: 15px;
+			height: 15px;
 		}
+		input[type="checkbox"]:hover,
+		input[type="radio"]:hover {
+			background: #fcf9ff;
+			border-color: #a19fa3;
+			border-top-color: #817f83;
+			-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+					box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+					box-shadow: none\9;
+		}
+		input[type="checkbox"]:active,
+		input[type="radio"]:active {
+			background: #f3e9f9;
+			border-color: #9456b4;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0);
+		}
+		input[type="checkbox"]:checked,
+		input[type="radio"]:checked {
+			background: #fdfbff;
+			border-color: #97b;
+		}
+		input[type="checkbox"]:checked::after,
+		input[type="radio"]:checked::after {
+			display: block;
+			position: relative;
+		}
+		input[type="checkbox"]:checked::after {
+			color: #657;
+			content: "\f00c";
+			font-family: 'FontAwesome', sans-serif;
+			font-size: 12px;
+			top: 0; left: 0;
+		}
+		input[type="checkbox"]:hover:checked::after { color: #7642a4; }
+		input[type="radio"],
+		input[type="radio"]:checked::after {
+			 -webkit-border-radius: 1em;
+			 	-moz-border-radius: 1em;
+			 		 border-radius: 1em;
+		}
+		input[type="radio"]:checked::after {
+			background: #657;
+			content: '';
+			width: 7px;
+			height: 7px;
+			top: 3px;
+			left: 3px;
+			}
+			input[type="radio"]:hover:checked::after { background: #7642a4; }
 		input[type="checkbox"][disabled],
 		input[type="radio"][disabled] {
 			border-color: #c3c1c5;
 			background-color: #ebede9;
 			cursor: not-allowed;
 			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-			box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+					box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+		}
+		label > input[type="checkbox"],
+		label > input[type="radio"] {
+			margin-top: -4px;
 		}
 
-/* Color */
-input[type="color"] {
-	-webkit-appearance: square-button;
-	width: 120px;
-	height: 120px;
-	padding: 0 2px;
-}
+/* Color Input */
+	input[type="color"] {
+		-webkit-appearance: square-button;
+		width: 120px;
+		height: 120px;
+		padding: 0 2px;
+	}
 
-/*** Select ***/
-select, select[size], select[multiple] {
-	height: 2.55em;
-	}
-	optgroup option, option { color: #676569; }
-	optgroup option:hover, option:hover { color: #7642a4; background-color: #ede9ef; }
-	select,
-	input[type="file"] {
-		/* In IE7, the height of the select element cannot be changed by height, only font-size */
-		*border: none !important;
-		*margin-top: 4px;	/* IE7, add top margin to align select with labels */
-	}
+/* Select */
+	select, select[multiple], select[size] {
+		 -webkit-border-radius: 0;
+		 	-moz-border-radius: 0;
+		 		 border-radius: 0;
+		height: 2.55em;
+		}
+		select,
+		input[type="file"] {
+			/* In IE7, the height of the select element cannot be changed by height, only font-size */
+			*border: none !important;
+			*margin-top: 4px;	/* IE7, add top margin to align select with labels */
+		}
+		.select-sml { height: 2.3em; padding: 0.25em; }
+		.select-med { height: 2.5em; padding: 0.125em; }
 
 /* Textarea */
-textarea { min-height: 8em; }
+	textarea { min-height: 8em; }
 
 
-/*** PLACEHOLDER ***/
-input:-moz-placeholder, textarea:-moz-placeholder {
-	color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
-}
-input::-moz-placeholder, textarea::-moz-placeholder {
-	color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
-}
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-	color: #b2b4b8; font-style: italic; text-overflow: ellipsis;
-}
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-	color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
-}
+/* PLACEHOLDER */
+	input:-moz-placeholder, textarea:-moz-placeholder {
+		color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
+	}
+	input::-moz-placeholder, textarea::-moz-placeholder {
+		color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
+	}
+	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+		color: #b2b4b8; font-style: italic; font-family: Georgia, serif; text-overflow: ellipsis;
+	}
+	input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+		color: #b2b4b8; font-style: italic; text-overflow: ellipsis;
+	}
+	[placeholder]:focus::-webkit-input-placeholder { transition: opacity 1.744s 0.218s ease-in-out; opacity: 0.42; }
 
 
 /* STATE: INVALID */
-*:invalid, input:invalid, select:invalid, textarea:invalid,
-.invalid, input.invalid, select.invalid, textarea.invalid {
-	-webkit-box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
-			box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
-	background: #f5f7ef;
-	border-color: #f00;
-}
+	*:invalid, input:invalid, select:invalid, textarea:invalid,
+	.invalid, input.invalid, select.invalid, textarea.invalid {
+		-webkit-box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
+				box-shadow: 0 0 0 3px rgba(255,155,155,0.2), inset 0 0 0 1px #b42;
+		background: #f5f7ef;
+		border-color: #f00;
+	}
 
 
 /*------------------------------------*\
 	$BUTTONS
 \*------------------------------------*/
 .btn, button, input[type="submit"], input[type="reset"], input[type="button"] {
-	background: none;
-	border: 1px solid;
-	color: inherit;
+	border-bottom-color: #b4b2b6;
+	background: #f5f3f7;
 	cursor: pointer;
 	 -webkit-appearance: none;
 		-moz-appearance: none;
@@ -444,64 +635,36 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	}
 	.btn:hover, button:hover,
 	input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
-		-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.08);
-				box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.08);
+		background: #fbfcfd;
+		 -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
+				 box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
+		border-color: #c3c1c5;
+		border-bottom-color: #a4a2a6;
+		color: #f71;
 		text-decoration: none;
 	}
 	.btn:active, button:active,
-	input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active {
+	input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active  {
+		background: #f1eff3;
+		border-color: #f93;
+		color: #d50;
 	    -webkit-box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
 	            box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
 	}
 	.btn:focus, button:focus,
-	input[type="submit"]:focus, input[type="reset"]:focus, input[type="button"]:focus {
+	input[type="submit"]:focus, input[type="reset"]:focus, input[type="button"]:focus  {
 		-webkit-box-shadow: inset 0 0 0 1px #fff;
 				box-shadow: inset 0 0 0 1px #fff;
 		text-decoration: none;
 	}
-	.btn:active, button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active,
-	.btn:focus, button:focus, input[type="submit"]:focus, input[type="reset"]:focus, input[type="button"]:focus { outline: 0; }
-	
-
-/*
-	BUTTON COLORS
-\*------------------------------------*/
-	.btn, button, input[type="submit"], input[type="reset"], input[type="button"] {
-		border-color: #d4d2d6;
-		border-bottom-color: #b4b2b6;
-		color: #74568a;
-		background: #f5f3f7;
-		}
-		.btn:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
-			background: #fbfcfd;
-			 -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
-					 box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset -1px 1px 0 1px rgba(255,255,255,0.3);
-			border-color: #c3c1c5;
-			border-bottom-color: #a4a2a6;
-			color: #f71;
-		}
-		.btn.active, .btn:active, button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active {
-			background: #f1eff3;
-			border-color: #f93;
-			color: #d50;
-		    -webkit-box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
-		            box-shadow: inset rgba(0,0,0,0.4) 0 2px 6px;
-		}
-		.btn:active, button:active, input:active,
-		.btn:focus, button:focus, input:focus { outline: 0; }
-		.btn:focus, button:focus, input:focus {
-			border: 1px solid #d5d3d7;
-			-webkit-box-shadow: inset 0 0 0 1px #fff;
-					box-shadow: inset 0 0 0 1px #fff;
-		}
 	
 	input[type="submit"] {
 		font-weight: 700;
 		text-shadow: 1px 1px 0 2px #fff;
 		text-transform: uppercase;
 	}
-	
 	input[type="reset"] {
+		background: none;
 		border-color: transparent;
 		}
 		input[type="reset"],
@@ -579,11 +742,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 			display: none;
 		}
 	}
-	
-	
-/* ------------------------------------------
-  FIXED HEADER
---------------------------------------------- */
+	/*
+	  FIXED HEADER
+	--------------------------------------------- */
 	.navbar-fixed-top {
 		background: #423356/*#fb7613*/;
 		position: fixed;
@@ -592,11 +753,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 		left: 0;
 		top: 0;
 	}
-
-
-/* ------------------------------------------
-  MASK
---------------------------------------------- */
+	/*
+	  MASK
+	--------------------------------------------- */
 	.mask {
 		-webkit-transition: opacity 436ms ease-in-out;
 		-moz-transition: opacity 436ms ease-in-out;
@@ -625,11 +784,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 			opacity: 0 !important;
 		}
 	}
-
-
-/* ------------------------------------------
-  NAVIGATION STYLES
---------------------------------------------- */
+	/*
+	  NAVIGATION STYLES
+	--------------------------------------------- */
 	.fixed {
 		position: fixed;
 		width: 100%;
@@ -668,7 +825,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 		border-top: 1px solid #423356;
 		text-decoration: none;
 		background: #423356;
-		padding: 0 1em;
+		padding: 0 0.5em;
 		color: #fff;
 		width: 100%;
 		float: left;
@@ -687,7 +844,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	@media screen and (min-width: 40em) {
 		.nav-collapse a {
 			border-left: 1px solid #332442;
-			padding: 0 2em;
+			padding: 0 1.5em;
 			text-align: center;
 			border-top: 0;
 			float: left;
@@ -703,11 +860,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 			display: none;
 		}
 	}
-
-
-/* ------------------------------------------
-  NAV TOGGLE STYLES
---------------------------------------------- */
+	/*
+	  NAV TOGGLE STYLES
+	--------------------------------------------- */
 	@font-face {
 		font-family: "responsivenav";
 		src: url("../icons/responsivenav.eot");
@@ -749,9 +904,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 
 
-/*
-	GRID DEMO
-*/
+/* ------------------------------------------
+  GRID DEMO
+--------------------------------------------- */
 	
 	header { background: #f1f3fa; border-bottom: 1px solid #e1e3ea; height: 100px; padding: 1em 0; }
 	footer { background: #e5e8ed; border-top: 1px solid #d1d3da; margin-top: 2em; padding: 0.5em 0 3.5em; }
@@ -761,83 +916,37 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 		padding: 1em 0;
 	}
 	
+	/* Set-up Grid Visibility */
 	section [class^="row-"] {
-		background: rgba(0,0,0,0.0125);
-		border: 1px solid rgba(0,0,0,0.025);
+		border: 1px solid transparent;
 		margin-bottom: 0.25%;
 	}
-	
 	section [class^="col-"],
 	section [class^="row-grid-"] > * {
-		background: rgba(0,0,0,0.025);
-		border: 1px solid rgba(0,0,0,0.05);
 		color: rgba(0,0,0,0.4);
-		/*font-size: 1em;
-		min-height: 2em;*/
-		padding: 0.5em;
+		padding: 0;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.6);
 		}
 		section [class^="col-"]:hover,
 		section [class^="row-grid-"] > *:hover {
-			background: rgba(0,0,0,0.05);
-			border: 1px solid rgba(0,0,0,0.075);
 			color: rgba(0,0,0,0.75);
 			cursor: default;
 		}
-	
-/*	#BOX #PANEL
- ========================================================================== */
-	.box,
-	.panel {
-		display: block;
-		position: relative;
-		-webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,0.08);
-				box-shadow: 0 1px 2px 1px rgba(0,0,0,0.08);
+		
+	/* Show Visbile Grid */
+	.aparent section [class^="row-"] {
+		background: rgba(0,0,0,0.0125);
+		border: 1px solid rgba(0,0,0,0.025);
+	}
+	.aparent section [class^="col-"],
+	.aparent section [class^="row-grid-"] > * {
+		background: rgba(0,0,0,0.025);
+		border-color: rgba(0,0,0,0.05);
 		}
-		.box > header,
-		.box > section,
-		.box > footer,
-		.panel > header,
-		.panel > section,
-		.panel > footer {
-			border: 1px solid #d7d9d1;
-			margin: 0 -0.5em;
-			padding: 0.25em 1em;
-			line-height: 1.5;
-			margin: 0 -0.9em;
-			padding: 0.9rem 1.8rem 0.8rem;
-		}
-		.box > header,
-		.box > footer,
-		.panel > header,
-		.panel > footer {
-			background-color: #f1f3eb;
-			border-bottom-color: #c7c9c1;
-		}
-		.box > header,
-		.panel > header {
-			font-weight: normal;
-			-webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.9);
-					box-shadow: inset 0 -1px 1px rgba(255,255,255,0.9);
-		}
-		.box > section,
-		.panel > section {
-			background-color: #fdfffb;
-			-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-					box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-		}
-		.box > footer,
-		.panel > footer {
-			-webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,0.9);
-					box-shadow: inset 0 1px 1px rgba(255,255,255,0.9);
-		}
-		.box > header + section,
-		.panel > header + section {
-			border-top-color: #e7e9e1;
-		}
-		.box > section + footer,
-		.panel > section + footer {
-			border-top: none;
+		.aparent section [class^="col-"]:hover,
+		.aparent section [class^="row-grid-"] > *:hover {
+			background: rgba(0,0,0,0.05);
+			border-color: rgba(0,0,0,0.075);
 		}
 	
 	
@@ -868,16 +977,12 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	}
 	
 	
-/* CUSTOM COLORS */
-
+	/* CUSTOM COLORS */
 	.purple-dark	{	color: #363844; }
 	.purple			{	color: #655c89; }
 	.purple-light	{	color: #8476a3; }
-	
-	
-	/*
-		BACKGROUNDS
-	*/
+		
+	/* BACKGROUNDS */
 	.bg-whitesand {
 		min-height: 500px;
 		background: #e5e5e5;
@@ -906,6 +1011,6 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	.bg-blue--dark {
 		min-height: 500px;
 		background: #2d3d42;
-		color: #e5e5e5;
+		color: #e5e5d1;
 	}
 

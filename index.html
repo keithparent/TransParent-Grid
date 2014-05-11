@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" xmlns:og="http://opengraphprotocol.org/schema/"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie7 oldie" lang="en" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie8 oldie" lang="en" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" xmlns:og="http://opengraphprotocol.org/schema/">
+<!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="ClearType" content="true">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
 	
 	<title>TransParent Grid [ Demo ]</title>
 	<meta name="description" content="">
 	<meta name="author" content="Keith Parent">
-	
 
 	<!-- JS: Modernizr -->
 	<script src="js/vendor/modernizr-2.7.1.min.js"></script>
@@ -44,7 +45,7 @@
 
 	<div class="navbar-fixed-top">
 		<nav class="nav-collapse container" role="navigation">
-			<ul class="nav">
+			<ul class="nav sml">
 				<li><a href="#intro" class="top" data-scroll>Intro</a></li>
 				<li><a href="#fullgrid" data-scroll>Full Grid</a></li>
 				<li><a href="#nested" data-scroll>Nested</a></li>
@@ -54,20 +55,48 @@
 				<li><a href="#tablegrid" data-scroll>Tables</a></li>
 				<li><a href="#blockgrid" data-scroll>Blocks</a></li>
 				<li><a href="#paddedcolumns" data-scroll>Padding</a></li>
+				<li>
+					<div style="width:100%;"></div>
+				</li>
+				<li>
+					<a href="https://github.com/keithparent/TransParent-Grid" title="View Source on Github">
+						<i class="icon-github med"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/keithparent/TransParent-Grid/archive/master.zip" title="Download Master [ZIP]">
+						<i class="icon-cloud-download med"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" data-toggle="grid" title="Show/Hide Grid">
+						<i class="icon-eye-open med"></i>
+						<i class="icon-eye-close med" style="display:none;"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" data-trigger="top" title="Top">
+						<i class="icon-chevron-sign-up med"></i>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</div>
 
 	<header id="header" role="banner">
-		<div class="container row-2">
+		<div class="container">
+		<div class="row-2">
 			<div class="col-1">
 				<a class="logo" href="http://www.keithparent.com" title="This is aParent Design">
 					<img src="images/aparentdesign-166x77.png" width="166" height="77" alt="aParent Design Logo">
 				</a>
 			</div>
 			<div class="col-1 align-right">
-				<h1><strong>TransParent Grid</strong> [ <small class="loose uc">Demos</small> ]</h1>
-			</div>
+				<h1>
+					<strong>TransParent Grid</strong>
+					[ <small class="loose uc">Demos</small> ]
+				</h1>
+			</div></div>
 		</div>
 	</header>
 		
@@ -1673,18 +1702,18 @@
 		                </div>
 		                <div class="col-1">
 		                	<label for="email-input-01">Email input</label>
-		                	<input id="email-input-01" name="email-input-01" type="email" placeholder="your.name@email.com">
+		                	<input id="email-input-01" name="email-input-01" type="email" autocapitalize="off" autocorrect="off" placeholder="username@domain.com">
 		                </div>
 		                <div class="col-1">
 		                	<label for="tel-input-01">Tel input</label>
-		                	<input id="tel-input-01" name="tel-input-01" type="tel">
+		                	<input id="tel-input-01" name="tel-input-01" type="tel" placeholder="(___) ___ - ____">
 		                </div>
 	                </div>
 	                
 	                <div class="row-3">
 		                <div class="col-1">
 		                	<label>Search input</label>
-		                	<input type="search">
+		                	<input type="search" placeholder="Search...">
 		                </div>
 		                <div class="col-1">
 		                	<label>URL input</label>
@@ -1753,7 +1782,9 @@
 							</div>
 						</div>
 					</div>
-				
+					
+					<hr>
+					
 					<div class="row-6">
 						<div class="col-5">
 							<input type="reset" value="Reset">
@@ -1903,32 +1934,62 @@
 			<h2>Padded Columns</h2>
 			
 			
-			<h3>Normal Padding</h3>
+			<h3>No Padding</h3>
+			<div class="row-5">
+				<div class="col-1">
+					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
+					<h3>Item Name</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<div class="col-1">
+					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
+					<h3>Item Name</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<div class="col-1">
+					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
+					<h3>Item Name</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<div class="col-1">
+					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
+					<h3>Item Name</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<div class="col-1">
+					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
+					<h3>Item Name</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+			
+			
+			<h3>Padded</h3>
 			<div class="row-5 row-padded">
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 			</div>
 			
@@ -1938,27 +1999,27 @@
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 			</div>
 			
@@ -1968,27 +2029,27 @@
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 				<div class="col-1">
 					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
 					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 			</div>
 
@@ -2093,19 +2154,22 @@
 		
 		jQuery(document).ready(function($){
 			
-			$(".js-eq").find("[class^='row-']").matchColumnHeights();
-			/*
-			$("#main").jumpto({
-				offset: 550,
-				innerWrapper: ".section",
-				firstLevel: "> h2",
-				secondLevel: "> .section > h3",
-				navContainer: "#demo-nav",
-				anchorTopPadding: 60,
-				showTitle: false,
-				closeButton: false
+			// init vars (caches selectors)
+			var eqcol		= $(".js-eq").find("[class^='row-']")//,
+				//backtotop	= $('[data-trigger="top"]'),
+				//togglegrid	= $('[data-toggle="grid"]')
+			;
+			
+			// equal height columns
+			eqcol.matchColumnHeights();
+			
+			$('[data-toggle="grid"]').click(function(event){
+				event.preventDefault();
+				$(this).find('i').toggle();
+				$('body').toggleClass('aparent');
 			});
-			*/
+
+			
 		});
 	</script>
 	

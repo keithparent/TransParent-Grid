@@ -97,9 +97,10 @@
 	[class*="col-"],
 	[class*="row-grid-"] > * {
 		list-style: none;
-		margin-right: auto;
-		margin-left: auto;
-		padding: 0;
+		margin-right: 0;
+		margin-left: 0;
+		padding-right: 0;
+		padding-left: 0;
 		position: relative;
 	}
 	
@@ -164,43 +165,31 @@
 			display: table-column;
 		}
 	
-	/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
+/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
 	
 	/* NORMAL PADDING */
-	[class*="row-"].row-padded {
-		margin-right: -1%;
-		margin-left: -1%;
+	[class*="row-"].row-padded > [class*="col-"] {
+		padding-right: 0.5%;
+		padding-left: 0.5%;
+		}
+		[class*="row-"].row-padded > [class*="col-"]:first-child { padding-right: 1%; padding-left: 0; }
+		[class*="row-"].row-padded > [class*="col-"]:last-child { padding-right: 0; padding-left: 1%; }
+
+	/* MEDIUM PADDING */
+	[class*="row-"].row-padded-med > [class*="col-"] {
 		padding-right: 1%;
 		padding-left: 1%;
 		}
-		[class*="row-"].row-padded > [class*="col-"] {
-			padding-right: 1%;
-			padding-left: 1%;
-		}
-
-	/* MEDIUM PADDING */
-	[class*="row-"].row-padded-med {
-		margin-right: -2%;
-		margin-left: -2%;
-		padding-right: 2%;
-		padding-left: 2%;
-		}
-		[class*="row-"].row-padded-med > [class*="col-"] {
-			padding-right: 2%;
-			padding-left: 2%;
-		}
+		[class*="row-"].row-padded-med > [class*="col-"]:first-child { padding-right: 2%; padding-left: 0; }
+		[class*="row-"].row-padded-med > [class*="col-"]:last-child { padding-right: 0; padding-left: 2%; }
 
 	/* LARGE PADDING */
-	[class*="row-"].row-padded-lrg {
-		margin-right: -4%;
-		margin-left: -4%;
-		padding-right: 4%;
-		padding-left: 4%;
+	[class*="row-"].row-padded-lrg > [class*="col-"] {
+		padding-right: 1.5%;
+		padding-left: 1.5%;
 		}
-		[class*="row-"].row-padded-lrg > [class*="col-"] {
-			padding-right: 4%;
-			padding-left: 4%;
-		}
+		[class*="row-"].row-padded-lrg > [class*="col-"]:first-child { padding-right: 3%; padding-left: 0; }
+		[class*="row-"].row-padded-lrg > [class*="col-"]:last-child { padding-right: 0; padding-left: 3%; }
 
 
 
@@ -644,11 +633,11 @@
 	.valign {
 		display: table;
 		width: 100%;
-	}
-	.valign > div, .valign > article, .valign > section, .valign > figure {
-		display: table-cell;
-		vertical-align: middle;
-	}
+		}
+		.valign > div, .valign > article, .valign > section, .valign > figure {
+			display: table-cell;
+			vertical-align: middle;
+		}
 
 
 /*	=========================================================================
@@ -678,7 +667,79 @@
 			list-style: none;
 		}
 
-	/* RESPONSIVE IMGs (scale to grid while maintaining their aspect ratios) */
+	/* RESPONSIVE MEDIA ELEMENTS (scale to grid while maintaining their aspect ratios) */
+	/* Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440 */
+	audio,
+	canvas,
+	img,
+	video {
+		vertical-align: middle;
+	}
+	/* Properly scale video on any device based on YouTube/Dailymotion ratio */
+	.medii {
+		position: relative;
+		padding-top: 30px;
+		padding-bottom: 56.25%;
+		height: 0;
+		height: auto;
+		max-width: 100%;
+		margin-bottom: 1em;
+		overflow: hidden;
+	}
+	/* Widescreen */
+	.medii.widescreen {
+		padding-bottom: 45%;
+	}
+	/* Vimeo places the controls on player itself */
+	.medii.vimeo {
+		padding-top: 0;
+	}
+	/* Instagram */
+	.medii.instagram {
+		height: auto;
+		max-width: none;
+		padding-bottom: 120%;
+	}
+	/* Vine */
+	.medii.vine {
+		height: auto;
+		max-width: none;
+		padding-bottom: 100%;
+	}
+	.medii.video {
+		padding-top: 0;
+	}
+	/* Actual Player */
+	.medii iframe,
+	.medii object,
+	.medii embed,
+	.medii video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		outline: none;
+		background-color: transparent;
+	}
+	/*
+	 * Position image absolutely and then move its four positions 1000000%
+	 * out of container. This with an auto margin is the core of the trick.
+	 * Uses such a large number b/c Firefox seems to have issues when using 
+	 * larger images - even at 100%.
+	 */
+	.medii img {
+		position: absolute;
+		top: -1000000%;
+		right: -1000000%;
+		bottom: -1000000%;
+		left: -1000000%;
+		margin: auto;
+		width: 100%;
+	}
 	
 	/* Remove the gap between <img> elements and the bottom of their containers - http://cbrac.co/Q6smqV */
 	img {
@@ -696,8 +757,6 @@
 	}
 	.img-scale,
 	.img-scale img,
-	object,
-	embed,
 	video {
 		width: auto\9;		/* IE7-8 need help adjusting responsive images */
 		height: auto;		/* Constrain the height by the ratio to the width */
@@ -794,6 +853,12 @@
 	[class*="col-"] > input[type="search"] {
 		width: 95%;
 	}
+	
+	form [class*="row-"] > [class*="col-"]:first-child { padding-right: 1em; }
+	form [class*="row-"] > [class*="col-"]:last-child { padding-left: 1em; }
+	form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:first-child { padding-right: 0.5em; padding-left: 0; }
+	form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:last-child { padding-left: 0.5em; padding-right: 0; }
+	form .row-1 > .col-1 { padding-right: 0 !important; padding-left: 0 !important; }
 
 	/* Restrict <textarea> elements to vertical resizing only */
 	textarea { resize: vertical; }
@@ -944,7 +1009,233 @@
 	.hide { display: none !important; visibility: hidden !important; }
 	.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
 	.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
+	
+	
+/*
+* Image replacement
+*/
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	}
+	.ir:before {
+		content: "";
+		display: block;
+		width: 0;
+		height: 150%;
+	}
 
+/*
+ * Hide from both screen readers and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers: h5bp.com/v
+ */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	}
+	/*
+	* Extends the .visuallyhidden class to allow the element to be focusable
+	* when navigated to via the keyboard: h5bp.com/p
+	*/
+	.visuallyhidden.focusable:active,
+	.visuallyhidden.focusable:focus {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible { visibility: hidden; }
+
+/*
+ * Layout helpers
+ */
+.block { display: block !important; }
+.inline-block { display: inline-block !important; }
+.inline { display: inline !important; }
+
+/*
+ * Fade opacity with animation
+ */
+	.fade-out {
+		-moz-opacity: 0 !important;
+			 opacity: 0 !important;
+	}
+	/*
+	 * Opacity helper to add to elements to allow fade animation
+	 */
+	.fade-in {
+		-moz-opacity: 1 !important;
+			 opacity: 1 !important;
+	}
+	.fade-out, .fade-in {
+		 -webkit-transition: opacity 0.3s linear 0s;
+		 	-moz-transition: opacity 0.3s linear 0s;
+		 	  -o-transition: opacity 0.3s linear 0s;
+		 	  	 transition: opacity 0.3s linear 0s;
+	}
+
+
+/*
+ * Responsive helpers to toggle visibility 
+ */
+.hide-min,
+.show-sml,
+.show-med,
+.show-lrg {
+	display: none !important;
+}
+
+/*
+ * 769 > viewport < 991px
+ */
+@media (min-width: 48em) and (max-width: 61.99em) {
+	.hide-min,
+	.show-sml {
+		display: block !important;
+	}
+	table.hide-min,
+	table.show-sml {
+		display: table !important;
+	}
+	thead.hide-min,
+	thead.show-sml {
+		display: table-header-group !important;
+	}
+	tfoot.hide-min,
+	tfoot.show-sml {
+		display: table-footer-group !important;
+	}
+	tr.hide-min,
+	tr.show-sml {
+		display: table-row !important;
+	}
+	th.hide-min,
+	th.show-sml,
+	td.hide-min,
+	td.show-sml {
+		display: table-cell !important;
+	}
+	col.hide-min,
+	col.show-sml {
+		display: table-column !important;
+	}
+	caption.hide-min,
+	caption.show-sml {
+		display: table-caption !important;
+	}
+	.show-min,
+	.hide-sml {
+		display: none !important;
+	}
+}
+
+/*
+ * 992px > viewport < 1200px
+ */
+@media (min-width: 62em) and (max-width: 74.99em) {
+	.hide-min,
+	.show-med {
+		display: block !important;
+	}
+	table.hide-min,
+	table.show-med {
+		display: table !important;
+	}
+	thead.hide-min,
+	thead.show-med {
+		display: table-header-group !important;
+	}
+	tfoot.hide-min,
+	tfoot.show-med {
+		display: table-footer-group !important;
+	}
+	tr.hide-min,
+	tr.show-med {
+		display: table-row !important;
+	}
+	th.hide-min,
+	th.show-med,
+	td.hide-min,
+	td.show-med {
+		display: table-cell !important;
+	}
+	col.hide-min,
+	col.show-med {
+		display: table-column !important;
+	}
+	caption.hide-min,
+	caption.show-med {
+		display: table-caption !important;
+	}
+	.show-min,
+	.hide-med {
+		display: none !important;
+	}
+}
+
+/*
+ * viewport > 1200px
+ */
+@media (min-width: 75em) {
+	.hide-min,
+	.show-lrg {
+		display: block !important;
+	}
+	table.hide-min,
+	table.show-lrg {
+		display: table !important;
+	}
+	thead.hide-min,
+	thead.show-lrg {
+		display: table-header-group !important;
+	}
+	tfoot.hide-min,
+	tfoot.show-lrg {
+		display: table-footer-group !important;
+	}
+	tr.hide-min,
+	tr.show-lrg {
+		display: table-row !important;
+	}
+	th.hide-min,
+	th.show-lrg,
+	td.hide-min,
+	td.show-lrg {
+		display: table-cell !important;
+	}
+	col.hide-min,
+	col.show-lrg {
+		display: table-column !important;
+	}
+	caption.hide-min,
+	caption.show-lrg {
+		display: table-caption !important;
+	}
+	.show-min,
+	.hide-lrg {
+		display: none !important;
+	}
+}
 
 /* EOF */
 
