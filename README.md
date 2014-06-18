@@ -1,7 +1,7 @@
 TransParent Grid
 ================
 
-A highly flexible, extremely powerful, fluid and responsive grid system. It has a variable amount of columns per row ranging anywhere from 1 to 16.
+A highly flexible, extremely powerful, fluid and responsive grid system. Not limited to the standard 12 column format, it has a variable amount of columns per row.
 
 The keys to best-practice in effectively utilizing the grid:
 
@@ -17,7 +17,7 @@ Don't add the grid classes to existing mark-up — add new mark-up to apply the 
 Don't stack other classes to the grid mark-up — unless you know exactly what you are doing, and…
 Don't overlap grid classes — don't add a 'row-*' class to mark-up that already has a 'col-*' class.
 
-Compatibility: the TransParent Grid uses the border-box box-sizing method, so it is not compatible with IE7 and down. Otherwise, it should work in most other modern browsers (Chrome, FF, Opera, and Safari).
+Compatibility: the TransParent Grid uses the border-box box-sizing method, so it is compatible with all modern browsers (i.e. not compatible with IE7 and less). Works perfect in Chrome, IE8+, FF, Opera, and Safari.
 
 -----------------------------------------------------------------------------
 "Good design is obvious. Great design is transparent." - Joe Sparano
