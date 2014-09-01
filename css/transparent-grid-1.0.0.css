@@ -47,22 +47,30 @@
 		min-height: 100%;
 	}
 	html {
-		overflow-y: scroll;
-		_overflow-x: hidden;
+		font-size: 100%;
 		-webkit-overflow-scrolling: touch;
 		-webkit-tap-highlight-color: rgba(17,119,170,0.6);
 	}
 	body {
+		font-size: 1em;
+		font-size: 1rem;
+		line-height: 1.5;
 		margin-right: 0;
 		margin-left: 0;
 		padding-right: 0;
 		padding-left: 0;
 		min-width: 200px;
+		-webkit-touch-callout: none;
 		-webkit-text-size-adjust: 100%;
 			-ms-text-size-adjust: 100%;
 				text-size-adjust: 100%;
-	}
-
+		}
+		button,
+		input,
+		select,
+		textarea {
+			font-size: inherit;
+		}
 
 
 /* ==|== TransParent Grid v1.0.0 ================================================
@@ -70,13 +78,12 @@
    ( where '#' == total # of columns in that particular row, ie. '.row-3' )
    ========================================================================== */
 		
-	/* -- CONTAINER - Sets 'max-width' to resize for various viewports -- */
+/* -- CONTAINER - Outer most wrapper sets 'max-width' to resize for various viewports -- */
 	.container {
 		margin-right: auto;
 		margin-left: auto;
-		width: 95%;
-		max-width: 1100px;
-		min-width: 320px;
+		max-width: 90%;
+		min-width: 220px;
 		position: relative;
 		/* CSS3 TRANSITIONS */
 		-webkit-transition: max-width 0.436s ease-in-out;
@@ -88,11 +95,10 @@
 		}
 		.container-left { margin-left: 0; }
 		.container-right { margin-right: 0; }
-		.container .container { max-width: 100%; min-width: 0; width: 100%; }
-		
+		.container .container { max-width: 100%; min-width: 100%; width: 100%; }
 	
 	
-	/* -- ROWS & COLUMNS -- */
+/* -- ROWS & COLUMNS -- */
 	[class*="row-"],
 	[class*="col-"],
 	[class*="row-grid-"] > * {
@@ -143,54 +149,12 @@
 		letter-spacing: normal;
 		word-spacing: normal;
 	}
-
 	
-	/* -- MODIFIERS -- */
-	
-	/* CENTERED COLUMNS */
-	[class*="row-"].row-center-cols {
-		display: inline-block;
-		text-align: center;
-		}
-		[class*="row-"].row-center-cols > [class*="col-"] {
-			float: none;
-		}
-	
-	/* TABLE-BASED GRID */
-	table tr[class*="row-"] {
-		display: table-row;
-		}
-		table th[class*="col-"],
-		table td[class*="col-"] {
-			display: table-column;
-		}
-	
-/* -- BASE GRID MODIFIERS (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
-	
-	/* NORMAL PADDING */
-	[class*="row-"].row-padded > [class*="col-"] {
-		padding-right: 0.5%;
-		padding-left: 0.5%;
-		}
-		[class*="row-"].row-padded > [class*="col-"]:first-child { padding-right: 1%; padding-left: 0; }
-		[class*="row-"].row-padded > [class*="col-"]:last-child { padding-right: 0; padding-left: 1%; }
-
-	/* MEDIUM PADDING */
-	[class*="row-"].row-padded-med > [class*="col-"] {
-		padding-right: 1%;
-		padding-left: 1%;
-		}
-		[class*="row-"].row-padded-med > [class*="col-"]:first-child { padding-right: 2%; padding-left: 0; }
-		[class*="row-"].row-padded-med > [class*="col-"]:last-child { padding-right: 0; padding-left: 2%; }
-
-	/* LARGE PADDING */
-	[class*="row-"].row-padded-lrg > [class*="col-"] {
-		padding-right: 1.5%;
-		padding-left: 1.5%;
-		}
-		[class*="row-"].row-padded-lrg > [class*="col-"]:first-child { padding-right: 3%; padding-left: 0; }
-		[class*="row-"].row-padded-lrg > [class*="col-"]:last-child { padding-right: 0; padding-left: 3%; }
-
+	[class*="row-"] > * > p,
+	[class*="col-"] > p,
+	[class*="row-grid-"] > * > p {
+		margin-right: 10%;
+	}
 
 
 /* COLUMN WIDTHS
@@ -501,6 +465,95 @@
 	.row-16 > .col-push-14 { margin-left: 87.5%; }
 	.row-16 > .col-push-15 { margin-left: 93.75%; }
 
+/* SMALL GRID */
+@media only screen and (max-width: 36em){
+	
+	/* WHOLES */
+	.row-sml-1 > .col-sml-1,
+	.row-sml-2 > .col-sml-2,
+	.row-sml-3 > .col-sml-3,
+	.row-sml-4 > .col-sml-4,
+	.row-sml-5 > .col-sml-5,
+	.row-sml-6 > .col-sml-6,
+	.row-sml-7 > .col-sml-7,
+	.row-sml-8 > .col-sml-8,
+	.row-sml-9 > .col-sml-9,
+	.row-sml-10 > .col-sml-10,
+	.row-sml-11 > .col-sml-11,
+	.row-sml-12 > .col-sml-12 { width: 100%; }
+	
+	/* HALVES */
+	.row-sml-2 > .col-sml-1 { width: 50%; }
+	.row-sml-2 > .col-sml-push-1 { margin-left: 50%; }
+	
+	/* THIRDS */
+	.row-sml-3 > .col-sml-1 { width: 33.333333%; }
+	.row-sml-3 > .col-sml-2 { width: 66.666666%; }
+	.row-sml-3 > .col-sml-push-1 { margin-left: 33.333333%; }
+	.row-sml-3 > .col-sml-push-2 { margin-left: 66.666666%; }
+	
+	/* FOURTHS */
+	.row-sml-4 > .col-sml-1 { width: 25%; }
+	.row-sml-4 > .col-sml-2 { width: 50%; }
+	.row-sml-4 > .col-sml-3 { width: 75%; }
+	.row-sml-4 > .col-sml-push-1 { margin-left: 25%; }
+	.row-sml-4 > .col-sml-push-2 { margin-left: 50%; }
+	.row-sml-4 > .col-sml-push-3 { margin-left: 75%; }
+	
+	/* FIFTHS */
+	.row-sml-5 > .col-sml-1 { width: 20%; }
+	.row-sml-5 > .col-sml-2 { width: 40%; }
+	.row-sml-5 > .col-sml-3 { width: 60%; }
+	.row-sml-5 > .col-sml-4 { width: 80%; }
+	.row-sml-5 > .col-sml-push-1 { margin-left: 20%; }
+	.row-sml-5 > .col-sml-push-2 { margin-left: 40%; }
+	.row-sml-5 > .col-sml-push-3 { margin-left: 60%; }
+	.row-sml-5 > .col-sml-push-4 { margin-left: 80%; }
+	
+	/* SIXTHS */
+	.row-sml-6 > .col-sml-1 { width: 16.666666%; }
+	.row-sml-6 > .col-sml-2 { width: 33.333333%; }
+	.row-sml-6 > .col-sml-3 { width: 50%; }
+	.row-sml-6 > .col-sml-4 { width: 66.666666%; }
+	.row-sml-6 > .col-sml-5 { width: 83.333333%; }
+	.row-sml-6 > .col-sml-push-1 { margin-left: 16.666666%; }
+	.row-sml-6 > .col-sml-push-2 { margin-left: 33.333333%; }
+	.row-sml-6 > .col-sml-push-3 { margin-left: 50%; }
+	.row-sml-6 > .col-sml-push-4 { margin-left: 66.666666%; }
+	.row-sml-6 > .col-sml-push-5 { margin-left: 83.333333%; }
+	
+	/* SEVENTHS */
+	.row-sml-7 > .col-sml-1 { width: 14.285714%; }
+	.row-sml-7 > .col-sml-2 { width: 28.571428%; }
+	.row-sml-7 > .col-sml-3 { width: 42.857142%; }
+	.row-sml-7 > .col-sml-4 { width: 57.142856%; }
+	.row-sml-7 > .col-sml-5 { width: 71.42857%; }
+	.row-sml-7 > .col-sml-6 { width: 85.714284%; }
+	.row-sml-7 > .col-sml-push-1 { margin-left: 14.285714%; }
+	.row-sml-7 > .col-sml-push-2 { margin-left: 28.571428%; }
+	.row-sml-7 > .col-sml-push-3 { margin-left: 42.857142%; }
+	.row-sml-7 > .col-sml-push-4 { margin-left: 57.142856%; }
+	.row-sml-7 > .col-sml-push-5 { margin-left: 71.42857%; }
+	.row-sml-7 > .col-sml-push-6 { margin-left: 85.714284%; }
+	
+	/* EIGHTHS */
+	.row-sml-8 > .col-sml-1 { width: 12.5%; }
+	.row-sml-8 > .col-sml-2 { width: 25%; }
+	.row-sml-8 > .col-sml-3 { width: 37.5%; }
+	.row-sml-8 > .col-sml-4 { width: 50%; }
+	.row-sml-8 > .col-sml-5 { width: 62.5%; }
+	.row-sml-8 > .col-sml-6 { width: 75%; }
+	.row-sml-8 > .col-sml-7 { width: 87.5%; }
+	.row-sml-8 > .col-sml-push-1 { margin-left: 12.5%; }
+	.row-sml-8 > .col-sml-push-2 { margin-left: 25%; }
+	.row-sml-8 > .col-sml-push-3 { margin-left: 37.5%; }
+	.row-sml-8 > .col-sml-push-4 { margin-left: 50%; }
+	.row-sml-8 > .col-sml-push-5 { margin-left: 62.5%; }
+	.row-sml-8 > .col-sml-push-6 { margin-left: 75%; }
+	.row-sml-8 > .col-sml-push-7 { margin-left: 87.5%; }
+	
+}
+
 
 /*	=========================================================================
 	$LAYOUT - generalized layout (no point in involving the grid in this)
@@ -520,22 +573,44 @@
 	.row-golden .col-push-golden-lrg { margin-left: 62.803398874989476%; }
 	
 /*
-.row-double-octave - Double Octave (1:4)
-.row-major-twelfth - Major Twelfth (1:3)
-.row-minor-second - Minor Second (15:16) 1.067
-.row-major-second - Major Second (8:9) 1.125
-.row-minor-third - Minor Third (5:6) 1.200
-.row-major-third - Major Third (4:5) 1.250
-.row-perfect-fourth - Perfect Fourth (3:4) 1.333
-.row-augmented-fourth - Augmented Fourth(1:√2) 1.414
-.row-perfect-fifth - Perfect Fifth (2:3) 1.500
-.row-minor-sixth - Minor Sixth (5:8) 1.600
-.row-major-sixth - Major Sixth (3:5) 1.667
-.row-minor-seventh - Minor Seventh (9:16) 1.778
-.row-major-seventh - Major Seventh (8:15) 1.875
-.row-octave - Octave (1:2) 2.000
-.row-major-tenth - Major Tenth (2:5) 2.500
-.row-major-eleventh - Major Eleventh (3:8)
+Name				Ratio			Decimal
+phi					1:1.618			1.618
+golden				1:1.618			1.618
+double-octave		1:4				4
+major-twelfth		1:3				3
+major-eleventh		3:8				2.667
+major-tenth			2:5				2.5
+octave				1:2				2
+major-seventh		8:15			1.875
+minor-seventh		9:16			1.778
+major-sixth			3:5				1.667
+minor-sixth			5:8				1.6
+fifth				2:3				1.5
+augmented-fourth	1:√2			1.414
+fourth				3:4				1.333
+major-third			4:5				1.25
+minor-third			5:6				1.2
+major-second		8:9				1.125
+minor-second		15:16			1.067
+
+// Ratios
+.row-golden           { 1.618034          ; }	// Golden Section / Phi (1:1.168)
+.row-double-octave    { 4                 ; }	// Double Octave (1:4)
+.row-major-twelfth    { 3                 ; }	// Major Twelfth (1:3)
+.row-major-eleventh   { 2.666666667       ; }	// Major Eleventh (3:8)
+.row-major-tenth      { 2.5               ; }	// Major Tenth (2:5)
+.row-octave           { 2                 ; }	// Octave (1:2)
+.row-major-seventh    { 1.875             ; }	// Major Seventh (8:15)
+.row-minor-seventh    { 1.777777778       ; }	// Minor Seventh (9:16)
+.row-major-sixth      { 1.666666667       ; }	// Major Sixth (3:5)
+.row-minor-sixth      { 1.6               ; }	// Minor Sixth (5:8)
+.row-perfect-fifth    { 1.5               ; }	// Perfect Fifth (2:3)
+.row-augmented-fourth { 1.41421           ; }	// Augmented Fourth(1:√2)
+.row-perfect-fourth   { 1.333333333       ; }	// Perfect Fourth (3:4)
+.row-major-third      { 1.25              ; }	// Major Third (4:5)
+.row-minor-third      { 1.2               ; }	// Minor Third (5:6)
+.row-major-second     { 1.125             ; }	// Major Second (8:9)
+.row-minor-second     { 1.066666667       ; }	// Minor Second (15:16)
 */
 
 
@@ -567,6 +642,44 @@
 	.row-grid-16 > *:nth-child(16n+1) { clear: both; }
 
 
+/* MODIFIERS
+--------------------------------------------------------*/
+
+/* -- CENTERED COLUMNS -- */
+	[class*="row-"].row-center-cols {
+		display: inline-block;
+		text-align: center;
+		}
+		[class*="row-"].row-center-cols > [class*="col-"] {
+			float: none;
+		}
+
+	
+/* -- GRID SPACING (ADDS MORE PADDING TO COLUMNS - GUTTER) -- */
+	
+	/* NORMAL PADDING */
+	[class*="row-"].row-padded { margin-right: -0.5%; margin-left: -0.5%; width: 101%; }
+	[class*="row-"].row-padded > [class*="col-"] { padding-right: 0.5%; padding-left: 0.5%; }
+
+	/* MEDIUM PADDING */
+	[class*="row-"].row-padded-med { margin-right: -1%; margin-left: -1%; width: 102%; }
+	[class*="row-"].row-padded-med > [class*="col-"] { padding-right: 1%; padding-left: 1%; }
+
+	/* LARGE PADDING */
+	[class*="row-"].row-padded-lrg { margin-right: -1.5%; margin-left: -1.5%; width: 103%; }
+	[class*="row-"].row-padded-lrg > [class*="col-"] { padding-right: 1.5%; padding-left: 1.5%; }
+
+
+/* -- TABLE-BASED GRID -- */
+	table tr[class*="row-"] {
+		display: table-row;
+	}
+	table th[class*="col-"],
+	table td[class*="col-"] {
+		display: table-column;
+	}
+
+
 /*	=========================================================================
 	$ALIGNMENTS / $FLOATS / $CLEARFIX - clear floats (h5bp.com/q)
 	========================================================================= */
@@ -582,17 +695,19 @@
 	 * 2. The use of `table` rather than `block` is only necessary if using
 	 *    `:before` to contain the top-margins of child elements.
 	 */ 
-	.clearfix:before, .clearfix:after {
+	.clearfix:before, .clearfix:after,
+	.container:before, .container:after,
+	[class*="row"]:before, [class*="row"]:after {
 	    content: " "; /* 1 */
 	    display: table; /* 2 */
 		}
-		.clearfix:after {
+		.clearfix:after,
+		.container:after,
+		[class*="row"]:after {
 		    clear: both;
 		}
 	
-	.cf:after,
-	.container:after,
-	[class*="row"]:after {
+	.cf:after {
 		clear: both;
 		content: '';
 		display: block;
@@ -612,14 +727,14 @@
 	.clear-right		{	clear: right; }
 
 	/* FLOATS - block elements  */
+	.pull-none,
+	.float-none			{ float: none; }
 	.left,
 	.pull-left,
 	.float-left			{ float: left; }
 	.right,
 	.pull-right,
 	.float-right		{ float: right; }
-	.pull-none,
-	.float-none			{ float: none; }
 	
 	/* TEXT-ALIGN - inline elements */
 	.align-left,
@@ -644,7 +759,7 @@
 	$MEDIA
 	========================================================================= */
 
-	/* MEDIA-OBJECT */
+	/* MEDIA-OBJECT: http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code */
 	.media,
 	.media-body {
 		overflow: hidden;
@@ -652,94 +767,52 @@
 		zoom: 1;
 		}
 		.media,
-		.media .media { margin-top: 1.5em; }
-		.media:first-child { margin-top: 0; }
-		.media-object { display: block; }
-		.media-heading { margin: 0 0 0.5em; }
-		.media .pull-left,
-		.media .left { margin-right: 1em; }
-		.media .pull-right,
-		.media .right { margin-left: 1em; }
-		.media a > img { border: 1px solid #ddd; }
-		.media a:hover > img { border-color: #bbb; }
-		.media-list {
-			margin-left: 0;
-			list-style: none;
+		.media .media {
+			margin-top: 1.5em;
 		}
+		.media,
+		.media:hover {
+			text-decoration: none;
+		}
+		.media:first-child {
+			margin-top: 0;
+		}
+		.media:last-child {
+			margin-bottom: 0;
+		}
+		.media-object,
+		.media-figure {
+			display: block;
+		}
+		.media-heading {
+			margin: 0;
+		}
+		.media-body p {
+			margin-top: 0;
+		}
+		.media .pull-left,
+		.media .left {
+			margin-right: 1em;
+		}
+		.media .pull-right,
+		.media .right {
+			margin-left: 1em;
+		}
+		.media a > img {
+			border: 1px solid #ddd;
+			}
+			.media a:hover > img {
+				border-color: #bbb;
+			}
+		.media-list,
+		.media-list li {
+			list-style: none;
+			margin-left: 0;
+			padding: 0;
+		}
+		
 
-	/* RESPONSIVE MEDIA ELEMENTS (scale to grid while maintaining their aspect ratios) */
-	/* Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440 */
-	audio,
-	canvas,
-	img,
-	video {
-		vertical-align: middle;
-	}
-	/* Properly scale video on any device based on YouTube/Dailymotion ratio */
-	.medii {
-		position: relative;
-		padding-top: 30px;
-		padding-bottom: 56.25%;
-		height: 0;
-		height: auto;
-		max-width: 100%;
-		margin-bottom: 1em;
-		overflow: hidden;
-	}
-	/* Widescreen */
-	.medii.widescreen {
-		padding-bottom: 45%;
-	}
-	/* Vimeo places the controls on player itself */
-	.medii.vimeo {
-		padding-top: 0;
-	}
-	/* Instagram */
-	.medii.instagram {
-		height: auto;
-		max-width: none;
-		padding-bottom: 120%;
-	}
-	/* Vine */
-	.medii.vine {
-		height: auto;
-		max-width: none;
-		padding-bottom: 100%;
-	}
-	.medii.video {
-		padding-top: 0;
-	}
-	/* Actual Player */
-	.medii iframe,
-	.medii object,
-	.medii embed,
-	.medii video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		padding: 0;
-		margin: 0;
-		border: 0;
-		outline: none;
-		background-color: transparent;
-	}
-	/*
-	 * Position image absolutely and then move its four positions 1000000%
-	 * out of container. This with an auto margin is the core of the trick.
-	 * Uses such a large number b/c Firefox seems to have issues when using 
-	 * larger images - even at 100%.
-	 */
-	.medii img {
-		position: absolute;
-		top: -1000000%;
-		right: -1000000%;
-		bottom: -1000000%;
-		left: -1000000%;
-		margin: auto;
-		width: 100%;
-	}
+	/* --- EMBEDDED MEDIA ASSETS --- */
 	
 	/* Remove the gap between <img> elements and the bottom of their containers - http://cbrac.co/Q6smqV */
 	img {
@@ -747,25 +820,19 @@
 		-ms-interpolation-mode : bicubic;
 		vertical-align: middle;
 	}
+	
+	/* RESPONSIVE IMGs - scale to grid while maintaining their aspect ratios) */
 	.img-scale,
 	.img-scale img,
 	canvas,
 	iframe,
+	object,
+	embed,
 	video,
 	svg {
-		max-width: 100%;
-	}
-	.img-scale,
-	.img-scale img,
-	video {
+		max-width: 100%;	/* Set a maximum width limited by the width of the parent */
 		width: auto\9;		/* IE7-8 need help adjusting responsive images */
 		height: auto;		/* Constrain the height by the ratio to the width */
-	}
-
-	/* Wrap tables or pre elements in a div with this */
-	.overflow-container {
-		overflow-y: scroll;
-		-webkit-overflow-scrolling: touch;
 	}
 	
 	/*
@@ -778,21 +845,27 @@
 	img[src*="googleapis.com"] {
 		max-width: none;
 	}
+
+	/* Wrap tables or pre elements in a div with this */
+	.overflow-container {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
 	
-	.flex-map {
+	/* Google Map iFrame Embed */
+	.gmap {
 		position: relative;
 		padding-bottom: 56.25%; /* 16:9 */
 		height: 0;
 		}
-		.flex-map iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border: none;
+		.gmap iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
 		}
-		
 	/* Google Gmap3 bug fix on images */
 	:not(.gm-style) img {
 		height: auto !important;
@@ -827,16 +900,87 @@
 			width: 100%;
 			height: 100%;
 		}
-
-	/* FORM ELEMENTS */
-	input,
-	textarea {
-		/* remove inner shadow in the iPad and the iPhone */
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
-		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
-		/* remove blue focus */
-		outline: none !important;
+		
+		
+	/* PREVENT USER SELECTIONS */
+	.select-prevent,
+	.disable-pointer {
+		-webkit-touch-callout: none;
+		-webkit-text-size-adjust: none;
+		-webkit-user-select: none;
+		-webkit-highlight: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 	}
+	
+	.disable-pointer {
+		pointer-events: none;
+	}
+
+
+	/* --- FORM ELEMENTS --- */
+	
+	/*
+	* Fix field styling on iPhone and iPad.
+	* 1. Strip OS styling on IOS
+	*/
+	select,
+	textarea,
+	input[type="text"],
+	input[type="search"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="week"],
+	input[type="month"],
+	input[type="time"],
+	input[type="number"],
+	input[type="password"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="url"],
+	input[type="color"] {
+		-webkit-appearance: none; /* 1 */
+	}
+	
+	@media (-webkit-min-device-pixel-ratio:0) {
+		
+		/*
+		* Fix field styling on iPhone and iPad.
+		* 1. Add a select indicator
+		*/
+		select {
+			background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMC4wMzEiIGhlaWdodD0iMTAuNSI+PHBvbHlnb24gZmlsbD0iIzIyMiIgcG9pbnRzPSIxMSwwIDUuNSw5IDAsMCIvPjwvc3ZnPg==); /* 1 */
+			background-repeat: no-repeat;
+			background-position: right center;
+			padding-right: 1.67em;
+		}
+		
+		/*
+		* Fix changing height issues on iOS7.
+		*/
+		input[type="datetime-local"],
+		input[type="date"],
+		input[type="week"],
+		input[type="month"],
+		input[type="time"],
+		input[type="number"] {
+			min-height: 2em;
+		}
+		
+		/* Remove excess padding in Webkit */
+		input[type="color"] {
+			min-height: 1.8em;
+			padding: 0;
+			}
+			input[type="color"]::-webkit-color-swatch-wrapper {
+				padding: 0;
+			}
+			input[type="color"]::-webkit-color-swatch {
+				border: none;
+			}
+		
+	}
+
 	[class*="col-"] > input[type="text"],
 	[class*="col-"] > input[type="email"],
 	[class*="col-"] > input[type="tel"],
@@ -863,16 +1007,139 @@
 	/* Restrict <textarea> elements to vertical resizing only */
 	textarea { resize: vertical; }
 	
+	
+	/* DISPLAY UTILS
+	================================================== */
+	.display-block { display: block !important; }
+	.display-inline { display: inline !important; }
+	.display-inline-block { display: inline-block !important; }
+	
+	/* VISIBILITY UTILS
+	================================================== */
+	.hide { display: none !important; visibility: hidden !important; }
+	.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
+	.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
+	
 
 /*	=========================================================================
 	$MEDIA QUERIES
 	========================================================================= */
-	/* Media Queries (mobile first device size classes) */
+		 
+	/* Fix viewport for IE10 snap mode
+	 * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+	 ========================================================================== */
 	
-	/* Phone */
-	@media only screen {
+	/*
+	* IE10 in Windows (Phone) 8
+	* Support for responsive views via media queries do not work in IE10 on mobile for
+	* versions prior to WP8 Update 3 (GDR3).
+	*/
+	@-ms-viewport {
+		width: device-width;
+	}
+	
+	@media screen and (max-width: 400px) {
+		@-ms-viewport {
+			width: 320px;
+		}
+	}
+	
+	/* 1200px and up */
+	@media only screen and (min-width: 75em) {
 		
 	}
+	
+	/*  992px to 1199px */
+	@media only screen and (min-width: 62em) and (max-width: 74.938em) {
+		.show-sml { display: none !important; }
+		.show-med { display: none !important; }
+		.hide-lrg { display: none !important; }
+		.br-sml { display: inline !important; }
+	}
+	
+	/* 768px to 991px */
+	@media only screen and (min-width: 48em) and (max-width: 61.938em) {
+		.show-sml { display: none !important; }
+		.show-lrg { display: none !important ; }
+		.hide-med { display: none !important; }
+		.br-sml { display: inline !important; }.align-left-sml { text-align: left; }
+		.align-right-med { text-align: right; }
+		.align-center-med { text-align: center; }
+	}
+	
+	/* Up to 767px */
+	@media only screen and (max-width: 47.938em) {
+		.show-med { display: none !important; }
+		.show-lrg { display: none !important; }
+		.hide-sml { display: none !important; }
+		.br-sml { display: block !important; }
+		.align-left-sml { text-align: left; }
+		.align-right-sml { text-align: right; }
+		.align-center-sml { text-align: center; }
+	}
+	
+	/* max-width 31em 480px (stack columns 31em and under) */
+	@media only screen and (max-width: 31em){
+		body {
+			font-size: 0.75em;
+			font-size: 0.75rem;
+		}
+		[class*="col-"],
+		[class*="row-grid-"] > * {
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+		}
+		[class*="col"]:before, [class*="col"]:after,
+		[class*="row-grid-"] > *:before, [class*="row-grid-"] > *:after {
+		    content: " ";
+		    display: table;
+			}
+			[class*="col"]:after,
+			[class*="row-grid-"] > *:after {
+			    clear: both;
+			}
+		[class*="row-"] > [class*="col-push-"] { margin-left: 0; }
+		[class*="row-"][class*="row-padded"] > [class*="col-"],
+		[class*="row-"][class*="row-padded"] > [class*="col-"]:first-child,
+		[class*="row-"][class*="row-padded"] > [class*="col-"]:last-child {
+			padding-left: 0; padding-right: 0;
+		}
+		[class*="col-"].align-right { text-align: left; }
+		/* FORMS */
+		[class*="col-"] > input[type="text"],
+		[class*="col-"] > input[type="email"],
+		[class*="col-"] > input[type="tel"],
+		[class*="col-"] > input[type="search"],
+		[class*="col-"] > input[type="url"],
+		[class*="col-"] > input[type="password"],
+		[class*="col-"] > select,
+		[class*="col-"] > textarea,
+		[class*="col-"] > input[type="reset"],
+		[class*="col-"] > input[type="submit"] {
+			margin-right: 0;
+			margin-bottom: 1px;
+			margin-left: 0;
+			width: 100%;
+		}
+		[class*="col-"] > input[type="search"] {
+			width: 95%;
+		}
+		form [class*="row-"] > [class*="col-"]:first-child { padding-right: 0; }
+		form [class*="row-"] > [class*="col-"]:last-child { padding-left: 0; }
+		form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:first-child { padding-right: 0; padding-left: 0; }
+		form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:last-child { padding-left: 0; padding-right: 0; }
+		form .row-1 > .col-1 { padding-right: 0 !important; padding-left: 0 !important; }
+	}
+	/* Smallest Phone: 240px */
+	@media only screen and (max-width: 15.9369em){
+		body {
+			font-size: 0.625em;
+			font-size: 0.625rem;
+		}
+	}
+	
+	
 	
 	/* Tablet - min-width 768px */
 	@media only screen and (min-width: 48em) {
@@ -888,354 +1155,5 @@
 	@media only screen and (min-width: 75em) {
 		
 	}
-	
-	/* Other Media Queries used for devices with min and max used with show and hide classes */
-	
-	/* Up to 767px */
-	@media only screen and (max-width: 47.938em) {
-		
-	}
-	
-	/* 768px to 991px */
-	@media only screen and (min-width: 48em) and (max-width: 61.938em) {
-		
-	}
-	
-	/*  992px to 1199px */
-	@media only screen and (min-width: 62em) and (max-width: 74.938em) {
-		
-	}
-	
-	/* 1200px and up */
-	@media only screen and (min-width: 75em) {
-		
-	}
-	
-	/* max-width 30em 480px (stack columns 30em and under) */
-	@media only screen and (max-width: 30em){
-		[class*="row-"] {
-			clear: both;
-			display: block;
-		}
-		[class*="col-"] {
-			clear: both;
-			display: block;
-			margin: 0 auto;
-			padding: 0;
-			width: 100% !important;
-			}
-			[class*="col-"]:after {
-				content: "";
-				display: table;
-				clear: both;
-			}
-	} 
-	
-	 
-	/* Fix viewport for IE10 snap mode
-	 * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
-	 ========================================================================== */
-	@-ms-viewport {
-		width: device-width;
-	}
-	
-	@media screen and (max-width: 400px) {
-		@-ms-viewport {
-			width: 320px;
-		}
-	}
-	
-	@media only screen and (max-width: 320px) {
-	
-		
-		
-	}
-	
-	@media only screen and (max-width: 480px) {
-			
-		
-	
-	}
-
-	@media screen and (max-width: 768px) {
-		
-		
-		
-	}
-	 
-	@media screen and (min-width: 960px) {
-		
-		
-		
-	}
-	
-	/* High resolution devices ----------- */
-	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-		
-		
-		
-	}
-	
-	
-	/* DISPLAY UTILS
-	================================================== */
-	.display-block { display: block !important; }
-	.display-inline { display: inline !important; }
-	.display-inline-block { display: inline-block !important; }
-	
-	/* RESPONSIVE VISIBILITY
-	================================================== */
-	@media screen and (min-width: 960px) {
-		.show-sml { display: none !important; }
-		.show-med { display: none !important; }
-		.hide-lrg { display: none !important; }
-		.br-small { display: inline !important; }
-	}
-	@media screen and (min-width: 769px) and (max-width: 959px) {
-		.show-sml { display: none !important; }
-		.show-lrg { display: none !important ; }
-		.hide-med { display: none !important; }
-		.br-small { display: inline !important; }
-	}
-	@media screen and (max-width: 768px) {
-		.show-med { display: none !important; }
-		.show-lrg { display: none !important; }
-		.hide-sml { display: none !important; }
-		.br-small { display: block !important; }
-	}
-	
-	/* VISIBILITY UTILS
-	================================================== */
-	.hide { display: none !important; visibility: hidden !important; }
-	.show-on-hover:hover .hide { display: block !important; visibility: visible !important; }
-	.show-on-hover-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
-	
-	
-/*
-* Image replacement
-*/
-.ir {
-	background-color: transparent;
-	border: 0;
-	overflow: hidden;
-	}
-	.ir:before {
-		content: "";
-		display: block;
-		width: 0;
-		height: 150%;
-	}
-
-/*
- * Hide from both screen readers and browsers: h5bp.com/u
- */
-.hidden {
-	display: none !important;
-	visibility: hidden;
-}
-
-/*
- * Hide only visually, but have it available for screen readers: h5bp.com/v
- */
-.visuallyhidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	}
-	/*
-	* Extends the .visuallyhidden class to allow the element to be focusable
-	* when navigated to via the keyboard: h5bp.com/p
-	*/
-	.visuallyhidden.focusable:active,
-	.visuallyhidden.focusable:focus {
-		clip: auto;
-		height: auto;
-		margin: 0;
-		overflow: visible;
-		position: static;
-		width: auto;
-	}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-.invisible { visibility: hidden; }
-
-/*
- * Layout helpers
- */
-.block { display: block !important; }
-.inline-block { display: inline-block !important; }
-.inline { display: inline !important; }
-
-/*
- * Fade opacity with animation
- */
-	.fade-out {
-		-moz-opacity: 0 !important;
-			 opacity: 0 !important;
-	}
-	/*
-	 * Opacity helper to add to elements to allow fade animation
-	 */
-	.fade-in {
-		-moz-opacity: 1 !important;
-			 opacity: 1 !important;
-	}
-	.fade-out, .fade-in {
-		 -webkit-transition: opacity 0.3s linear 0s;
-		 	-moz-transition: opacity 0.3s linear 0s;
-		 	  -o-transition: opacity 0.3s linear 0s;
-		 	  	 transition: opacity 0.3s linear 0s;
-	}
-
-
-/*
- * Responsive helpers to toggle visibility 
- */
-.hide-min,
-.show-sml,
-.show-med,
-.show-lrg {
-	display: none !important;
-}
-
-/*
- * 769 > viewport < 991px
- */
-@media (min-width: 48em) and (max-width: 61.99em) {
-	.hide-min,
-	.show-sml {
-		display: block !important;
-	}
-	table.hide-min,
-	table.show-sml {
-		display: table !important;
-	}
-	thead.hide-min,
-	thead.show-sml {
-		display: table-header-group !important;
-	}
-	tfoot.hide-min,
-	tfoot.show-sml {
-		display: table-footer-group !important;
-	}
-	tr.hide-min,
-	tr.show-sml {
-		display: table-row !important;
-	}
-	th.hide-min,
-	th.show-sml,
-	td.hide-min,
-	td.show-sml {
-		display: table-cell !important;
-	}
-	col.hide-min,
-	col.show-sml {
-		display: table-column !important;
-	}
-	caption.hide-min,
-	caption.show-sml {
-		display: table-caption !important;
-	}
-	.show-min,
-	.hide-sml {
-		display: none !important;
-	}
-}
-
-/*
- * 992px > viewport < 1200px
- */
-@media (min-width: 62em) and (max-width: 74.99em) {
-	.hide-min,
-	.show-med {
-		display: block !important;
-	}
-	table.hide-min,
-	table.show-med {
-		display: table !important;
-	}
-	thead.hide-min,
-	thead.show-med {
-		display: table-header-group !important;
-	}
-	tfoot.hide-min,
-	tfoot.show-med {
-		display: table-footer-group !important;
-	}
-	tr.hide-min,
-	tr.show-med {
-		display: table-row !important;
-	}
-	th.hide-min,
-	th.show-med,
-	td.hide-min,
-	td.show-med {
-		display: table-cell !important;
-	}
-	col.hide-min,
-	col.show-med {
-		display: table-column !important;
-	}
-	caption.hide-min,
-	caption.show-med {
-		display: table-caption !important;
-	}
-	.show-min,
-	.hide-med {
-		display: none !important;
-	}
-}
-
-/*
- * viewport > 1200px
- */
-@media (min-width: 75em) {
-	.hide-min,
-	.show-lrg {
-		display: block !important;
-	}
-	table.hide-min,
-	table.show-lrg {
-		display: table !important;
-	}
-	thead.hide-min,
-	thead.show-lrg {
-		display: table-header-group !important;
-	}
-	tfoot.hide-min,
-	tfoot.show-lrg {
-		display: table-footer-group !important;
-	}
-	tr.hide-min,
-	tr.show-lrg {
-		display: table-row !important;
-	}
-	th.hide-min,
-	th.show-lrg,
-	td.hide-min,
-	td.show-lrg {
-		display: table-cell !important;
-	}
-	col.hide-min,
-	col.show-lrg {
-		display: table-column !important;
-	}
-	caption.hide-min,
-	caption.show-lrg {
-		display: table-caption !important;
-	}
-	.show-min,
-	.hide-lrg {
-		display: none !important;
-	}
-}
 
 /* EOF */
-

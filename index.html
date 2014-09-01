@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js ie7 oldie" lang="en" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js ie8 oldie" lang="en" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
@@ -6,81 +6,74 @@
 <html class="no-js" lang="en" xmlns:og="http://opengraphprotocol.org/schema/">
 <!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<title>TransParent Grid [ Demo ]</title>
+	
 	<meta name="description" content="">
-	<meta name="author" content="Keith Parent">
-
+	<meta name="author" content="@keithparent">
+	<meta name="robots" content="INDEX,FOLLOW">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+	
+	<!-- Touch/Fav Icons -->
+	<link href="/favicon.ico" rel="shortcut icon">
+	<link href="img/icons/touch.png" rel="apple-touch-icon-precomposed">
+	
 	<!-- JS: Modernizr -->
-	<script src="js/vendor/modernizr-2.7.1.min.js"></script>
-	<!-- JS: User Agent Selectors - http://rog.ie/blog/html5-boilerplate-addon -->
-	<script>
-		var b = document.documentElement;
-		b.setAttribute('data-useragent',  navigator.userAgent);
-		b.setAttribute('data-platform', navigator.platform );
-		b.className += ((!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) ? ' touch':'');
-	</script>
-	<script src="js/fixed-nav/js/responsive-nav.js"></script>
-	
-	
-	<!-- DNS prefetch -->
-	<link rel="dns-prefetch" href="//ajax.googleapis.com">
-	<link rel="dns-prefetch" href="//www.google-analytics.com">
-
+	<script src="js/vendor/modernizr-2.8.0.min.js"></script>
 
     <!-- CSS
 	================================================== -->
 	<link rel="stylesheet" href="css/normalize-3.0.0.css">
-	<link rel="stylesheet" href="css/transparent-grid-1.0.0.css">
+	<link rel="stylesheet" href="css/transparent-grid-1.0.0.min.css">
 	<link rel="stylesheet" href="css/demo.css">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
-
 </head>
-<body>
+<body class="aparent">
 
-	<div class="navbar-fixed-top">
-		<nav class="nav-collapse container" role="navigation">
-			<ul class="nav sml">
-				<li><a href="#intro" class="top" data-scroll>Intro</a></li>
-				<li><a href="#fullgrid" data-scroll>Full Grid</a></li>
-				<li><a href="#nested" data-scroll>Nested</a></li>
-				<li><a href="#modifiers" data-scroll>Modifiers</a></li>
-				<li><a href="#layouts" data-scroll>Layouts</a></li>
-				<li><a href="#formelements" data-scroll>Forms</a></li>
-				<li><a href="#tablegrid" data-scroll>Tables</a></li>
-				<li><a href="#blockgrid" data-scroll>Blocks</a></li>
-				<li><a href="#paddedcolumns" data-scroll>Padding</a></li>
-				<li>
-					<div style="width:100%;"></div>
-				</li>
-				<li>
-					<a href="https://github.com/keithparent/TransParent-Grid" title="View Source on Github">
-						<i class="icon-github med"></i>
-					</a>
-				</li>
-				<li>
-					<a href="https://github.com/keithparent/TransParent-Grid/archive/master.zip" title="Download Master [ZIP]">
-						<i class="icon-cloud-download med"></i>
-					</a>
-				</li>
-				<li>
-					<a href="#" data-toggle="grid" title="Show/Hide Grid">
-						<i class="icon-eye-open med"></i>
-						<i class="icon-eye-close med" style="display:none;"></i>
-					</a>
-				</li>
-				<li>
-					<a href="#" data-trigger="top" title="Top">
-						<i class="icon-chevron-sign-up med"></i>
-					</a>
-				</li>
-			</ul>
-		</nav>
+	<div class="navbar navbar-fixed-top">
+		<div class="nav-collapse">
+			<nav class="container" role="navigation">
+				<ul class="nav">
+					<li><a href="#intro" class="top" data-scroll>Intro</a></li>
+					<li><a href="#fullgrid" data-scroll>Full Grid</a></li>
+					<li><a href="#nested" data-scroll>Nested</a></li>
+					<li><a href="#modifiers" data-scroll>Modifiers</a></li>
+					<li><a href="#layouts" data-scroll>Layouts</a></li>
+					<li><a href="#formelements" data-scroll>Forms</a></li>
+					<li><a href="#tablegrid" data-scroll>Tables</a></li>
+					<li><a href="#blockgrid" data-scroll>Blocks</a></li>
+					<li><a href="#paddedcolumns" data-scroll>Padding</a></li>
+					<li>
+						<div style="width:100%;"></div>
+					</li>
+					<li>
+						<a href="https://github.com/keithparent/TransParent-Grid" class="tip" title="Fork it on Github" data-tipper-options='{"direction":"bottom"}'>
+							<i class="icon-github med"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/keithparent/TransParent-Grid/archive/master.zip" class="tip" title="Download Master [ZIP]" data-tipper-options='{"direction":"bottom"}'>
+							<i class="icon-cloud-download med"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" data-toggle="grid" class="tip" title="Toggle Grid Visibility" data-tipper-options='{"direction":"bottom"}'>
+							<i class="icon-eye-open med" style="display:none;"></i>
+							<i class="icon-eye-close med"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" data-trigger="top" class="tip" title="To Top" data-tipper-options='{"direction":"bottom"}'>
+							<i class="icon-chevron-sign-up med"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
 	</div>
 
 	<header id="header" role="banner">
@@ -92,9 +85,9 @@
 				</a>
 			</div>
 			<div class="col-1 align-right">
-				<h1>
+				<h1 class="page-title">
 					<strong>TransParent Grid</strong>
-					[ <small class="loose uc">Demos</small> ]
+					<span class="hide-sml">[ <small class="loose uc">Demos</small> ]</span>
 				</h1>
 			</div></div>
 		</div>
@@ -1455,18 +1448,18 @@
 		<section class="container section" id="nested">
 			<h2>Nested Columns</h2>
 			
-			<section class="section js-eq" id="fibonacci">
+			<section class="section" id="fibonacci">
 				<h3>Fibonacci Sequence</h3>
-				<div class="row-13">
+				<div class="row-13" data-eqcolheights>
 					<div class="col-5" style="height:422px;">
 						5 of 13
-						<div class="row-5">
+						<div class="row-5" data-eqcolheights>
 							<div class="col-3" style="height:240px;">
 								3 of 5
 							</div>
 							<div class="col-2">
 								2 of 5
-								<div class="row-2">
+								<div class="row-2" data-eqcolheights>
 									<div class="col-1" style="height:70px;">
 										1 of 2
 									</div>
@@ -1505,7 +1498,7 @@
 							</div>
 							<div class="col-1">
 								<h3>1 of 2</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.--></p>
 							</div>
 						</div>
 						<!-- /line -->
@@ -1697,89 +1690,108 @@
 	                
 	                <div class="row-3">
 		                <div class="col-1">
-		                	<label for="text-input-01">Text input</label>
-		                	<input type="text" id="text-input-01" name="text-input-01" value="default value that goes on and on without stopping or punctuation">
+		                	<label for="text-input-01">Text <code>[input]</code></label>
+		                	<input type="text" id="text-input-01" name="text-input-01" autocomplete="off" value="default value that goes on and on without stopping or punctuation">
 		                </div>
 		                <div class="col-1">
-		                	<label for="email-input-01">Email input</label>
-		                	<input id="email-input-01" name="email-input-01" type="email" autocapitalize="off" autocorrect="off" placeholder="username@domain.com">
+		                	<label for="email-input-01">Email <code>[input]</code></label>
+		                	<input id="email-input-01" name="email-input-01" type="email" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="username@domain.com">
 		                </div>
 		                <div class="col-1">
-		                	<label for="tel-input-01">Tel input</label>
-		                	<input id="tel-input-01" name="tel-input-01" type="tel" placeholder="(___) ___ - ____">
+		                	<label for="tel-input-01">Tel <code>[input]</code></label>
+		                	<input id="tel-input-01" name="tel-input-01" type="tel" autocomplete="off" placeholder="(___) ___ - ____">
 		                </div>
 	                </div>
 	                
 	                <div class="row-3">
 		                <div class="col-1">
-		                	<label>Search input</label>
-		                	<input type="search" placeholder="Search...">
+		                	<label for="search-input-01">Search <code>[input]</code></label>
+		                	<input type="search" id="search-input-01" name="search-input-01" autocomplete="off" placeholder="Search...">
 		                </div>
 		                <div class="col-1">
-		                	<label>URL input</label>
-		                	<input type="url" placeholder="http://">
+		                	<label for="url-input-01">URL <code>[input]</code></label>
+		                	<input type="url" autocomplete="off" placeholder="http://">
 		                </div>
 		                <div class="col-1">
-		                	<label>Password input</label>
-		                	<input type="password" value="password">
+		                	<label for="password-input-01">Password <code>[input]</code></label>
+		                	<input type="password" id="password-input-01" name="password-input-01" autocomplete="off" value="password">
 		                </div>
 		            </div>
 					
 					<div class="row-3">
-						<div class="col-1">
-							<label for="Lorem">Select[size]</label><br>
-							<select tabindex="5" id="Lorem" name="Lorem ipsum">
-								<option selected="selected" value="1">Lorem ipsum</option>
-								<option value="2">dolor sit amet</option>
-								<option value="3"> consectetuer adipiscing</option>
-								<option value="4">vitae diam</option>
-								<option value="5">Vestibulum ornare</option>
-							</select>
-						</div>
-											
-						<div class="col-1">
-							<label for="Pellentesque">Select[multiple]</label><br>
-							<select tabindex="6" id="Pellentesque" size="1" name="select">
-								<optgroup label="Lorem ipsum1">
-									<option selected="selected" value="1">Nunc urna nulla</option>
-									<option value="2">ultrices sit amet</option>
-									<option value="3">cursus faucibus</option>
-									<option value="4">tincidunt pellentesque</option>
-									<option value="5">ante</option>
-								</optgroup>
-								<optgroup label="Lorem ipsum2">
-									<option selected="selected" value="6">Nunc ac diam</option>
-									<option value="7">Donec orci risus</option>
-									<option value="8">malesuada quis</option>
-									<option value="9">vulputate eu</option>
-									<option value="10">lacinia in</option>
-								</optgroup>
-							</select>
-						</div>
-						
-						<div class="col-1">
-							<label for="Message">Textarea</label><br>
-							<textarea tabindex="4" id="Message" name="Message" rows="4" cols="42"></textarea>
-						</div>
-					</div>
-					
-					<div class="row-3">
 						<div class="col-2">
-							<label>Checkbooms</label>
-							<div class="row-3">
-								<div class="col-1"><label><input tabindex="10" type="checkbox" name="checkSet" value="one"> This One</label></div>
-								<div class="col-1"><label><input tabindex="11" type="checkbox" name="checkSet" value="two"> This One Two</label></div>
-								<div class="col-1"><label><input tabindex="12" type="checkbox" name="checkSet" value="three"> This One Three</label></div>
-							</div>
-						</div>
 						
-						<div class="col-1">
-							<label>Radios</label>
-							<div class="row-3">
-								<div class="col-1"><label><input tabindex="7" type="radio" name="radioSet" value="uno"> Radio</label></div>
-								<div class="col-1"><label><input tabindex="8" type="radio" name="radioSet" value="due"> Video</label></div>
-								<div class="col-1"><label><input tabindex="9" type="radio" name="radioSet" value="tre"> Internet</label></div>
+							<div class="row-2">
+								<div class="col-1">
+								
+									<label for="Lorem">Select <code>[size]</code></label>
+									<select tabindex="5" id="Lorem" name="Lorem ipsum">
+										<option selected="selected" value="1">Lorem ipsum</option>
+										<option value="2">dolor sit amet</option>
+										<option value="3"> consectetuer adipiscing</option>
+										<option value="4">vitae diam</option>
+										<option value="5">Vestibulum ornare</option>
+									</select>
+									
+								</div>
+								<div class="col-1">
+								
+									<label for="Pellentesque">Select <code>[multiple]</code></label>
+									<select tabindex="6" id="Pellentesque" size="1" name="select">
+										<optgroup label="Lorem ipsum1">
+											<option selected="selected" value="1">Nunc urna nulla</option>
+											<option value="2">ultrices sit amet</option>
+											<option value="3">cursus faucibus</option>
+											<option value="4">tincidunt pellentesque</option>
+											<option value="5">ante</option>
+										</optgroup>
+										<optgroup label="Lorem ipsum2">
+											<option selected="selected" value="6">Nunc ac diam</option>
+											<option value="7">Donec orci risus</option>
+											<option value="8">malesuada quis</option>
+											<option value="9">vulputate eu</option>
+											<option value="10">lacinia in</option>
+										</optgroup>
+									</select>
+									
+								</div>
 							</div>
+							
+							<hr>
+					
+							<div class="row-2">
+							
+								<div class="col-1">
+								
+									<label>Checkbooms <code>[input]</code></label>
+									<div class="row-3">
+										<div class="col-1"><label><input tabindex="10" type="checkbox" name="checkSet" value="one"> This One</label></div>
+										<div class="col-1"><label><input tabindex="11" type="checkbox" name="checkSet" value="two"> This One Two</label></div>
+										<div class="col-1"><label><input tabindex="12" type="checkbox" name="checkSet" value="three"> This One Three</label></div>
+									</div>
+									
+								</div>
+								
+								<div class="col-1">
+								
+									<label>Radios <code>[input]</code></label>
+									
+									<div class="row-3">
+										<div class="col-1"><label><input tabindex="7" type="radio" name="radioSet" value="uno"> Radio</label></div>
+										<div class="col-1"><label><input tabindex="8" type="radio" name="radioSet" value="due"> Video</label></div>
+										<div class="col-1"><label><input tabindex="9" type="radio" name="radioSet" value="tre"> Internet</label></div>
+									</div>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+						<div class="col-1">
+							
+							<label for="Message">Textarea</label>
+							<textarea tabindex="4" id="Message" name="Message" rows="4" cols="42" role="textbox"></textarea>
+							
 						</div>
 					</div>
 					
@@ -1798,6 +1810,44 @@
 				</fieldset>
 			</form>
 			
+			<!--	
+			<div class="row-3">
+				<div class="col-1">
+				
+					<form action="/" id="searchForm" name="searchform" method="get" class="form form-search" role="form">
+						<input type="search" id="s" name="s" class="input input-search" placeholder="Search..." autocomplete="off" role="textbox">
+						<button id="searchSubmit" type="submit" class="btn btn-primary btn-search" role="button" title="Search">
+							<i class="icon-search" aria-hidden="true"></i>
+							<span class="visuallyhidden is-vishidden">Search</span>
+						</button>
+						<input name="action" value="search" type="hidden">
+					</form>
+					
+				</div>
+				<div class="col-1">
+			
+					<form class="form form-addtocart" method="post" enctype="multipart/form-data">
+						
+						<div class="input-quantity">
+							<input type="button" value="-" class="btn-qty-inc btn-qty-minus">
+							<input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input input-qty" size="4">
+							<input type="button" value="+" class="btn-qty-inc btn-qty-plus">
+						</div>
+						
+						<button type="submit" class="btn btn-purple btn-addtocart">
+							<i class="icon-plus"></i> Add to cart
+						</button>
+						
+						<input type="hidden" name="add-to-cart" value="">
+					</form>
+					
+				</div>
+				<div class="col-1">
+				
+				</div>
+			</div>
+			-->
+			
 		</section>
 		
 		<hr>
@@ -1805,7 +1855,7 @@
 		<section class="container section" id="tablegrid">
 			<h2>Table Grid</h2>
 			
-			<table cellpadding="0" cellspacing="0" class="container">
+			<table class="container">
 				<thead>
 					<tr class="row-9">
 						<th class="col-2">Table Header 2 of 9</th>
@@ -1935,125 +1985,707 @@
 			
 			
 			<h3>No Padding</h3>
-			<div class="row-5">
+			
+			<div class="row-5" data-eqcolheights>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/175x100" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/350x200" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/700x400" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/1400x800" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/2800x1600" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 			
 			
 			<h3>Padded</h3>
-			<div class="row-5 row-padded">
+			
+			<div class="row-5 row-padded" data-eqcolheights>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/175x100" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/350x200" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/700x400" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/1400x800" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/2800x1600" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 			
 			
 			<h3>Medium Padding</h3>
-			<div class="row-5 row-padded-med">
+			<div class="row-5 row-padded-med" data-eqcolheights>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/175x100" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/350x200" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/700x400" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/1400x800" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/2800x1600" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 			
 			
 			<h3>Large Padding</h3>
-			<div class="row-5 row-padded-lrg">
+			<div class="row-5 row-padded-lrg" data-eqcolheights>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/175x100" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/350x200" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/700x400" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/1400x800" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 				<div class="col-1">
-					<img src="http://placehold.it/350x200" width="350" height="200" class="img-scale" alt="">
-					<h3>Item Name</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				
+					<div class="item">
+						<a href="#" class="item-link">
+							<img src="http://placehold.it/2800x1600" width="350" height="200" class="item-img img-scale" alt="">
+							<div class="item-title">
+								Item Title
+							</div>
+						</a>
+						<div class="item-description">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						</div>
+						<hr>
+						<ul class="nav btns row-grid-2">
+							<li><a href="#" class="btn btn-block btn-sml"><i class="icon-zoom-in"></i>uickView</a></li>
+							<li><a href="#" class="btn btn-block btn-sml btn-primary"><i class="icon-plus"></i> Add to Cart</a></li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 
 		
+		</section>
+		
+		<!--
+		<hr>
+		
+		<section class="container section" id="mediagrid">
+			
+			<div class="row-2">
+				
+				<div class="col-1">
+				
+					<ul class="media-list">
+					
+						<li class="media">
+							<div class="media-object left">
+								<i class="icon-cog icon-5x"></i>
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+					
+						<li class="media">
+							<div class="media-object left">
+								<i class="icon-cogs icon-5x purple"></i>
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+					
+						<li class="media">
+							<div class="media-object left">
+								<i class="icon-cogs icon-5x"></i>
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+						
+					</ul>
+					
+				</div>
+				
+				<div class="col-1">
+				
+					<ul class="media-list">
+					
+						<li class="media">
+							<div class="media-object left">
+								<img src="http://i1.wp.com/www.keithparent.com/wp-content/themes/flexform-child/images/weaponk-headshot.jpg?resize=180%2C180" alt="Headshot" class="img-circle left media-object" width="100" height="100">
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+					
+						<li class="media">
+							<div class="media-object right">
+								<img src="http://i1.wp.com/www.keithparent.com/wp-content/themes/flexform-child/images/weaponk-headshot.jpg?resize=180%2C180" alt="Headshot" class="img-circle left media-object" width="100" height="100">
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+					
+						<li class="media">
+							<div class="media-object left">
+								<img src="http://i1.wp.com/www.keithparent.com/wp-content/themes/flexform-child/images/weaponk-headshot.jpg?resize=180%2C180" alt="Headshot" class="img-circle left media-object" width="100" height="100">
+							</div>
+							<div class="media-body">
+								<h4 class="media-title">Media-object Title</h4>
+								<p>What's the final problem? I told you. You didn't listen.</p>
+							</div>
+						</li>
+						
+					</ul>
+					
+				</div>
+				
+			</div>
+			
+		</section>
+		
+		<hr>
+		
+		<section class="container section" id="gmap">
+			<h2>Embedded Google Maps</h2>
+		
+			<div id="map_canvas" class="map-container">
+			
+				<div class="map" data-center-lat="37.38011324505495" data-center-lng="188.26171875" data-zoom="2"></div>
+				<div class="map-pin" data-lat="39.851904803953346" data-lng="179.296875" data-title="Maptastic!">
+					<div class="infowindow">
+						Informational hover content
+					</div>
+				</div>
+				
+			</div>
+		
+		</section>
+		-->
+		
+		<hr>
+		
+		<section class="container section" id="tabgrid">
+			<h2>Tab Components</h2>
+			
+			<!-- Tabs -->
+			<div class="tabs" data-init="tabs" data-index="0">
+			
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab1" class="btn tab" data-toggle="tab" data-target="tab1">Tab 1</a></li>
+					<li><a href="#tab2" class="btn tab" data-toggle="tab" data-target="tab2">Tab 2</a></li>
+					<li><a href="#tab3" class="btn tab" data-toggle="tab" data-target="tab3">Tab 3</a></li>
+					<li><a href="#tab4" class="btn tab" data-toggle="tab" data-target="tab4">Tab 4</a></li>
+					<li><a href="#tab5" class="btn tab" data-toggle="tab" data-target="tab5">Tab 5</a></li>
+					<li><a href="#tab6" class="btn tab" data-toggle="tab" data-target="tab6">Tab 6</a></li>
+				</ul>
+				
+				<div class="tab-content tab-content-bordered">
+			
+					<div id="tab1" class="tab-pane active">
+					
+						<h1>Tenet 1</h1>
+						<blockquote>
+							<p>“User experience is the net sum of every interaction a person has with a company, be it marketing collateral, a customer service call, or the product or service itself. It is affected by the company’s vision and the beliefs it holds and its practices, as well as the service or product’s purpose and the value it holds in a person’s life.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+					<div id="tab2" class="tab-pane">
+					
+						<h1>Tenet 2</h1>
+						<blockquote>
+							<p>“User experience is strategic. It begins with an idea to improve the lives of users, and continues through every moment of the customer lifecycle, from attention to abandonment and beyond. It is driven by a vision that guides and justifies every design decision.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+					<div id="tab3" class="tab-pane">
+					
+						<h1>Tenet 3</h1>
+						<blockquote>
+							<p>“Every detail of a company and its product says something about it. User experience strategy and design ensures that these messages are put forth with intention and purpose. Design extends into each and every detail, and each and every detail can indeed be designed.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+					<div id="tab4" class="tab-pane">
+					
+						<h1>Tenet 4</h1>
+						<blockquote>
+							<p>“User experience is a process of discovery, vision definition, strategy, planning, execution, measurement and iteration. It requires flexibility, and a willingness to be wrong until you are right.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+					<div id="tab5" class="tab-pane">
+					
+						<h1>Tenet 5</h1>
+						<blockquote>
+							<p>“Great products and services require bravery. Design puts a shape to your courage.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+					<div id="tab6" class="tab-pane">
+					
+						<h1>Tenet 6</h1>
+						<blockquote>
+							<p>“A great service or product is rarely the mere logical result of research. Most often, it is the result of a courageous belief that what you are doing will change the world, and a determination to do it well.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+				</div>
+				
+			</div>
+			
+		
+			<!-- Tabs Vertical Nav -->
+			<div class="tabs tabs-nav-stacked" data-init="tabs">
+		
+				<ul class="nav nav-tabs nav-stacked">
+					<li class="active"><a href="#tab-1" class="tab" data-toggle="tab" data-target="tab1" title="">Stacked Tab 1</a></li>
+					<li><a href="#tab-2" class="tab" data-toggle="tab" data-target="tab2" title="">Stacked Tab 2</a></li>
+					<li><a href="#tab-3" class="tab" data-toggle="tab" data-target="tab3" title="">Stacked Tab 3</a></li>
+					<li><a href="#tab-4" class="tab" data-toggle="tab" data-target="tab4" title="">Stacked Tab 4</a></li>
+					<li><a href="#tab-5" class="tab" data-toggle="tab" data-target="tab5" title="">Stacked Tab 5</a></li>
+					<li><a href="#tab-6" class="tab" data-toggle="tab" data-target="tab6" title="">Stacked Tab 6</a></li>
+					<li><a href="#tab-7" class="tab" data-toggle="tab" data-target="tab7" title="">Stacked Tab 7</a></li>
+				</ul>
+				
+				<div class="tab-content">
+				
+					<div class="tab-pane active" id="tab-1">
+					
+						<h3>Tenet 7</h3>
+						<blockquote>
+							<p>“The solvers of the world’s problems will be those who apply their skill, talent, knowledge and experience to design and redesign the world around us. Whether they call themselves designers or not, the creators of the future will be those who design (as in, <em>on purpose</em>, not by mere fact of being involved).”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+				
+					<div class="tab-pane" id="tab-2">
+					
+						<h3>Tenet 8</h3>
+						<blockquote>
+							<p>“The goal of a designer is to listen, observe, understand, sympathize, empathize, synthesize and glean insights that enable him or her to “make the invisible visible” (as Hillman Curtis put it) — to pull treasure out of nothing, to pull value out of vapor.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+					<div class="tab-pane" id="tab-3">
+					
+						<h3>Tenet 9</h3>
+						<blockquote>
+							<p>“The job of a designer, just like that of a writer, is to twist and stretch and shape a conceptualized piece of work over and over again until it becomes the masterpiece the world needs it to be.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+					<div class="tab-pane" id="tab-4">
+					
+						<h3>Tenet 10</h3>
+						<blockquote>
+							<p>“Designers act not on opinion, but on insight. They do not mandate, but educate. While the best decision can often only be based on the best guess, designers inform their instincts every single day so that these guesses may be right.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+					<div class="tab-pane" id="tab-5">
+					
+						<h3>Tenet 11</h3>
+						<blockquote>
+							<p>“Designers enable companies to change the world, define the future, create value and make a ton of money, and the evidence of this is endless.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+					<div class="tab-pane" id="tab-6">
+					
+						<h3>Tenet 12</h3>
+						<blockquote>
+							<p>“A user’s experience belongs to the user. An experience cannot be designed. It can, however, be influenced. A designer’s job is to be the influencer.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+			
+					<div class="tab-pane" id="tab-7">
+					
+						<h3>Tenet 13</h3>
+						<blockquote>
+							<p>“Designers do not manage. They lead.”</p>
+							<cite>Thirteen Tenets Of User Experience</cite>
+						</blockquote>
+						
+					</div>
+					
+				</div>
+			</div>
+				
 		</section>
 
 	</main>
@@ -2064,7 +2696,7 @@
 		<div class="container">
 			
 			<p>
-				<small>&copy; 2014 <a href="http://www.keithparent.com/" target="_blank">This is aParent Design</a>, No rights reserved.</small>
+				<small>&copy; 2014 <a href="http://www.keithparent.com/" target="_blank">This is aParent Design</a>, No rights, dignity, or self-respect reserved.</small>
 			</p>
 			
 		</div>
@@ -2074,106 +2706,80 @@
 	<!-- JS -->
 	
 	<!-- Google CDN's jQuery, fall back to local if offline -->
-	<!-- 2.0 for modern browsers, 1.10 for .oldie -->
-	<script>
-		var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
-		if(!oldieCheck) {
-			document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"><\/script>');
-		} else {
-			document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
-		}
-	</script>
-	<script>
-		if(!window.jQuery) {
-			if(!oldieCheck) {
-				document.write('<script src="js/vendor/jquery-2.0.0.min.js"><\/script>');
-			} else {
-				document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>');
-			}
-		}
-	</script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="js/fixed-nav/js/fastclick.js"></script>
-    <script src="js/fixed-nav/js/scroll.js"></script>
-    <script src="js/fixed-nav/js/fixed-responsive-nav.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 	
+	<!-- Easing Methods -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        
+    <!-- Plugins and page scripts -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+	
+	<!-- A few inlines b/c i'm lazy -->
 	<script>
-		/* ===========================================
-			Force a repaint in Chrome
-		============================================== */
-		(function( window, $ ){
-			window.watchResize = function( callback ){
-				var resizing;
-				function done(){
-					clearTimeout( resizing );
-					resizing = null;
-					callback();
-				}
-				$(window).resize(function(){
-					if ( resizing ) {
-						clearTimeout( resizing );
-						resizing = null;
+	
+		/***************** Slide-In Nav ******************/
+		$(window).load(function() {
+		
+			$('.nav_slide_button').on('click', function(e) {
+				e.preventDefault();
+				$('.nav-collapse').slideToggle();
+				$('body').toggleClass('nav-open');
+			});
+		
+		});
+		
+		/***************** Nav Transformicon ******************/
+		document.querySelector("#nav-toggle").addEventListener("click", function() {
+			this.classList.toggle("active");
+		});
+		
+		/***************** Overlays ******************/
+		$(document).ready(function(){
+		
+			if (Modernizr.touch) {
+				// show the close overlay button
+				$(".close-overlay").removeClass("hidden");
+				// handle the adding of hover class when clicked
+				$(".img").click(function(e){
+					if (!$(this).hasClass("hover")) {
+						$(this).addClass("hover");
 					}
-					resizing = setTimeout( done, 50 );
 				});
-				callback();
-			};
-			$(window).on('load',function(){
-				window.watchResize(function(){
-					var $body = $('body');
-					$body.css( 'overflow', 'hidden' ).height();
-					$body.css( 'overflow', 'auto' );
+				// handle the closing of the overlay
+				$(".close-overlay").click(function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if ($(this).closest(".img").hasClass("hover")) {
+						$(this).closest(".img").removeClass("hover");
+					}
 				});
-			});
-		})( this, jQuery );
-		
-		// Equalize Column Heights
-		$.fn.matchColumnHeights = function(){
-			var rows = $(this);
-			$(rows)
-				.each(function(){
-					var cols = $(this).children( "[class^='col-']" ),
-						tallestColumn = 0;
-					$(cols)
-						.each(function(){
-							var colH = $(this).outerHeight();
-							if( colH > tallestColumn ){
-								tallestColumn = colH;
-							}
-						})
-						.css({
-							"height" : tallestColumn,
-							"min-height" : tallestColumn,
-							"max-height" : tallestColumn
-						})
-					;
+			} else {
+				// handle the mouseenter functionality
+				$(".img").mouseenter(function(){
+					$(this).addClass("hover");
 				})
-			;
-			return;
-		}
-		
-		jQuery(document).ready(function($){
+				// handle the mouseleave functionality
+				.mouseleave(function(){
+					$(this).removeClass("hover");
+				});
+			}
 			
-			// init vars (caches selectors)
-			var eqcol		= $(".js-eq").find("[class^='row-']")//,
-				//backtotop	= $('[data-trigger="top"]'),
-				//togglegrid	= $('[data-toggle="grid"]')
-			;
-			
-			// equal height columns
-			eqcol.matchColumnHeights();
-			
-			$('[data-toggle="grid"]').click(function(event){
-				event.preventDefault();
-				$(this).find('i').toggle();
-				$('body').toggleClass('aparent');
-			});
-
+			// TOGGLE GRID BUTTON
+			var $btg = $('[data-toggle="grid"]');
+			if( $btg.length ){
+				$btg.on("click", function(event){
+					$(this).find('i').toggle();
+					$('body').toggleClass('aparent');
+					event.preventDefault();
+				});
+			}
 			
 		});
 	</script>
 	
-	<!-- Google Webfont Loader -->
+<!-- Google Webfont Loader -->
 	<script>
 		WebFontConfig = {
 			google: { families: [
