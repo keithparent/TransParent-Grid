@@ -1,158 +1,557 @@
-@charset "UTF-8";
+/*	=========================================================================
+	TransParent Grid v.1.0.1
+	author		:	Keith Parent ( @keithparent )
+	http		:	www.keithparent.com
+	mailto		:	keithparent@me.com
 
-/*
- *	TransParent Grid Demo
- *	Copyright [c] 2014, Keith Parent
- *	www.keithparent.com
- *	Free to use under the MIT license.
- *	http://www.opensource.org/licenses/mit-license.php
- *	02/22/2014
- */
+	Copyright (c) 2015 Keith Parent
+	========================================================================= */
+	
  
-/* BASE STYLES
- ========================================================================== */
+/*	=========================================================================
+	BASE
+	========================================================================= */
 
-/* Modular Scaling Baseline */
-	html {
-		font-size: 100%;
-	}
-	body {
-		font-size: 1em;
-		font-size: 1rem;
-		line-height: 1.5;
-	}
-	h1, .h1,
-	h2, .h2,
-	h3, .h3,
-	h4, .h4,
-	h5, .h5,
-	h6, .h6 {
-		font-weight: bold;
-		margin: 0;
-		text-rendering: optimizelegibility;
-	}
-	h1, .h1 {
-		font-size: 3em;
-		font-weight: 200;
-		line-height: 1;
-		margin-bottom: 0.5em;
-	}
-	h2, .h2 {
-		font-size: 2.25em;
-		font-weight: 400;
-		line-height: 1.3333333333333333;
-		margin-bottom: 0.6666666666666666em;
-	}
-	h3, .h3 {
-		font-size: 1.5em;
-		font-weight: 600;
-		line-height: 1;
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
-	}
-	h4, .h4 {
-		font-size: 1.3125em;
-		font-weight: 800;
-		line-height: 1.1428571428571428;
-		margin-bottom: 1.1428571428571428em;
-	}
-	h5, .h5 {
-		font-size: 1.125em;
-		line-height: 1.3333333333333333;
-		margin-bottom: 1.3333333333333333em;
-	}
-	h6, .h6 {
-		font-size: 1em;
-		font-weight: 900;
-		line-height: 1.5;
-		margin-bottom: 1.5em;
-		text-transform: uppercase;
+	html[dir="rtl"] {
+		direction: rtl;
 	}
 	
-	p,
-	blockquote {
-		font-size: 1em;
-		margin: 0 0 1.5em;
-		line-height: 1.5;
-		 -webkit-hyphens: auto;
-		 	-moz-hyphens: auto;
-		 	 -ms-hyphens: auto;
-		 	 	 hyphens: auto;
-	}
-	dl,
-	ol,
-	ul {
-		font-size: 1em;
-		margin: 0 0 1.5em;
-		padding: 0;
-	}
-	dd,
-	dt,
-	li {
-		line-height: 1.5;
-		margin: 0;
+	/* Set base font-size */
+	html {
+		height: 100%;
+		-webkit-overflow-scrolling: touch;
+		-webkit-tap-highlight-color: rgba(17,119,170,0.6);
+		-webkit-touch-callout: none;
+		-ms-overflow-style: scrollbar; /* [ auto | none | scrollbar | -ms-autohiding-scrollbar ] */
+		overflow-y: scroll;
 	}
 
+		
+
+/*	=========================================================================
+	TYPOGRAPHY
+	========================================================================= */
+	
+	html,
+	body {
+		height: 100%;
+		min-height: 100%;
+	}
+
+
+	/* Modular Scaling Baseline */
+	/* Define the base font-size on the body element; most elements will inherit this. */
+	/* Font-size is set using `rem` unit with a `px` fallback. */
+	/* Define unit-less line-height as 1.5 ( 24px ). */
+	/* All subsequent margins ( top / bottom ) and line-heights should be a multiple of this number in order to maintain vertical rhythm. */
+	
+	body {
+		background: #fff;
+		color: #444;
+		font-family: "Source Sans Pro", "Avenir Next", Avenir, "Segoe UI", Segoe, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+		font-size: 16px;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+	
+	button,
+	input,
+	optgroup,
+	select,
+	textarea {
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
+	
+	/**
+	 * Set a consistent margin for common elements to maintain vertical rhythm.
+	 */
+	blockquote, figure,
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6,
+	ul, ol, dl, menu,
+	form, fieldset, label,
+	p, pre, hr,
+	table, summary {
+		margin-top: 24px;
+		margin-top: 1.5rem;
+		margin-bottom: 0;
+	}
+	
+	/* Remove top margin from lists that are children of lists. */
+	li ul:first-child,
+	li ol:first-child {
+		margin-top: 0;
+	}
+	
+	/* Tighten up top margin on some common elements for e-commerce UI simplification. */
+	* + ul,
+	* + ol,
+	* + dl,
+	* + p {
+		margin-top: 12px;
+		margin-top: 0.75rem;
+	}
+	
+	/* Massive type (e.g. in mastheads and banners) */
+	.giga {
+		font-size: 80px;
+		font-size: 5rem;     /* 80px */
+		line-height: 1.2;    /* 96px */
+	}
+	
+	.mega {
+		font-size: 64px;
+		font-size: 4rem;     /* 64px */
+		line-height: 1.125;  /* 72px */
+	}
+	
+	.kilo {
+		font-size: 48px;
+		font-size: 3rem;     /* 48px */
+		line-height: 1;      /* 48px */
+	}
+	
+	/* Define headings and their associated classes here. */
+	
+	h1,
+	.h1 {
+		font-size: 32px;
+		font-size: 2rem;     /* 32px */
+		line-height: 1.5;    /* 48px */
+	}
+	
+	h2,
+	.h2 {
+		font-size: 24px; 
+		font-size: 1.5rem;   /* 24px */
+		line-height: 1;      /* 24px */
+	}
+	
+	h3,
+	.h3 {
+		font-size: 20px;
+		font-size: 1.25rem;  /* 20px */
+		line-height: 1.2;    /* 24px */
+	}
+	
+	h4,
+	.h4 {
+		font-size: 18px;
+		font-size: 1.125rem; /* 18px */
+		line-height: 1.333;  /* 24px */
+	}
+	
+	h5,
+	.h5 {
+		font-size: 16px;
+		font-size: 1rem;     /* 16px */
+		line-height: 1.5;    /* 24px */
+	}
+	
+	h6,
+	.h6 {
+		font-size: 16px;
+		font-size: 1rem;     /* 16px */
+		line-height: 1.5;    /* 24px */
+	}
+	
+	/* Smaller-than-body-copy sizes here. */
+	
+	small,
+	.sml,
+	.sm {
+		font-size: 12px;
+		font-size: 0.75rem;  /* 12px */
+		line-height: 2;      /* 24px */
+	}
+	
+	/**
+	 * Add word wrapping and basic hyphenation to common elements.
+	 */
+	caption,
+	p,
+	table,
+	td,
+	textarea,
+	th {
+	  word-wrap: break-word;
+	  -webkit-hyphens: auto;
+	     -moz-hyphens: auto;
+	      -ms-hyphens: auto;
+	          hyphens: auto;
+	}
+	
+/* Headings */
+	
+	h1, .h1, h2, .h2,
+	h3, .h3, h4, .h4,
+	h5, .h5, h6, .h6 {
+		font-family: inherit;
+		font-weight: normal;
+		text-shadow: 0 0 0 0 rgba(0, 0, 0, 0.04);
+		}
+		
+		h1,
+		.h1 {
+			font-size: 		3em;
+			line-height: 	1;
+		}
+		
+		h2,
+		.h2 {
+			font-size: 		2.25em;
+			line-height: 	1.3333333333333333;
+		}
+		
+		h3,
+		.h3 {
+			font-size: 		1.5em;
+			line-height: 	1;
+		}
+		
+		h4,
+		.h4 {
+			font-size: 		1.3125em;
+			line-height: 	1.1428571428571428;
+		}
+		
+		h5,
+		.h5 {
+			font-size: 		1.125em;
+			line-height: 	1.3333333333333333;
+		}
+		
+		h6,
+		.h6 {
+			font-size: 		1em;
+			line-height: 	1.5;
+		}
+			
+		
+		/* Font-weights */
+		
+		h1, .h1 { font-weight: 100; }
+		h2, .h2 { font-weight: 300; }
+		h3, .h3 { font-weight: 400; }
+		h4, .h4 { font-weight: 500; }
+		h5, .h5 { font-weight: 700; }
+		h6, .h6 { font-weight: 900; }
+		
+		
+		/* Letter-spacing */
+		
+		h1, .h1, h2, .h2 { letter-spacing: -0.0625em; }
+		h3, .h3, h4, .h4 { letter-spacing:  0; }
+		h5, .h5, h6, .h6 { letter-spacing:  0.0625em; }
+		
+		
+		/* Heading Anchors */
+		
+		 h1 a,  h2 a,  h3 a,  h4 a,  h5 a,  h6 a,
+		.h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
+			font-weight: inherit;
+		}
+		
+		/* Heading Small */
+		
+		 h1 small,  h2 small,  h3 small,  h4 small,  h5 small,  h6 small,
+		.h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
+			font-size: 75%;
+			line-height: 1;
+		}
+		
+	
+	/* Paragraphs / Blockquotes */
+	
+	p,
+	p.lead {
+		max-width: 42em;
+	}
+	
+	p.lead,
+	blockquote > p {
+		font-size: 1.25em;
+		line-height: 1.75;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+	
+	p.lead em,
+	blockquote > cite {
+		font-size: 0.85em;
+		line-height: 2.25;
+	}
+	
+		
+	blockquote { position: relative; }
+		
+		blockquote:before,
+		blockquote.closing-quote:after {
+			color: #ddd;
+			font-family: Georgia, serif;
+			font-size: 5em;
+			line-height: 0.75;
+			position: absolute;
+		}
+		
+		blockquote:before {
+			content: "\201C";
+			top: 0.0625em;
+			left: -0.5em;
+		}
+		
+		blockquote.closing-quote:after {
+			content: "\201D";
+			bottom: -0.4375em;
+			right: -0.25em;
+		}
+	
+		blockquote cite {
+			color: #666;
+			display: block;
+			font-style: normal;
+			font-weight: bold;
+			letter-spacing: 0.125em;
+			}
+			
+			blockquote cite:before { content: "\2014 \0020"; }
+		
+		
+	/* Links */
+	
+	a {
+		text-decoration: none;
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		
+	p > a,
+	.link-alt {
+		line-height: inherit;
+		margin-left: -0.25em; margin-right: -0.25em;
+		padding-left: 0.25em; padding-right: 0.25em;
+		position: relative;
+		}
+		
+		p:hover > a,
+		.link-alt:hover {
+			border-bottom: 1px dotted;
+			text-decoration: none;
+		}
+		
+		p:hover > a:hover {
+			border-bottom-style: solid;
+			text-decoration: none;
+		}
+		
+	
+	/* Abbreviation */
+	
+	abbr[title] {
+		border-bottom: none;
+		cursor: help;
+	}
+		
+		
+	/* Address */
+	
+	address { font-style: normal; }
+	address > strong { display: block; }
+
+	/* Figure */
+	
+	figure {
+		margin: 24px auto;
+		margin: 1.5rem auto;
+	}
+	
+	figcaption {
+		margin-top: 12px;
+		margin-top: 0.75rem;
+	}
+	
+	figcaption > strong { text-transform: uppercase; }
+	figcaption > strong:after { content: ": "; }
+	
+
+	/* Horizontal Rule */
+	
+	hr {
+		border-color: #d5d8dd transparent #fff;
+		border-style: solid;
+		border-width: 1px 0;
+		clear: both;
+		margin-bottom: 1.375em;
+		-webkit-box-sizing: content-box;
+		   -moz-box-sizing: content-box;
+		    -ms-box-sizing: content-box;
+			 -o-box-sizing: content-box;
+			 	box-sizing: content-box;
+	}
+	
+
 /* Visual Styles */
+
 	body {
 		background: #f5f8fd;
 		color: #5e5967;
-		font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		word-wrap: break-word;
-	}
-	body,
-	button,
-	input,
-	select,
-	textarea {
-		text-shadow: 0 0 0 0 rgba(0,0,0,0);
-		text-rendering: optimizeLegibility;
 	}
 	
 	/* LINKS */
 	a {
 		color: #759;
-		text-decoration: none;
 		}
+		
 		a:hover,
 		a:focus,
 		a:active {
 			color: rgb(225,55,25);
-			text-decoration: none;
 		}
-	p a {
-			line-height: inherit;
-			margin-left: -0.25em; margin-right: -0.25em;
-			padding-left: 0.25em; padding-right: 0.25em;
-			position: relative;
-		}
-		p a:hover { border-bottom: 1px dotted; }
-	
-	hr {
-		margin: 1px 0;
-		border: 0;
-		border-top: 1px solid #d5d8dd;
-		border-bottom: 1px solid #fff;
-	}
 	
 	p { max-width: 42em; }
 		p.lead,
 		blockquote > p { font-size: 1.25em; line-height: 1.75; margin-bottom: 0; padding-bottom: 0; }
 		p.lead em,
 		blockquote > cite { font-size: 0.85em; line-height: 2.25; }
+
+
+	
+/* 	Lists
+	========================================================================= */
+	
+	/* All lists */
+	
+	dl,
+	ol,
+	ul {
+		font-size: inherit;
+		padding: 0;
+	}
+	
 		
-	blockquote {
-		border-left: 0.5em solid #f1f5f9;
-		margin-left: 0;
+	/* All list elements */
+	
+	li,
+	dt,
+	dd {
+		
+	}
+	
+	li > ul,
+	li > ol {
+		margin: 0 0 0 0.6em;
+	}
+	
+	
+	/* Indentation */
+	
+	ul,
+	ol,
+	li,
+	dl {
+		margin-left: 0.6em;
 		padding-left: 0;
 	}
-	blockquote > * {
-		margin-left: 1rem;
+	
+	
+	/* Unordered lists */
+	
+	ul,
+	ul.list-square,
+	ul.list-circle li ul,
+	ul.list-disc li ul li ul {
+		list-style-type: square;
 	}
+	
+	ul ul,
+	ul.list-disc,
+	ul.list-square li ul,
+	ul.list-circle li ul li ul {
+		list-style-type: disc;
+	}
+	
+	ul ul li ul,
+	ul.list-circle,
+	ul.list-disc li ul,
+	ul.list-square li ul li ul {
+		list-style-type: circle;
+	}
+	
+	
+	/* Ordered lists */
+	
+	ol,
+	ol.list-decimal,
+	ol.list-upper-roman li ol,
+	ol.list-upper-latin li ol li ol {
+		list-style-type: decimal;
+	}
+	
+	ol ol,
+	ol.list-upper-latin,
+	ol.list-decimal li ol,
+	ol.list-upper-roman li ol li ol {
+		list-style-type: upper-latin;
+	}
+	
+	ol ol li ol,
+	ol.list-upper-roman,
+	ol.list-upper-latin li ol,
+	ol.list-decimal li ol li ol {
+		list-style-type: upper-roman;
+	}
+	
+	
+	/* Unstyled lists */
+	
+	.list-unstyled,
+	.list-unstyled li,
+	.list-unstyled li ul,
+	.list-unstyled li ol {
+		list-style: none;
+		margin-left: 0;
+	}
+	
+	
+	/* Definition lists */
+	
+	dl {
+		margin-left: 0;
+		padding-left: 0;
+		overflow: hidden;
+		}
+		
+		dt { font-weight: bold; }
+		
+		dd { margin-left: 0; }
+		
+		dt,
+		dd {
+			display: inline;
+			line-height: normal;
+			}
+			
+			dt + dt:before,
+			dd + dt:before {
+				content: "\A";
+				white-space: pre;
+			}
+			
+			dd + dd:before { content: ", "; }
+			dd:before {
+				content: ": ";
+				margin-left: -0.25em;
+			}
 	
 	
 /* Lists
- ========================================================================== */
+ ==========================================================================
 	
 	ul,
 	ol,
@@ -182,8 +581,8 @@
 	ol ol ol { list-style-type: upper-roman; }
 	
 	ol ul { list-style-type: circle; }
-			
-	/* List Styles */
+			 */
+	/* List Styles 
 	.list-square { list-style: square; }
 	.list-disc { list-style: disc; }
 	.list-circle { list-style: circle; }
@@ -193,52 +592,65 @@
 	
 	.unstyled, .unstyled li { list-style: none; margin-left: 0; }
 	
-	
-	/* Definition Lists */
+	*/
+	/* Definition Lists
 	dl {
 		margin-left: 0; padding-left: 0;
 		}
+		
 		dt { font-weight: bold; }
 		dd { margin-left: 0; }
+		
 		dt, dd {
 			display: inline;
 			line-height: normal;
 			}
+			
 			dt + dt:before,
 			dd + dt:before {
 				content: "\A";
 				white-space: pre;
 			}
+			
 			dd + dd:before { content: ", "; }
 			dd:before {
 				content: ": ";
 				margin-left: -0.25em;
 			}
+	 */
 	
-	
-/*------------------------------------*\
-	$NAV / $MENU ABSTRACTIONS
-\*------------------------------------*/
+
+/*	=========================================================================
+	NAV
+	========================================================================= */
 
 	/* Nav	*/
+	
 	nav,
 	nav ul,
 	nav li {
 		list-style: none;
 		margin-left: 0;
 		}
+		
 		nav ul:after { clear: both; }
+		
 	nav ul > li,
 	nav ol > li {
 		float: left;
 		display: inline-block;
 	}
+	
 	nav a {
 		display: block;
 		margin: auto;
 		padding: 0;
 		}
-		nav a:hover { text-decoration: none; }
+		
+		nav a,
+		nav a:hover {
+			text-decoration: none;
+		}
 	
 
 /*------------------------------------*\
@@ -845,7 +1257,7 @@ input[type="number"] {
 	.nav-collapse,
 	.nav-collapse ul {
 		list-style: none;
-		margin-bottom: 0;
+		margin-top: 0;
 	}
 	@media screen and (min-width: 40em) {
 		.nav-collapse {
@@ -970,17 +1382,17 @@ input[type="number"] {
 		background: #e5e8ed;
 		border-top: 1px solid #d1d3da;
 		margin-top: 2em;
-		padding: 0.5em 0 3.5em;
+		padding: 0.75em 0 6em;
 	}
 	
-	h1.page-title { letter-spacing: -0.05em; margin-top: 1.8rem; }
+	h1.page-title { letter-spacing: -0.05em; margin-top: 1.5rem; }
 	@media only screen and (max-width: 31em){
 		h1.page-title { margin-top: 1rem; }
 	}
 	
 	section,
 	.section {
-		padding: 3rem 0 1.5rem;
+		padding: 1.5rem 0;
 	}
 	
 	/* Set-up Grid Visibility */
@@ -988,6 +1400,7 @@ input[type="number"] {
 		border: 1px solid transparent;
 		margin-bottom: 0;
 	}
+	
 	section [class^="col-"],
 	section [class^="row-grid-"] > * {
 		border: 1px solid transparent;
@@ -996,6 +1409,7 @@ input[type="number"] {
 		padding-left: 0.5em; padding-right: 0.5em;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.6);
 		}
+		
 		section [class^="col-"]:hover,
 		section [class^="row-grid-"] > *:hover {
 			color: rgba(0,0,0,0.8);
@@ -1003,12 +1417,14 @@ input[type="number"] {
 		}
 		
 	/* Show Visbile Grid */
+	
 	.aparent section [class^="row-"] {
 		background: rgba(55,45,95,0.075);
 	}
 	.aparent section [class^="row-"]:hover {
 		background: rgba(5,0,55,0.1);
 	}
+	
 	.aparent section [class^="col-"],
 	.aparent section [class^="row-grid-"] > * {
 		background: rgba(0,0,0,0.025);
@@ -1025,12 +1441,14 @@ input[type="number"] {
 
 	
 /* INTRO */
+
 	#intro {
 		background-color: #fff;
 		padding: 3rem 0;
 		-webkit-font-smoothing: antialiased;
 				font-smoothing: antialiased;
 	}
+	
 	#intro [class^="row-"],
 	#intro [class^="col-"],
 	#intro [class^="row-grid-"] > *,
@@ -1040,14 +1458,12 @@ input[type="number"] {
 		border: none;
 		color: inherit;
 	}
+	
 	#intro,
 	.media-body h1 {
 		margin-top: 0;
 	}
-	#fullgrid { padding-top: 3em; }
 	
-	
-	#tablegrid table { margin-bottom: 3em; }
 	#tablegrid table tbody tr td { padding: 0.33em; }
 	#tablegrid table thead tr th,
 	#tablegrid table tfoot tr td {
@@ -1126,183 +1542,12 @@ input[type="number"] {
 	overflow: visible;
 	min-width: 200px;
 }
-
-
-/*------------------------------------*\
-	TABS
-\*------------------------------------*/
-	
-	/* Hide/Show if using feature detection scripting like Modernizr  */
-	/* Hide tabs by default */
-	.tabs { display: none; visibility: hidden; }
-	/* Show tabs if js enabled */
-	.js .tabs { display: block; visibility: visible; }
-	
-	/* Baseline & Containment */
-	.tabs {
-		margin-top: 0;
-		margin-bottom: 1.5em;
-		position: relative;
-	}
-	
-	/* Reset Lists for tab children nodes (if list element is used) */
-	.tabs > ul,
-	.tabs > ul > li {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	
-	/* Tab Links */
-	.nav-tabs .tab {
-		background: #f1f1e5;
-		border: 1px solid #d1d1c5;
-		border-bottom: none;
-		border-radius: 0.125em 0.125em 0 0;
-		color: #765686;
-		float: left;
-		font-size: 1.05em;
-		font-weight: bold;
-		line-height: 2;
-		margin-right: -1px;
-		min-width: 120px;
-		padding: 0.5em 1em;
-		position: relative;
-		top: 2px;
-		text-align: center;
-		text-decoration: none;
-		-webkit-box-shadow: inset 0 -3px 6px -2px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.6);
-				box-shadow: inset 0 -3px 6px -2px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.6);
-		text-shadow: 1px 0 1px 1px rgba(255,255,255,0.9);
-		-webkit-transition: none;
-				transition: none;
-		z-index: 0;
-		}
-		.nav-tabs .tab:hover {
-			background: #f7f7ed;
-			border-color: #c1c1b5;
-			border-bottom: none;
-			color: #97a;
-			color: rgb(205,75,55);
-			-webkit-box-shadow: inset 0 -2px 4px -1px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.9), 0 -1px 4px -1px rgba(0,0,0,0.1);
-					box-shadow: inset 0 -2px 4px -1px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.9), 0 -1px 4px -1px rgba(0,0,0,0.1);
-			z-index: 1;
-		}
-		.nav-tabs .active .tab,
-		.nav-tabs .active .tab:hover {
-			background: #fff;
-			border-top: 3px solid #879;
-			border-right: 1px solid #c1c1b5;
-			border-bottom: none;
-			border-left: 1px solid #c1c1b5;
-			border-radius: 0.33em 0.33em 0 0;
-			-webkit-box-shadow: none; box-shadow: none;
-			color: #4d5d62/*#3d5459*/;
-			cursor: default;
-			padding: 0.4em 1em 0.6em;
-			outline: 0;
-			top: 1px;
-			-webkit-box-shadow: 0 -1px 4px -1px rgba(0,0,0,0.2);
-					box-shadow: 0 -1px 4px -1px rgba(0,0,0,0.2);
-			z-index: 2;
-		}
-		
-	/* Clearfix */
-	.tabs:before, .tabs:after,
-	.nav-tabs:before, .nav-tabs:after,
-	.nav-stacked > li:before, .nav-stacked > li:after { content: " "; display: table; }
-	.tabs:after, .nav-tabs:after, .nav-stacked > li:after { clear: both; }
-	
-	/* Tab Panels */
-	.tab-content { border-top: 1px solid #c1c1b5; min-height: 20em; }
-	.tab-pane {
-		clear: both;
-		background: #fff;
-		display: none;
-		height: 100%;
-		padding: 2em 0;
-		}
-		.tab-pane.hide {
-			text-indent: 100%;
-			white-space: nowrap;
-			overflow: hidden;
-		}
-		.tab-pane.active { display: block; }
-	/* Full border around tabs-panels */
-	.tab-content.tab-content-bordered { background: #fff; border: 1px solid #c1c1b5; }
-	.tab-content.tab-content-bordered .tab-pane { padding: 1em 2em; }
-
-/* VERTICALLY STACKED NAV TABS */
-	.tabs-nav-stacked { border: 1px solid #d1d1c5; min-height: 20em; }
-	.tabs-nav-stacked .nav-tabs,
-	.tabs-nav-stacked .tab-content,
-	.tabs-nav-stacked .tab-pane { height: 100%; }
-	.nav-tabs.nav-stacked {
-		background:  #f1f1e5;
-		background: -moz-linear-gradient(left, #f1f1e5 96%, #e1e1d5 100%);
-		background: -webkit-linear-gradient(left, #f1f1e5 96%, #e1e1d5 100%);
-		background: -o-linear-gradient(left, #f1f1e5 96%, #e1e1d5 100%);
-		border-right: 1px solid #d1d1c5;
-	}
-	.nav-tabs.nav-stacked li { border-top: 1px solid #fff; border-bottom: 1px solid #d1d1c5; }
-	.nav-tabs.nav-stacked li,
-	.nav-tabs.nav-stacked li .tab { width: 100%; }
-	.nav-tabs.nav-stacked li .tab,
-	.nav-tabs.nav-stacked .active .tab,
-	.nav-tabs.nav-stacked .active .tab:hover {
-		border-radius: 0;
-		line-height: 2.4;
-		padding: 0.5em 1em;
-		position: relative; top: 0;
-		-webkit-box-shadow: none; box-shadow: none;
-	}
-	.nav-tabs.nav-stacked li .tab {
-		background: none;
-		border: 0;
-		border-left: 4px #fff !important;
-		font-size: 1rem;
-		margin-right: 0;
-		text-align: left;
-		text-shadow: 1px 1px 0 #fff;
-		}
-		.nav-tabs.nav-stacked li .tab:hover {
-			background: #f7f7ed;
-			border-left-color: rgb(225,55,25) !important;
-		}
-		.nav-tabs.nav-stacked .active .tab,
-		.nav-tabs.nav-stacked .active .tab:hover {
-			background: #fff;
-			border: 0;
-			border-right: 1px solid #fff;
-			right: -1px;
-		}
-		/* Stacked Nav Tab Content */
-		.tabs.tabs-nav-stacked .tab-content { border-top: 0; }
-		.tabs.tabs-nav-stacked .tab-pane {
-			background-color: #fff;
-			background-position: bottom right;
-			background-repeat: none;
-			color: #767672;
-			padding: 1em 2em;
-			text-shadow: 1px 1px 0 #fff;
-		}
-		.tabs.tabs-nav-stacked .tab-pane h3,
-		.tabs.tabs-nav-stacked .tab-pane .title {
-			color: #52565d; font-size: 2em; margin: 0; text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
-		}
-		.tabs .nav-tabs.nav-stacked { width: 25%; }
-		.tabs .nav-tabs.nav-stacked + .tab-content { width: 75%; }
-		.tabs.tabs-nav-stacked .nav-tabs,
-		.tabs.tabs-nav-stacked .tab-content { float: left; }
-		.tabs.tabs-nav-stacked .nav-tabs,
-		.tabs.tabs-nav-stacked .tab-content,
-		.tabs.tabs-nav-stacked .tab-pane { height: 24.45em; }
-		
-		.tabs.tabs-nav-stacked .tab-content p { font-size: inherit; max-width: 42em; }
 	
 
 /* TOOLTIP */
+
 .tipper { height: 1px; left: -99999px; position: absolute; pointer-events: none; top: -99999px; width: 1px; z-index: 4; }
+
 	.tipper .tipper-content {
 		background: rgba(24,13,42,0.85);
 		background: rgba(195,25,15,0.8);
@@ -1317,16 +1562,19 @@ input[type="number"] {
 		position: relative;
 		white-space: nowrap;
 	}
+	
 	.tipper .tipper-caret {
 		position: absolute;
 		width: 5px; height: 11px;
 		border-color: transparent;
 		border-style: solid;
-	}	
+	}
+	
 	.tipper.right .tipper-content { box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); }
 	.tipper.left .tipper-content { box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); }
 	.tipper.top .tipper-content { box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); }
 	.tipper.bottom .tipper-content { box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); }
+	
 	.tipper.top .tipper-caret {
 		bottom: -11px;
 		left: 50%;
@@ -1335,6 +1583,7 @@ input[type="number"] {
 		border-top-color: rgba(24,13,42,0.85);
 		border-top-color: rgba(195,25,15,0.8);
 	}
+	
 	.tipper.right .tipper-caret {
 		top: 50%;
 		left: -11px;
@@ -1343,6 +1592,7 @@ input[type="number"] {
 		border-right-color: rgba(24,13,42,0.85);
 		border-right-color: rgba(195,25,15,0.8);
 	}
+	
 	.tipper.left .tipper-caret {
 		top: 50%;
 		right: -11px;
@@ -1351,6 +1601,7 @@ input[type="number"] {
 		border-left-color: rgba(24,13,42,0.85);
 		border-left-color: rgba(195,25,15,0.8);
 	}
+	
 	.tipper.bottom .tipper-caret {
 		top: -11px;
 		left: 50%;
@@ -1359,38 +1610,4 @@ input[type="number"] {
 		border-bottom-color: rgba(24,13,42,0.85);
 		border-bottom-color: rgba(195,25,15,0.8);
 	}
-
-/* Image Replacement */
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br, .hide { display: none; }
-
-/* Hide from screenreaders AND browsers: h5bp.com/u */
-.hidden { display: none !important; visibility: hidden; }
-
-/* Hide only visually, but available for screenreaders: h5bp.com/v */
-.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-
-/* Extends the .visuallyhidden class to allow focus when navigated to via the keyboard: h5bp.com/p */
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
-
-/* Hide visually from screenreaders AND browsers, but maintain layout */
-.invisible { visibility: hidden; }
-
-.hide-text { overflow: hidden; text-indent: 100%; white-space: nowrap; }
-.input-block-level { display: block; width: 100%; min-height: 28px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
-
-.block { clear: both; display: block; }
-.inline, .inline > * { display: inline; line-height: normal; }
-
-.disable-hover,
-.disable-hover * {
-	pointer-events: none !important;
-}
-
-/* Element States */
-.is-visible { opacity: 1.0; animation: fade 1s; }
-.is-hidden { opacity: 0; animation: fade 1s reverse; }
-.is-removed { display: none; }
-
-.is-open { display: block; height: auto; opacity: 1.0; }
-.is-closed { display: none; height: 0; opacity: 0; }
+	

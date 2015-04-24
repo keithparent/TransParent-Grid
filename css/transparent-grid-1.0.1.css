@@ -1,0 +1,1624 @@
+/*	=========================================================================
+	TransParent Grid v.1.0.1
+	author		:	Keith Parent ( @keithparent )
+	http		:	www.keithparent.com
+	mailto		:	keithparent@me.com
+
+	Copyright (c) 2015 Keith Parent
+	========================================================================= */
+
+
+/*	=========================================================================
+	DEFAULTS
+	========================================================================= */
+
+/*	@CHARSET
+	========================================================================= */
+	
+	@charset "UTF-8";
+	
+
+/*	BOX-SIZING
+	========================================================================= */
+
+	/**
+	 * Border-box box-sizing method
+	 * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+	 */
+	 
+	html {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		   		box-sizing: border-box;
+	}
+	
+	/**
+	 * Inheriting the `box-sizing` property is a better practice.
+	 *
+	 */
+	 
+	*,
+	*:before,
+	*:after {
+		-webkit-box-sizing: inherit;
+		   -moz-box-sizing: inherit;
+		   		box-sizing: inherit;
+	}
+
+
+/*	@VIEWPORT
+	========================================================================= */
+	
+	@-webkit-viewport { width: device-width; zoom: 1.0; }
+	   @-moz-viewport { width: device-width; zoom: 1.0; }
+	    @-ms-viewport { width: device-width; zoom: 1.0; }
+	     @-o-viewport { width: device-width; zoom: 1.0; }
+	        @viewport { width: device-width; zoom: 1.0; }
+	        
+	        
+	/**
+	 * Fix viewport for IE10 snap mode
+	 * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+	 */
+	
+	@-ms-viewport {
+		width: device-width;
+	}
+	
+	@media screen and (max-width: 400px) {
+		@-ms-viewport {
+			width: 320px;
+		}
+	}
+		
+	
+/*	=========================================================================
+	BASE
+	========================================================================= */
+	
+	/* Set html and body to inherit the height of the viewport */
+	html,
+	body {
+		min-height: 100%;
+	}
+
+	html[dir="rtl"] {
+		direction: rtl;
+	}
+	
+	/* Set base font-size */
+	html {
+		font-size: 100%;
+		-webkit-text-size-adjust: 100%;
+		   -moz-text-size-adjust: 100%;
+		    -ms-text-size-adjust: 100%;
+			 -o-text-size-adjust: 100%;
+			 	text-size-adjust: 100%;
+		-webkit-overflow-scrolling: touch;
+		-webkit-tap-highlight-color: rgba(17,119,170,0.6);
+		-webkit-touch-callout: none;
+		-ms-overflow-style: scrollbar;/*auto | none | scrollbar | -ms-autohiding-scrollbar*/
+	}
+	
+	/* Set base font-size (use 'rem' with equiv 'em' fallback) and margin/padding */
+	body {
+		font-size: 16px;
+		font-size: 1rem;
+		line-height: 1.5;
+		margin-right: 0;
+		margin-left: 0;
+		padding-right: 0;
+		padding-left: 0;
+		min-width: 200px;
+		}
+		
+		/* Inherit font-size via cascade */
+		button,
+		input,
+		optgroup,
+		select,
+		textarea {
+			font-size: inherit;
+		}
+
+
+/*	=========================================================================
+	GRID ELEMENTS
+	========================================================================= */
+	
+/*	
+	CONTAINER - Outermost grid wrapper
+	========================================================================= */
+
+	/**
+	 * Relies on 'max-width' to set the overall grid width within viewport
+	 * and sets default constraint widths and ratios
+	*/
+	.container {
+		margin-right: auto;
+		margin-left: auto;
+		position: relative;
+		min-width: 220px;
+		width: 90%;
+	}
+	
+	/* Scale the container via media-queries as viewport changes */
+	@media (min-width: 48em) {
+		.container {
+			width: 620px;
+		}
+	}
+	@media (min-width: 60em) {
+		.container {
+			width: 768px;
+		}
+	}
+	@media (min-width: 70em) {
+		.container {
+			width: 960px;
+		}
+	}
+	@media (min-width: 80em) {
+		.container {
+			width: 1140px;
+		}
+	}
+		
+	/* Prevent children '.container' from inheriting outermost parent width */
+	.container .container {
+		max-width: 100%;
+		min-width: 100%;
+			width: 100%;
+	}
+	
+	/* Modifier - stack with '.container' class to affix alignment */
+	.container-left { margin-left: 0; }
+	.container-right { margin-right: 0; }
+	
+
+/*	ROWS AND COLUMNS
+	========================================================================= */
+
+	[class*="row-"],
+	[class*="col-"],
+	[class*="row-grid-"] > * {
+		list-style: none;
+		margin-right: 0;
+		margin-left: 0;
+		padding-right: 0;
+		padding-left: 0;
+		position: relative;
+	}
+	
+	
+/*	ROWS
+	========================================================================= */
+	
+	[class*="row-"] {
+		display: block;
+		letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+		*letter-spacing: normal; /* reset IE < 8 */
+		text-align: center;
+		width: 100%;
+		*word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+		text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+		}
+		
+		/**
+		 * Opera as of 12 on Windows needs word-spacing.
+		 * The ".opera-only" selector is used to prevent actual prefocus styling
+		 * and is not required in markup.
+		 */
+		.opera-only :-o-prefocus,
+		[class*="row-"] {
+			word-spacing: -0.43em;
+		}
+		
+	
+/*	COLUMNS
+	========================================================================= */
+	
+	[class*="col-"],
+	[class*="row-grid-"] > * {
+		display: inline-block;
+		float: left;
+		line-height: inherit;
+		min-height: 1px;
+		text-align: left;
+		text-rendering: auto;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	
+	/* Reset letter-spacing / word-spacing */
+	[class*="row-"] > *,
+	[class*="col-"] {
+		letter-spacing: normal;
+		word-spacing: normal;
+	}
+
+
+/*	COLUMN WIDTHS ( 16 pre-defined columns by default )
+	========================================================================= */
+
+	/* WHOLES */
+	.row-grid-1 > *,
+	.row-1 > .col-1,
+	.row-2 > .col-2,
+	.row-3 > .col-3,
+	.row-4 > .col-4,
+	.row-5 > .col-5,
+	.row-6 > .col-6,
+	.row-7 > .col-7,
+	.row-8 > .col-8,
+	.row-9 > .col-9,
+	.row-10 > .col-10,
+	.row-11 > .col-11,
+	.row-12 > .col-12,
+	.row-13 > .col-13,
+	.row-14 > .col-14,
+	.row-15 > .col-15,
+	.row-16 > .col-16 { width: 100%; }
+	
+	/* HALVES */
+	.row-grid-2 > *,
+	.row-2 > .col-1 { width: 50%; }
+	.row-2 > .col-push-1 { margin-left: 50%; }
+	
+	/* THIRDS */
+	.row-grid-3 > *,
+	.row-3 > .col-1 { width: 33.333333%; }
+	.row-3 > .col-2 { width: 66.666666%; }
+	.row-3 > .col-push-1 { margin-left: 33.333333%; }
+	.row-3 > .col-push-2 { margin-left: 66.666666%; }
+	
+	/* FOURTHS */
+	.row-grid-4 > *,
+	.row-4 > .col-1 { width: 25%; }
+	.row-4 > .col-2 { width: 50%; }
+	.row-4 > .col-3 { width: 75%; }
+	.row-4 > .col-push-1 { margin-left: 25%; }
+	.row-4 > .col-push-2 { margin-left: 50%; }
+	.row-4 > .col-push-3 { margin-left: 75%; }
+	
+	/* FIFTHS */
+	.row-grid-5 > *,
+	.row-5 > .col-1 { width: 20%; }
+	.row-5 > .col-2 { width: 40%; }
+	.row-5 > .col-3 { width: 60%; }
+	.row-5 > .col-4 { width: 80%; }
+	.row-5 > .col-push-1 { margin-left: 20%; }
+	.row-5 > .col-push-2 { margin-left: 40%; }
+	.row-5 > .col-push-3 { margin-left: 60%; }
+	.row-5 > .col-push-4 { margin-left: 80%; }
+	
+	/* SIXTHS */
+	.row-grid-6 > *,
+	.row-6 > .col-1 { width: 16.666666%; }
+	.row-6 > .col-2 { width: 33.333333%; }
+	.row-6 > .col-3 { width: 50%; }
+	.row-6 > .col-4 { width: 66.666666%; }
+	.row-6 > .col-5 { width: 83.333333%; }
+	.row-6 > .col-push-1 { margin-left: 16.666666%; }
+	.row-6 > .col-push-2 { margin-left: 33.333333%; }
+	.row-6 > .col-push-3 { margin-left: 50%; }
+	.row-6 > .col-push-4 { margin-left: 66.666666%; }
+	.row-6 > .col-push-5 { margin-left: 83.333333%; }
+	
+	/* SEVENTHS */
+	.row-grid-7 > *,
+	.row-7 > * > .col-1,
+	.row-7 > .col-1 { width: 14.285714%; }
+	.row-7 > .col-2 { width: 28.571428%; }
+	.row-7 > .col-3 { width: 42.857142%; }
+	.row-7 > .col-4 { width: 57.142856%; }
+	.row-7 > .col-5 { width: 71.42857%; }
+	.row-7 > .col-6 { width: 85.714284%; }
+	.row-7 > .col-push-1 { margin-left: 14.285714%; }
+	.row-7 > .col-push-2 { margin-left: 28.571428%; }
+	.row-7 > .col-push-3 { margin-left: 42.857142%; }
+	.row-7 > .col-push-4 { margin-left: 57.142856%; }
+	.row-7 > .col-push-5 { margin-left: 71.42857%; }
+	.row-7 > .col-push-6 { margin-left: 85.714284%; }
+	
+	/* EIGHTHS */
+	.row-grid-8 > *,
+	.row-8 > .col-1 { width: 12.5%; }
+	.row-8 > .col-2 { width: 25%; }
+	.row-8 > .col-3 { width: 37.5%; }
+	.row-8 > .col-4 { width: 50%; }
+	.row-8 > .col-5 { width: 62.5%; }
+	.row-8 > .col-6 { width: 75%; }
+	.row-8 > .col-7 { width: 87.5%; }
+	.row-8 > .col-push-1 { margin-left: 12.5%; }
+	.row-8 > .col-push-2 { margin-left: 25%; }
+	.row-8 > .col-push-3 { margin-left: 37.5%; }
+	.row-8 > .col-push-4 { margin-left: 50%; }
+	.row-8 > .col-push-5 { margin-left: 62.5%; }
+	.row-8 > .col-push-6 { margin-left: 75%; }
+	.row-8 > .col-push-7 { margin-left: 87.5%; }
+	
+	/* NINTHS */
+	.row-grid-9 > *,
+	.row-9 > .col-1 { width: 11.111111%; }
+	.row-9 > .col-2 { width: 22.222222%; }
+	.row-9 > .col-3 { width: 33.333333%; }
+	.row-9 > .col-4 { width: 44.444444%; }
+	.row-9 > .col-5 { width: 55.555555%; }
+	.row-9 > .col-6 { width: 66.666666%; }
+	.row-9 > .col-7 { width: 77.777777%; }
+	.row-9 > .col-8 { width: 88.888888%; }
+	.row-9 > .col-push-1 { margin-left: 11.111111%; }
+	.row-9 > .col-push-2 { margin-left: 22.222222%; }
+	.row-9 > .col-push-3 { margin-left: 33.333333%; }
+	.row-9 > .col-push-4 { margin-left: 44.444444%; }
+	.row-9 > .col-push-5 { margin-left: 55.555555%; }
+	.row-9 > .col-push-6 { margin-left: 66.666666%; }
+	.row-9 > .col-push-7 { margin-left: 77.777777%; }
+	.row-9 > .col-push-8 { margin-left: 88.888888%; }
+	
+	/* TENTHS */
+	.row-grid-10 > *,
+	.row-10 > .col-1 { width: 10%; }
+	.row-10 > .col-2 { width: 20%; }
+	.row-10 > .col-3 { width: 30%; }
+	.row-10 > .col-4 { width: 40%; }
+	.row-10 > .col-5 { width: 50%; }
+	.row-10 > .col-6 { width: 60%; }
+	.row-10 > .col-7 { width: 70%; }
+	.row-10 > .col-8 { width: 80%; }
+	.row-10 > .col-9 { width: 90%; }
+	.row-10 > .col-push-1 { margin-left: 10%; }
+	.row-10 > .col-push-2 { margin-left: 20%; }
+	.row-10 > .col-push-3 { margin-left: 30%; }
+	.row-10 > .col-push-4 { margin-left: 40%; }
+	.row-10 > .col-push-5 { margin-left: 50%; }
+	.row-10 > .col-push-6 { margin-left: 60%; }
+	.row-10 > .col-push-7 { margin-left: 70%; }
+	.row-10 > .col-push-8 { margin-left: 80%; }
+	.row-10 > .col-push-9 { margin-left: 90%; }
+	
+	/* ELEVENTHS */
+	.row-grid-11 > *,
+	.row-11 > .col-1 { width: 9.090909%; }
+	.row-11 > .col-2 { width: 18.181818%; }
+	.row-11 > .col-3 { width: 27.272727%; }
+	.row-11 > .col-4 { width: 36.363636%; }
+	.row-11 > .col-5 { width: 45.454545%; }
+	.row-11 > .col-6 { width: 54.545454%; }
+	.row-11 > .col-7 { width: 63.636363%; }
+	.row-11 > .col-8 { width: 72.727272%; }
+	.row-11 > .col-9 { width: 81.818181%; }
+	.row-11 > .col-10 { width: 90.909090%; }
+	.row-11 > .col-push-1 { margin-left: 9.090909%; }
+	.row-11 > .col-push-2 { margin-left: 18.181818%; }
+	.row-11 > .col-push-3 { margin-left: 27.272727%; }
+	.row-11 > .col-push-4 { margin-left: 36.363636%; }
+	.row-11 > .col-push-5 { margin-left: 45.454545%; }
+	.row-11 > .col-push-6 { margin-left: 54.545454%; }
+	.row-11 > .col-push-7 { margin-left: 63.636363%; }
+	.row-11 > .col-push-8 { margin-left: 72.727272%; }
+	.row-11 > .col-push-9 { margin-left: 81.818181%; }
+	.row-11 > .col-push-10 { margin-left: 90.909090%; }
+	
+	/* TWELFTHS */
+	.row-grid-12 > *,
+	.row-12 > .col-1 { width: 8.333333%; }
+	.row-12 > .col-2 { width: 16.666666%; }
+	.row-12 > .col-3 { width: 24.999999%; }
+	.row-12 > .col-4 { width: 33.333332%; }
+	.row-12 > .col-5 { width: 41.666665%; }
+	.row-12 > .col-6 { width: 49.999998%; }
+	.row-12 > .col-7 { width: 58.333331%; }
+	.row-12 > .col-8 { width: 66.666664%; }
+	.row-12 > .col-9 { width: 74.999997%; }
+	.row-12 > .col-10 { width: 83.33333%; }
+	.row-12 > .col-11 { width: 91.666663%; }
+	.row-12 > .col-push-1 { margin-left: 8.333333%; }
+	.row-12 > .col-push-2 { margin-left: 16.666666%; }
+	.row-12 > .col-push-3 { margin-left: 24.999999%; }
+	.row-12 > .col-push-4 { margin-left: 33.333332%; }
+	.row-12 > .col-push-5 { margin-left: 41.666665%; }
+	.row-12 > .col-push-6 { margin-left: 49.999998%; }
+	.row-12 > .col-push-7 { margin-left: 58.333331%; }
+	.row-12 > .col-push-8 { margin-left: 66.666664%; }
+	.row-12 > .col-push-9 { margin-left: 74.999997%; }
+	.row-12 > .col-push-10 { margin-left: 83.33333%; }
+	.row-12 > .col-push-11 { margin-left: 91.666663%; }
+	
+	/* THIRTEENTHS */
+	.row-grid-13 > *,
+	.row-13 > .col-1 { width: 7.6923076%; }
+	.row-13 > .col-2 { width: 15.3846152%; }
+	.row-13 > .col-3 { width: 23.0769228%; }
+	.row-13 > .col-4 { width: 30.7692304%; }
+	.row-13 > .col-5 { width: 38.461538%; }
+	.row-13 > .col-6 { width: 46.1538456%; }
+	.row-13 > .col-7 { width: 53.8461532%; }
+	.row-13 > .col-8 { width: 61.5384608%; }
+	.row-13 > .col-9 { width: 69.2307684%; }
+	.row-13 > .col-10 { width: 76.923076%; }
+	.row-13 > .col-11 { width: 84.6153836%; }
+	.row-13 > .col-12 { width: 92.3076912%; }
+	.row-13 > .col-push-1 { margin-left: 7.6923076%; }
+	.row-13 > .col-push-2 { margin-left: 15.3846152%; }
+	.row-13 > .col-push-3 { margin-left: 23.0769228%; }
+	.row-13 > .col-push-4 { margin-left: 30.7692304%; }
+	.row-13 > .col-push-5 { margin-left: 38.461538%; }
+	.row-13 > .col-push-6 { margin-left: 46.1538456%; }
+	.row-13 > .col-push-7 { margin-left: 53.8461532%; }
+	.row-13 > .col-push-8 { margin-left: 61.5384608%; }
+	.row-13 > .col-push-9 { margin-left: 69.2307684%; }
+	.row-13 > .col-push-10 { margin-left: 76.923076%; }
+	.row-13 > .col-push-11 { margin-left: 84.6153836%; }
+	.row-13 > .col-push-12 { margin-left: 92.3076912%; }
+	
+	/* FOURTEENTHS */
+	.row-grid-14 > *,
+	.row-14 > .col-1 { width: 7.1428571%; }
+	.row-14 > .col-2 { width: 14.2857142%; }
+	.row-14 > .col-3 { width: 21.4285713%; }
+	.row-14 > .col-4 { width: 28.5714284%; }
+	.row-14 > .col-5 { width: 35.7142855%; }
+	.row-14 > .col-6 { width: 42.8571426%; }
+	.row-14 > .col-7 { width: 49.9999997%; }
+	.row-14 > .col-8 { width: 57.1428568%; }
+	.row-14 > .col-9 { width: 64.2857139%; }
+	.row-14 > .col-10 { width: 71.428571%; }
+	.row-14 > .col-11 { width: 78.5714281%; }
+	.row-14 > .col-12 { width: 85.7142852%; }
+	.row-14 > .col-13 { width: 92.8571423%; }
+	.row-14 > .col-push-1 { margin-left: 7.1428571%; }
+	.row-14 > .col-push-2 { margin-left: 14.2857142%; }
+	.row-14 > .col-push-3 { margin-left: 21.4285713%; }
+	.row-14 > .col-push-4 { margin-left: 28.5714284%; }
+	.row-14 > .col-push-5 { margin-left: 35.7142855%; }
+	.row-14 > .col-push-6 { margin-left: 42.8571426%; }
+	.row-14 > .col-push-7 { margin-left: 49.9999997%; }
+	.row-14 > .col-push-8 { margin-left: 57.1428568%; }
+	.row-14 > .col-push-9 { margin-left: 64.2857139%; }
+	.row-14 > .col-push-10 { margin-left: 71.428571%; }
+	.row-14 > .col-push-11 { margin-left: 78.5714281%; }
+	.row-14 > .col-push-12 { margin-left: 85.7142852%; }
+	.row-14 > .col-push-13 { margin-left: 92.8571423%; }
+	
+	/* FIFTEENTHS */
+	.row-grid-15 > *,
+	.row-15 > .col-1 { width: 6.666666%; }
+	.row-15 > .col-2 { width: 13.333332%; }
+	.row-15 > .col-3 { width: 19.999998%; }
+	.row-15 > .col-4 { width: 26.666664%; }
+	.row-15 > .col-5 { width: 33.33333%; }
+	.row-15 > .col-6 { width: 39.999996%; }
+	.row-15 > .col-7 { width: 46.666662%; }
+	.row-15 > .col-8 { width: 53.333328%; }
+	.row-15 > .col-9 { width: 59.999994%; }
+	.row-15 > .col-10 { width: 66.66666%; }
+	.row-15 > .col-11 { width: 73.333326%; }
+	.row-15 > .col-12 { width: 79.999992%; }
+	.row-15 > .col-13 { width: 86.666658%; }
+	.row-15 > .col-14 { width: 93.333324%; }
+	.row-15 > .col-push-1 { margin-left: 6.666666%; }
+	.row-15 > .col-push-2 { margin-left: 13.333332%; }
+	.row-15 > .col-push-3 { margin-left: 19.999998%; }
+	.row-15 > .col-push-4 { margin-left: 26.666664%; }
+	.row-15 > .col-push-5 { margin-left: 33.33333%; }
+	.row-15 > .col-push-6 { margin-left: 39.999996%; }
+	.row-15 > .col-push-7 { margin-left: 46.666662%; }
+	.row-15 > .col-push-8 { margin-left: 53.333328%; }
+	.row-15 > .col-push-9 { margin-left: 59.999994%; }
+	.row-15 > .col-push-10 { margin-left: 66.66666%; }
+	.row-15 > .col-push-11 { margin-left: 73.333326%; }
+	.row-15 > .col-push-12 { margin-left: 79.999992%; }
+	.row-15 > .col-push-13 { margin-left: 86.666658%; }
+	.row-15 > .col-push-14 { margin-left: 93.333324%; }
+	
+	/* SIXTEENTHS */
+	.row-grid-16 > *,
+	.row-16 > .col-1 { width: 6.25%; }
+	.row-16 > .col-2 { width: 12.5%; }
+	.row-16 > .col-3 { width: 18.75%; }
+	.row-16 > .col-4 { width: 25%; }
+	.row-16 > .col-5 { width: 31.25%; }
+	.row-16 > .col-6 { width: 37.5%; }
+	.row-16 > .col-7 { width: 43.75%; }
+	.row-16 > .col-8 { width: 50%; }
+	.row-16 > .col-9 { width: 56.25%; }
+	.row-16 > .col-10 { width: 62.5%; }
+	.row-16 > .col-11 { width: 68.75%; }
+	.row-16 > .col-12 { width: 75%; }
+	.row-16 > .col-13 { width: 81.25%; }
+	.row-16 > .col-14 { width: 87.5%; }
+	.row-16 > .col-15 { width: 93.75%; }
+	.row-16 > .col-push-1 { margin-left: 6.25%; }
+	.row-16 > .col-push-2 { margin-left: 12.5%; }
+	.row-16 > .col-push-3 { margin-left: 18.75%; }
+	.row-16 > .col-push-4 { margin-left: 25%; }
+	.row-16 > .col-push-5 { margin-left: 31.25%; }
+	.row-16 > .col-push-6 { margin-left: 37.5%; }
+	.row-16 > .col-push-7 { margin-left: 43.75%; }
+	.row-16 > .col-push-8 { margin-left: 50%; }
+	.row-16 > .col-push-9 { margin-left: 56.25%; }
+	.row-16 > .col-push-10 { margin-left: 62.5%; }
+	.row-16 > .col-push-11 { margin-left: 68.75%; }
+	.row-16 > .col-push-12 { margin-left: 75%; }
+	.row-16 > .col-push-13 { margin-left: 81.25%; }
+	.row-16 > .col-push-14 { margin-left: 87.5%; }
+	.row-16 > .col-push-15 { margin-left: 93.75%; }
+
+
+/*	SMALL COLUMN WIDTHS ( stack classes w/base grid to vary layouts for small viewports )
+	========================================================================= */
+	
+	@media only screen and (max-width: 36em){
+		
+		/* WHOLES */
+		.row-sml-1 > .col-sml-1,
+		.row-sml-2 > .col-sml-2,
+		.row-sml-3 > .col-sml-3,
+		.row-sml-4 > .col-sml-4,
+		.row-sml-5 > .col-sml-5,
+		.row-sml-6 > .col-sml-6,
+		.row-sml-7 > .col-sml-7,
+		.row-sml-8 > .col-sml-8,
+		.row-sml-9 > .col-sml-9,
+		.row-sml-10 > .col-sml-10,
+		.row-sml-11 > .col-sml-11,
+		.row-sml-12 > .col-sml-12 { width: 100%; }
+		
+		/* HALVES */
+		.row-sml-2 > .col-sml-1 { width: 50%; }
+		.row-sml-2 > .col-sml-push-1 { margin-left: 50%; }
+		
+		/* THIRDS */
+		.row-sml-3 > .col-sml-1 { width: 33.333333%; }
+		.row-sml-3 > .col-sml-2 { width: 66.666666%; }
+		.row-sml-3 > .col-sml-push-1 { margin-left: 33.333333%; }
+		.row-sml-3 > .col-sml-push-2 { margin-left: 66.666666%; }
+		
+		/* FOURTHS */
+		.row-sml-4 > .col-sml-1 { width: 25%; }
+		.row-sml-4 > .col-sml-2 { width: 50%; }
+		.row-sml-4 > .col-sml-3 { width: 75%; }
+		.row-sml-4 > .col-sml-push-1 { margin-left: 25%; }
+		.row-sml-4 > .col-sml-push-2 { margin-left: 50%; }
+		.row-sml-4 > .col-sml-push-3 { margin-left: 75%; }
+		
+		/* FIFTHS */
+		.row-sml-5 > .col-sml-1 { width: 20%; }
+		.row-sml-5 > .col-sml-2 { width: 40%; }
+		.row-sml-5 > .col-sml-3 { width: 60%; }
+		.row-sml-5 > .col-sml-4 { width: 80%; }
+		.row-sml-5 > .col-sml-push-1 { margin-left: 20%; }
+		.row-sml-5 > .col-sml-push-2 { margin-left: 40%; }
+		.row-sml-5 > .col-sml-push-3 { margin-left: 60%; }
+		.row-sml-5 > .col-sml-push-4 { margin-left: 80%; }
+		
+		/* SIXTHS */
+		.row-sml-6 > .col-sml-1 { width: 16.666666%; }
+		.row-sml-6 > .col-sml-2 { width: 33.333333%; }
+		.row-sml-6 > .col-sml-3 { width: 50%; }
+		.row-sml-6 > .col-sml-4 { width: 66.666666%; }
+		.row-sml-6 > .col-sml-5 { width: 83.333333%; }
+		.row-sml-6 > .col-sml-push-1 { margin-left: 16.666666%; }
+		.row-sml-6 > .col-sml-push-2 { margin-left: 33.333333%; }
+		.row-sml-6 > .col-sml-push-3 { margin-left: 50%; }
+		.row-sml-6 > .col-sml-push-4 { margin-left: 66.666666%; }
+		.row-sml-6 > .col-sml-push-5 { margin-left: 83.333333%; }
+		
+		/* SEVENTHS */
+		.row-sml-7 > .col-sml-1 { width: 14.285714%; }
+		.row-sml-7 > .col-sml-2 { width: 28.571428%; }
+		.row-sml-7 > .col-sml-3 { width: 42.857142%; }
+		.row-sml-7 > .col-sml-4 { width: 57.142856%; }
+		.row-sml-7 > .col-sml-5 { width: 71.42857%; }
+		.row-sml-7 > .col-sml-6 { width: 85.714284%; }
+		.row-sml-7 > .col-sml-push-1 { margin-left: 14.285714%; }
+		.row-sml-7 > .col-sml-push-2 { margin-left: 28.571428%; }
+		.row-sml-7 > .col-sml-push-3 { margin-left: 42.857142%; }
+		.row-sml-7 > .col-sml-push-4 { margin-left: 57.142856%; }
+		.row-sml-7 > .col-sml-push-5 { margin-left: 71.42857%; }
+		.row-sml-7 > .col-sml-push-6 { margin-left: 85.714284%; }
+		
+		/* EIGHTHS */
+		.row-sml-8 > .col-sml-1 { width: 12.5%; }
+		.row-sml-8 > .col-sml-2 { width: 25%; }
+		.row-sml-8 > .col-sml-3 { width: 37.5%; }
+		.row-sml-8 > .col-sml-4 { width: 50%; }
+		.row-sml-8 > .col-sml-5 { width: 62.5%; }
+		.row-sml-8 > .col-sml-6 { width: 75%; }
+		.row-sml-8 > .col-sml-7 { width: 87.5%; }
+		.row-sml-8 > .col-sml-push-1 { margin-left: 12.5%; }
+		.row-sml-8 > .col-sml-push-2 { margin-left: 25%; }
+		.row-sml-8 > .col-sml-push-3 { margin-left: 37.5%; }
+		.row-sml-8 > .col-sml-push-4 { margin-left: 50%; }
+		.row-sml-8 > .col-sml-push-5 { margin-left: 62.5%; }
+		.row-sml-8 > .col-sml-push-6 { margin-left: 75%; }
+		.row-sml-8 > .col-sml-push-7 { margin-left: 87.5%; }
+		
+		/* AUTOMATE 'ROW' BREAKS */
+		.row-sml-1 > .col-sml-1:nth-child(1n+1),
+		.row-sml-2 > .col-sml-1:nth-child(2n+1),
+		.row-sml-3 > .col-sml-1:nth-child(3n+1),
+		.row-sml-4 > .col-sml-1:nth-child(4n+1),
+		.row-sml-5 > .col-sml-1:nth-child(5n+1),
+		.row-sml-6 > .col-sml-1:nth-child(6n+1),
+		.row-sml-7 > .col-sml-1:nth-child(7n+1),
+		.row-sml-8 > .col-sml-1:nth-child(8n+1) { clear: both; }
+		
+	}
+
+
+/*	=========================================================================
+	EQUAL COLUMN WIDTHS
+	========================================================================= */
+	
+	/**
+	 * Columns of equal-width, repeated continuously within a single row.
+	 * IE8 and below do not support :nth-child selectors,
+	 * so columns need to be the same height for compatability.
+	 */
+	
+	.row-grid-2 > *:nth-child(2n+1),
+	.row-grid-3 > *:nth-child(3n+1),
+	.row-grid-4 > *:nth-child(4n+1),
+	.row-grid-5 > *:nth-child(5n+1),
+	.row-grid-6 > *:nth-child(6n+1),
+	.row-grid-7 > *:nth-child(7n+1),
+	.row-grid-8 > *:nth-child(8n+1),
+	.row-grid-9 > *:nth-child(9n+1),
+	.row-grid-10 > *:nth-child(10n+1),
+	.row-grid-11 > *:nth-child(11n+1),
+	.row-grid-12 > *:nth-child(12n+1),
+	.row-grid-13 > *:nth-child(13n+1),
+	.row-grid-14 > *:nth-child(14n+1),
+	.row-grid-15 > *:nth-child(15+1),
+	.row-grid-16 > *:nth-child(16n+1) { clear: both; }
+
+
+/*	=========================================================================
+	MODIFIERS
+	========================================================================= */
+	
+	/**
+	 * Modifier classes are stackable classes that extend base grid components.
+	 */
+
+/*	
+	CENTER COLUMNS ( stack w/row - center-align all children columns )
+	========================================================================= */
+	
+	[class*="row-"].row-center-cols {
+		display: inline-block;
+		text-align: center;
+		}
+		[class*="row-"].row-center-cols > [class*="col-"] {
+			float: none;
+		}
+
+	
+/*	
+	COLUMN PADDING ( stack w/row - add padding to all children columns )
+	========================================================================= */
+	
+	/* NORMAL PADDING */
+	[class*="row-"].row-padded { position: relative; right: -0.5%; left: -0.5%; width: 101%; }
+	[class*="row-"].row-padded > [class*="col-"] { padding-right: 0.5%; padding-left: 0.5%; }
+
+	/* MEDIUM PADDING */
+	[class*="row-"].row-padded-med { position: relative; right: -1%; left: -1%; width: 102%; }
+	[class*="row-"].row-padded-med > [class*="col-"] { padding-right: 1%; padding-left: 1%; }
+
+	/* LARGE PADDING */
+	[class*="row-"].row-padded-lrg { position: relative; right: -2%; left: -2%; width: 104%; }
+	[class*="row-"].row-padded-lrg > [class*="col-"] { padding-right: 2%; padding-left: 2%; }
+
+
+/*	
+	TABLE-BASED GRID
+	========================================================================= */
+	
+	/**
+	 * TABLE GRID AND EQUAL-WIDTH COLUMNS
+	 * 1. Tables (kinda-sorta) for layout
+	 * 2. The magic bit: make all children occupy equal width
+	 * 3. Required to make the columns fill their container
+	 * 4. Make each column pack up horizontally
+	 * 5. Ensure the hit area covers the whole column
+	 */
+	 
+	table tr[class*="row-"],
+	.eq-widths {
+		display: table; /* [1] */
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		table-layout: fixed; /* [2] */
+		width: 100%; /* [3] */
+		}
+		table th[class*="col-"],
+		table td[class*="col-"],
+		.eq-widths > li,
+		.eq-widths > div {
+			display: table-cell; /* [4] */
+		}
+		table th[class*="col-"] > a,
+		table td[class*="col-"] > a,
+		.eq-widths > li > a,
+		.eq-widths > div > a {
+			display: block; /* [5] */
+		}
+		table th[class*="col-"],
+		table th[class*="col-"] > a,
+		table td[class*="col-"],
+		table td[class*="col-"] > a,
+		.eq-widths > li,
+		.eq-widths > li > a,
+		.eq-widths > div,
+		.eq-widths > div > a {
+			float: none !important;
+			text-align: center;
+		}
+
+
+/*	=========================================================================
+	LAYOUTS - basic page layouts using modular scale ratios
+	========================================================================= */
+	
+/*	Golden Ratio / Phi ( 1:1.618 | 1.618 )
+	========================================================================= */
+
+	.row-content > .col-aside,
+	.row-golden .col-golden-aside  { width: 37.196601125010524%; }
+	.row-content > .col-main,
+	.row-golden .col-golden-main { width: 62.803398874989476%; }
+	.row-content .col-push-aside,
+	.row-golden .col-push-golden-aside { margin-left: 37.196601125010524%; }
+	.row-content .col-push-main,
+	.row-golden .col-push-golden-main { margin-left: 62.803398874989476%; }
+	
+
+/*	Double Octave ( 1:4 | 4 )
+	========================================================================= */
+	
+	.row-double-octave .col-double-octave-aside  { width: 25%; }
+	.row-double-octave .col-double-octave-main { width: 75%; }
+	.row-double-octave .col-push-double-octave-aside { margin-left: 25%; }
+	.row-double-octave .col-push-double-octave-main { margin-left: 75%; }
+	
+
+/*	Major Twelfth ( 1:3 | 3 )
+	========================================================================= */
+
+	.row-major-twelfth .col-major-twelfth-aside  { width: 33.333333%; }
+	.row-major-twelfth .col-major-twelfth-main { width: 66.666666%; }
+	.row-major-twelfth .col-push-major-twelfth-aside { margin-left: 33.333333%; }
+	.row-major-twelfth .col-push-major-twelfth-main { margin-left: 66.666666%; }
+	
+	
+/*	Major Eleventh ( 3:8 | 2.667 )
+	========================================================================= */
+
+	.row-major-eleventh .col-major-eleventh-aside  { width: ; }
+	.row-major-eleventh .col-major-eleventh-main { width: ; }
+	.row-major-eleventh .col-push-major-eleventh-aside { margin-left: ; }
+	.row-major-eleventh .col-push-major-eleventh-main { margin-left: ; }
+	
+	
+/*	Major Tenth ( 2:5 | 2.5 )
+	========================================================================= */
+
+	.row-major-tenth .col-major-tenth-aside  { width: ; }
+	.row-major-tenth .col-major-tenth-main { width: ; }
+	.row-major-tenth .col-push-major-tenth-aside { margin-left: ; }
+	.row-major-tenth .col-push-major-tenth-main { margin-left: ; }
+	
+	
+/*	Octave ( 1:2 | 2 )
+	========================================================================= */
+
+	.row-octave .col-octave-aside,
+	.row-octave .col-octave-main { width: 50%; }
+	.row-octave .col-push-octave-aside,
+	.row-octave .col-push-octave-main { margin-left: 50%; }
+	
+	
+/*	Major Seventh ( 8:15 | 1.875 )
+	========================================================================= */
+
+	.row-major-seventh .col-major-seventh-aside  { width: ; }
+	.row-major-seventh .col-major-seventh-main { width: ; }
+	.row-major-seventh .col-push-major-seventh-aside { margin-left: ; }
+	.row-major-seventh .col-push-major-seventh-main { margin-left: ; }
+	
+	
+/*	Minor Seventh ( 9:16 | 1.777777778 )
+	========================================================================= */
+
+	.row-minor-seventh .col-minor-seventh-aside  { width: ; }
+	.row-minor-seventh .col-minor-seventh-main { width: ; }
+	.row-minor-seventh .col-push-minor-seventh-aside { margin-left: ; }
+	.row-minor-seventh .col-push-minor-seventh-main { margin-left: ; }
+	
+	
+/*	Major Sixth ( 3:5 | 1.666666667 )
+	========================================================================= */
+
+	.row-major-sixth .col-major-sixth-aside  { width: ; }
+	.row-major-sixth .col-major-sixth-main { width: ; }
+	.row-major-sixth .col-push-major-sixth-aside { margin-left: ; }
+	.row-major-sixth .col-push-major-sixth-main { margin-left: ; }
+	
+	
+/*	Minor Sixth ( 5:8 | 1.6 )
+	========================================================================= */
+
+	.row-minor-sixth .col-minor-sixth-aside  { width: ; }
+	.row-minor-sixth .col-minor-sixth-main { width: ; }
+	.row-minor-sixth .col-push-minor-sixth-aside { margin-left: ; }
+	.row-minor-sixth .col-push-minor-sixth-main { margin-left: ; }
+	
+	
+/*	Fifth ( 2:3 | 1.5 )
+	========================================================================= */
+
+	.row-fifth .col-fifth-aside  { width: ; }
+	.row-fifth .col-fifth-main { width: ; }
+	.row-fifth .col-push-fifth-aside { margin-left: ; }
+	.row-fifth .col-push-fifth-main { margin-left: ; }
+	
+	
+/*	Augmented Fourth ( 1:√2 | 1.41421 )
+	========================================================================= */
+
+	.row-augmented-fourth .col-augmented-fourth-aside  { width: ; }
+	.row-augmented-fourth .col-augmented-fourth-main { width: ; }
+	.row-augmented-fourth .col-push-augmented-fourth-aside { margin-left: ; }
+	.row-augmented-fourth .col-push-augmented-fourth-main { margin-left: ; }
+	
+	
+/*	Fourth ( 3:4 | 1.333333333 )
+	========================================================================= */
+
+	.row-fourth .col-fourth-aside  { width: ; }
+	.row-fourth .col-fourth-main { width: ; }
+	.row-fourth .col-push-fourth-aside { margin-left: ; }
+	.row-fourth .col-push-fourth-main { margin-left: ; }
+	
+	
+/*	Major Third ( 4:5 | 1.25 )
+	========================================================================= */
+
+	.row-major-third .col-major-third-aside  { width: ; }
+	.row-major-third .col-major-third-main { width: ; }
+	.row-major-third .col-push-major-third-aside { margin-left: ; }
+	.row-major-third .col-push-major-third-main { margin-left: ; }
+	
+	
+/*	Minor Third ( 5:6 | 1.2 )
+	========================================================================= */
+
+	.row-minor-third .col-minor-third-aside  { width: ; }
+	.row-minor-third .col-minor-third-main { width: ; }
+	.row-minor-third .col-push-minor-third-aside { margin-left: ; }
+	.row-minor-third .col-push-minor-third-main { margin-left: ; }
+	
+	
+/*	Major Second ( 8:9 | 1.125 )
+	========================================================================= */
+
+	.row-major-second .col-major-second-aside  { width: ; }
+	.row-major-second .col-major-second-main { width: ; }
+	.row-major-second .col-push-major-second-aside { margin-left: ; }
+	.row-major-second .col-push-major-second-main { margin-left: ; }
+	
+	
+/*	Minor Second ( 15:16 | 1.066666667 )
+	========================================================================= */
+
+	.row-minor-second .col-minor-second-aside  { width: ; }
+	.row-minor-second .col-minor-second-main { width: ; }
+	.row-minor-second .col-push-minor-second-aside { margin-left: ; }
+	.row-minor-second .col-push-minor-second-main { margin-left: ; }
+	
+
+
+/*	=========================================================================
+	MISC UTILITY CLASSES
+	========================================================================= */
+	
+/*	
+	CLEARFIX - contain floats (h5bp.com/q)
+	========================================================================= */
+	
+	/**
+	 * For modern browsers
+	 * 1. The space content is one way to avoid an Opera bug when the
+	 *    `contenteditable` attribute is included anywhere else in the document.
+	 *    Otherwise it causes space to appear at the top and bottom of elements
+	 *    that receive the `clearfix` class.
+	 * 2. The use of `table` rather than `block` is only necessary if using
+	 *    `:before` to contain the top-margins of child elements.
+	 */
+	 
+	.cf:after,
+	.clearfix:after,
+	.container:after,
+	[class*="row"]:after {
+		clear: both;
+		content: ""; /* 1 */
+		display: table; /* 2 */
+	}
+
+
+/*	
+	FLOATS AND CLEARS
+	========================================================================= */
+	
+	/* CLEARS */
+	
+	.clear				{ clear: both; }
+	
+	.clear-left			{ clear: left; }
+	
+	.clear-right		{ clear: right; }
+	
+
+	/* FLOATS */
+	
+	.float-none			{ float: none; }
+	
+	.left,
+	.float-left			{ float: left; }
+	
+	.right,
+	.float-right		{ float: right; }
+
+
+/*	
+	ALIGNMENTS
+	========================================================================= */
+	
+	
+	/* TEXT-ALIGN */
+	
+	.align-left,
+	.text-left	 		{ text-align: left; }
+	
+	.align-center,
+	.text-center		{ text-align: center; }
+	
+	.align-right,
+	.text-right			{ text-align: right; }
+	
+	.align-justify,
+	.text-justify		{ text-align: justify; }
+	
+	
+	/* VERTICAL-ALIGN */
+	
+	.valign {
+		display: table;
+		width: 100%;
+		}
+		
+		.valign > div,
+		.valign > article,
+		.valign > section,
+		.valign > figure {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+
+
+/*	
+	MEDIA OBJECT
+	http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+	========================================================================= */
+
+	.media,
+	.media-object,
+	.media-figure {
+		display: block;
+	}
+	
+	.media,
+	.media-body {
+		overflow: hidden;
+	}
+		
+	.media,
+	.media .media {
+		margin: 1.5em auto;
+	}
+	
+	.media:first-child { 	margin-top: 0; }
+	.media:last-child { 	margin-bottom: 0; }
+		
+	.media figure { margin: 0; }
+	
+	.media-object img,
+	.media-figure img {
+		max-width: 100%;
+		height: auto;
+		width: 100%;
+	}
+	
+	.media .media-object,
+	.media .media-figure {
+		float: left;
+		margin-right: 1em;
+		margin-left: 0;
+	}
+	
+	.media--reverse > .media-object,
+	.media--reverse > .media-figure {
+		float: right;
+		margin: 0 0 0 1em;
+	}
+	
+	.media > .media-object:first-child,
+	.media > .media-figure:first-child { 	margin-bottom: 1.5em; }
+	.media > .media-object:last-child,
+	.media > .media-figure:last-child { 	margin-top: 1.5em; }
+	
+	.media-title {
+		margin: 0;
+		text-align: center;
+	}
+	
+	.media-body p {
+		display: none;
+		margin-top: 0;
+	}
+	
+	.media--center {
+		display: table;
+		}
+		
+		.media--center > .media-object,
+		.media--center > .media-figure {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		
+		
+		/* LINK-BLOCK */
+		
+		a.media,
+		a.media:hover {
+			color: #555;
+			text-decoration: none;
+		}
+			
+		a.media .media-title { color: #179; }
+		
+			a.media:hover .media-title {
+				color: #2ad;
+				text-decoration: underline;
+			}
+			
+			a.media:hover .media-body p {
+				color: #777;
+			}
+		
+			
+		/* MEDIA LISTS */
+		
+		.media-list,
+		.media-list li {
+			list-style: none;
+			margin-left: 0;
+			padding: 0;
+		}
+		
+		@media screen and (min-width: 37em) {
+			
+			.media {}
+			
+			.media-body p {
+				display: block;
+			}
+			
+		}
+		
+		@media screen and (min-width: 64em) {
+			
+			.media {}
+			
+			.media > .media-object {
+				float: left;
+				margin-right: 1em;
+			}
+			
+			.media > .media-object.right,
+			.media.media--reverse > .media-object,
+			.media.media--reverse > .media-figure {
+				float: right;
+				margin: 0 0 0 1em;
+			}
+			
+			.media-title { text-align: left; }
+			
+		}
+		
+
+/*	
+	MEDIA ASSETS AND CONTENT EMBEDS - images, video, object/embed, iframes
+	========================================================================= */
+	
+	/* IMAGES */
+	
+	/**
+	 * 1. Remove the gap between <img> elements and the bottom of their containers - http://cbrac.co/Q6smqV
+	 */
+	img {
+		image-rendering: optimizeQuality; /* [1] */
+		-ms-interpolation-mode : bicubic;
+	}
+	
+	/**
+	 * Responsive Scaling: Scale to grid while maintaining aspect ratios.
+	 * 1. Fluid styles for responsive scaling.
+	 * 2. Offset `alt` text from surrounding copy.
+	 * 3. Setting `vertical-align` removes the whitespace that appears under `img`
+	 *    elements when they are dropped into a page as-is. Safer alternative to
+	 *    using `display: block;`.
+	 */
+	img,
+	canvas,
+	iframe,
+	object,
+	embed,
+	video,
+	svg {
+		max-width: 100%; /* [1] */
+		font-style: italic; /* [2] */
+		height: auto;
+		vertical-align: middle; /* [3] */
+	}
+	
+	/**
+	 * 1. Google Maps breaks if `max-width: 100%` acts upon it; use their selector to remove the effects.
+	 * 2. If a `width` and/or `height` attribute have been explicitly defined, let’s not make the image fluid.
+	 */
+	.img-preserve,
+	.img-preserve img,
+	.gm-style img, /* [1] */
+	img[src*="maps.gstatic.com"], /* [1] */
+	img[src*="googleapis.com"], /* [1] */
+	img[width]:not(.img-scale), /* [2] */
+	img[height]:not(.img-scale)  {  /* [2] */
+		max-width: none;
+	}
+	
+	/* FLEX VIDEO */
+	
+	.flex-video {
+		position: relative;
+		padding-top: 1.5625em;
+		padding-bottom: 67.5%;
+		height: 0;
+		margin-bottom: 1em;
+		overflow: hidden;
+		}
+		
+		.flex-video.widescreen { padding-bottom: 57.25%; }
+		
+		.flex-video.vimeo { padding-top: 0; }
+		
+		.flex-video iframe,
+		.flex-video object,
+		.flex-video embed,
+		.flex-video video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+	.embed-container {
+		height: 0;
+		height: auto;
+		max-width: 100%;
+		overflow: hidden;
+		padding-bottom: 56.25%;
+		position: relative;
+		 -webkit-box-shadow: 1em 1.5em 4em 0 rgba(0, 0, 0, 0.5);
+			-moz-box-shadow: 1em 1.5em 4em 0 rgba(0, 0, 0, 0.5);
+				 box-shadow: 1em 1.5em 4em 0 rgba(0, 0, 0, 0.5);
+	}
+	
+	.embed-container iframe,
+	.embed-container object,
+	.embed-container embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%; 
+	}
+	
+
+	/* OVERFLOW CONTAINER */
+	.overflow-container {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	
+/*	
+	USER-EXPECTATION QEUES
+	========================================================================= */
+		
+	/* PREVENT USER SELECTION */
+	.select-prevent,
+	.disable-pointer {
+		-webkit-touch-callout: none;
+		-webkit-text-size-adjust: none;
+		-webkit-user-select: none;
+		-webkit-highlight: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+	
+	/* DISABLE MOUSE POINTER */
+	.disable-pointer {
+		pointer-events: none;
+	}
+
+
+/*	=========================================================================
+	FORM ELEMENTS
+	========================================================================= */
+	
+	/**
+	* Fix field styling on iPhone and iPad.
+	* 1. Strip OS styling on IOS
+	*/
+	
+	input[type="text"],
+	input[type="search"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="week"],
+	input[type="month"],
+	input[type="time"],
+	input[type="number"],
+	input[type="password"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="url"],
+	input[type="color"],
+	textarea {
+		-webkit-appearance: none; /* 1 */
+	}
+
+	/* Restrict to vertical resizing only */
+	textarea { resize: vertical; }
+	
+	@media (-webkit-min-device-pixel-ratio:0) {
+		
+		/* Fix changing height issues on iOS7 */
+		input[type="datetime-local"],
+		input[type="date"],
+		input[type="week"],
+		input[type="month"],
+		input[type="time"],
+		input[type="number"] {
+			min-height: 2em;
+		}
+		
+		/* Remove excess padding in Webkit */
+		input[type="color"] {
+			min-height: 1.8em;
+			padding: 0;
+			}
+			input[type="color"]::-webkit-color-swatch-wrapper {
+				padding: 0;
+			}
+			input[type="color"]::-webkit-color-swatch {
+				border: none;
+			}
+		
+	}
+	
+
+/*	
+	FORM GRID
+	========================================================================= */
+	
+	[class*="col-"] > input[type="text"],
+	[class*="col-"] > input[type="email"],
+	[class*="col-"] > input[type="tel"],
+	[class*="col-"] > input[type="search"],
+	[class*="col-"] > input[type="url"],
+	[class*="col-"] > input[type="password"],
+	[class*="col-"] > select,
+	[class*="col-"] > textarea,
+	[class*="col-"] > input[type="submit"] {
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		}
+		[class*="col-"] > input[type="search"] {
+			width: 95%;
+		}
+	
+	form [class*="row-"] > [class*="col-"]:first-child { padding-right: 1em; }
+	form [class*="row-"] > [class*="col-"]:last-child { padding-left: 1em; }
+	
+	form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:first-child { padding-right: 0.5em; padding-left: 0; }
+	form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:last-child { padding-left: 0.5em; padding-right: 0; }
+	
+	form .row-1 > .col-1 { padding-right: 0 !important; padding-left: 0 !important; }
+
+
+
+/*	=========================================================================
+	UTILITIES
+	========================================================================= */
+	
+	/* .ir : Image Replacement */
+	/* .hidden : Hide from screenreaders AND browsers: h5bp.com/u */
+	/* .visuallyhidden : Hide only visually, but available for screenreaders: h5bp.com/v */
+	/* .focusable:active, .focusable:focus : Extends .visuallyhidden to allow focus when navigated to via the keyboard: h5bp.com/p */
+	/* .invisible : Hide visually from screenreaders AND browsers, but maintain layout */
+	
+	.ir {
+		border: 0;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		direction: ltr;
+		text-align: left;
+		text-indent: -999em;
+		*line-height: 0;
+	}
+	
+	.visuallyhidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		}
+		.visuallyhidden.focusable:active,
+		.visuallyhidden.focusable:focus {
+			clip: auto;
+			height: auto;
+			margin: 0;
+			position: static;
+			width: auto;
+		}
+	
+	.hide-text {
+		text-indent: 100%;
+		white-space: nowrap;
+	}
+	
+	.input.block {
+		width: 100%;
+		min-height: 3rem;
+	}
+	
+	/* UI States */
+	
+	.is-open,
+	.is-visible { 	opacity: 1.0; 	}
+	
+	.is-closed,
+	.is-hidden	{ 	opacity: 0; 	}
+	
+	.is-open	{ 	height: auto; 	}
+	.is-closed 	{ 	height: 0; 		}
+	
+	.is-visible { 	animation: fade 1s; 		}
+	.is-hidden 	{ 	animation: fade 1s reverse; }
+		
+/*	
+	DISPLAY /vs/ VISIBILITY
+	========================================================================= */
+	
+	.block,
+	.ir,
+	.is-open {
+		display: block;
+		clear: both;
+	}
+	
+	.inline,
+	.inline > * {
+		display: inline;
+		line-height: normal;
+	}
+	
+	.inline.block {
+		display: inline-block;
+	}
+	
+	.hide,
+	.hidden,
+	.ir br,
+	.is-removed,
+	.is-closed {
+		display: none !important;
+	}
+	
+	.hide,
+	.hidden,
+	.invisible {
+		visibility: hidden !important;
+	}
+	
+	.show-hidden:hover .hide { display: block !important; visibility: visible !important; }
+	
+	.show-hidden-inline:hover .hide { display: inline-block !important; visibility: visible !important; }
+	
+/*	
+	OVERFLOWS
+	========================================================================= */
+	
+	.overflow {
+		overflow: auto;
+	}
+	
+	.overflow-hidden,
+	.ir,
+	.visuallyhidden,
+	.hide-text {
+		overflow: hidden;
+	}
+	
+	.overflow-visible,
+	.visuallyhidden.focusable:active,
+	.visuallyhidden.focusable:focus {
+		overflow: visible;
+	}
+	
+
+/*	=========================================================================
+	MEDIA QUERIES
+	========================================================================= */
+	
+	/* Huge ( Desktop ) */
+	@media only screen and (min-width: 75em) {
+		
+	}
+	
+	/* Large ( Desktop ) */
+	@media only screen and (min-width: 62em) {
+	
+		.show-sml,
+		.show-med,
+		.hide-lrg 	{ display: none !important; }
+		.br-sml 	{ display: inline !important; }
+		
+	}
+	
+	/* Medium ( Laptop ) */
+	@media only screen and (min-width: 48em) and (max-width: 61.938em) {
+	
+		.show-sml,
+		.hide-med,
+		.show-lrg 	{ display: none !important; }
+		.br-sml 	{ display: inline !important; }
+		
+		.align-left-sml 	{ text-align: left; }
+		.align-right-med 	{ text-align: right; }
+		.align-center-med 	{ text-align: center; }
+		
+	}
+	
+	/* Medium ( Tablet ) */
+	@media only screen and (max-width: 47.938em) {
+	
+		.hide-sml,
+		.show-med,
+		.show-lrg 	{ display: none !important; }
+		.br-sml 	{ display: block !important; }
+		
+		.align-left-sml 	{ text-align: left; }
+		.align-right-sml 	{ text-align: right; }
+		.align-center-sml 	{ text-align: center; }
+		
+	}
+	
+	
+	/* Small ( Phone ) - line-break all columns */
+	@media only screen and (max-width: 31em){
+	
+		html { font-size: 75%; }
+		
+		[class*="col-"],
+		[class*="row-grid-"] > * {
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+			}
+			[class*="col"]:before,
+			[class*="col"]:after,
+			[class*="row-grid-"] > *:before,
+			[class*="row-grid-"] > *:after {
+			    content: " ";
+			    display: table;
+			}
+			[class*="col"]:after,
+			[class*="row-grid-"] > *:after {
+			    clear: both;
+			}
+			
+		[class*="row-"] > [class*="col-push-"] { margin-left: 0; }
+		
+		[class*="row-"][class*="row-padded"] > [class*="col-"],
+		[class*="row-"][class*="row-padded"] > [class*="col-"]:first-child,
+		[class*="row-"][class*="row-padded"] > [class*="col-"]:last-child {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		
+		[class*="col-"].align-right { text-align: left; }
+		
+		/* FORM GRID */
+		
+		[class*="col-"] > input[type="text"],
+		[class*="col-"] > input[type="email"],
+		[class*="col-"] > input[type="tel"],
+		[class*="col-"] > input[type="search"],
+		[class*="col-"] > input[type="url"],
+		[class*="col-"] > input[type="password"],
+		[class*="col-"] > select,
+		[class*="col-"] > textarea,
+		[class*="col-"] > input[type="reset"],
+		[class*="col-"] > input[type="submit"] {
+			margin-right: 0;
+			margin-bottom: 1px;
+			margin-left: 0;
+			width: 100%;
+			}
+			
+			[class*="col-"] > input[type="search"] {
+				width: 95%;
+			}
+		
+		form [class*="row-"] > [class*="col-"]:first-child { padding-right: 0; }
+		form [class*="row-"] > [class*="col-"]:last-child { padding-left: 0; }
+		
+		form .row-1 > .col-1,
+		form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:first-child,
+		form [class*="row-"] > [class*="col-"] [class*="row-"] > [class*="col-"]:last-child {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		
+	}
+	
+	/* Min (Phone) */
+	@media only screen and (max-width: 15.9369em){
+		body {
+			font-size: 0.625em;
+			font-size: 0.625rem;
+		}
+	}
+	
+	
+	/* Tablet - min-width 768px
+	@media only screen and (min-width: 36em) {
+		.container { width: 90%; }
+	} */
+	
+	/* Laptop - min-width 992px
+	@media only screen and (min-width: 37em) and (max-width: 69em) {
+		.container { width: 94%; }
+	} */
+	
+	/* Desktop - min-width 1200px
+	@media only screen and (min-width: 70em) {
+		.container { width: 1200px; }
+	} */
+	
